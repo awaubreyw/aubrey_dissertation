@@ -1,5 +1,5 @@
 # my dissertation 
-- 
+## python interpreter: 3.8.5
 
 ## channel names
 ```
