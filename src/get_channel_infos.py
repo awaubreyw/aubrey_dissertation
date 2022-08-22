@@ -70,7 +70,7 @@ for channel_title, channel_id in channel_dict.items():
             """)
         channel_infos.append(channel_info) #dict inside list
 
-with open("channel_info.json", 'w') as f:
+with open("constants/channel_info.json", 'w') as f:
     
     f.write(json.dumps(channel_infos))
 
