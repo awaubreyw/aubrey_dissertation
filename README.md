@@ -11,3 +11,5 @@
 
 #what about coding? Microsoft Education, Corey Schafer
 ```
+
+- powershell command to find number of files = `(ls src/results/crashcourse | Measure-Object -line).Lines`
