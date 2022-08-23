@@ -12,7 +12,7 @@ import json
 
 #with open("results/video_ids_crashcourse.json", "r") as f:
     #video_ids_list = json.load(f)
-with open("results/crashcourse.json", "r") as f:
+with open("results/khan_academy.json", "r") as f:
     data = json.load(f)
 
 comments_contents = []
@@ -29,52 +29,66 @@ for channel_id in data:
         #print(video_title)
 
     try:
+        #request = youtube.commentThreads().list(
+                #part="snippet,replies",
+                #videoId=video_id,
+                #maxResults=5,
+                #order="time")
 
         request = youtube.commentThreads().list(
                 part="snippet,replies",
                 videoId=video_id,
-                maxResults=5,
                 order="time")
 
         # execute the request
         response = request.execute()
         
         comment_content = {}
+        
+        while response:
+        
+            for item in response["items"]:
+                item_info = item["snippet"]
+                topLevelComment = item_info["topLevelComment"]
+                comment_info = topLevelComment["snippet"]
+                channel_id = item["id"]
 
-        #while response:
-        for item in response["items"]:
-            item_info = item["snippet"]
-            topLevelComment = item_info["topLevelComment"]
-            comment_info = topLevelComment["snippet"]
-            channel_id = item["id"]
+                ## comment_content = {
+                # "channel_id": channel_id,
+                # "video_title": video_title,
+                # "video_id": video_id,
+                # "comment_by": comment_info["authorDisplayName"],
+                # "comment_text": comment_info["textDisplay"],
+                # "comment_date": comment_info["publishedAt"],
+                # "likes_count":  comment_info["likeCount"],
+                #}
 
+                comment_content = {video_id: { video_title: {
+                    "channel_id": channel_id,
+                    "comment_by": comment_info["authorDisplayName"],
+                    "comment_text": comment_info["textDisplay"],
+                    "comment_date": comment_info["publishedAt"],
+                    "likes_count":  comment_info["likeCount"],
+                }}}
+
+                comments_contents.append(comment_content) #dict inside list
+
+        
+
+            # Again repeat
+            if "nextPageToken" in response:
+                response = youtube.commentThreads().list(
+                    part="snippet,replies",
+                    videoId=video_id,
+                    maxResults=100,
+                    pageToken=response["nextPageToken"]  # get 100 comments
+                ).execute()
+            else:
+                break
             
-
-            comment_content = {
-                "crashcourse": channel_id,
-                "video_title": video_title,
-                "video_id": video_id,
-                "comment_by": comment_info["authorDisplayName"],
-                "comment_text": comment_info["textDisplay"],
-                "comment_date": comment_info["publishedAt"],
-                "likes_count":  comment_info["likeCount"],
-            }
-
-            comments_contents.append(comment_content) #dict inside list
-
-    
-
-        # Again repeat
-        if "nextPageToken" in response:
-            response = youtube.commentThreads().list(
-                part="snippet,replies",
-                videoId=video_id,
-                maxResults=100,
-                pageToken=response["nextPageToken"]  # get 100 comments
-            ).execute()
-    
     except:
         print('video disabled comments')
+        
 
 
 
@@ -91,7 +105,7 @@ for channel_id in data:
 
 
 
-with open("results/video_comments_crashcourse.json", 'w') as f:
+with open("results/video_comments_khan_academy.json", 'w') as f:
     f.write(json.dumps(comments_contents))
 
 
