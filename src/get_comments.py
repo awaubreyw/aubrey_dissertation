@@ -18,7 +18,7 @@ with open("results/crashcourse.json", "r") as f:
 
 
 for channel_id in data:
-    for video_id, video_data in list(data[channel_id]["video_data"].items()): 
+    for video_id, video_data in data[channel_id]["video_data"].items(): 
         #only getting first 3 items (called list slicing [:number]) (while [] is for index)
 
         comments_contents = []
@@ -87,7 +87,7 @@ for channel_id in data:
                 else:
                     break
 
-            with open(f"results/crashcourse/{video_id}.json", 'w') as f:
+            with open(f"results/crash_course/{video_id}.json", 'w') as f:
                 f.write(json.dumps(comments_contents))
 
 
