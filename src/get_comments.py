@@ -12,7 +12,7 @@ import json
 
 #with open("results/video_ids_crashcourse.json", "r") as f:
     #video_ids_list = json.load(f)
-with open("results/khan_academy.json", "r") as f:
+with open("results/crashcourse.json", "r") as f:
     data = json.load(f)
 
 comments_contents = []
@@ -105,7 +105,7 @@ for channel_id in data:
 
 
 
-with open("results/video_comments_khan_academy.json", 'w') as f:
+with open("results/video_comments_crashcourse.json", 'w') as f:
     f.write(json.dumps(comments_contents))
 
 
