@@ -55,7 +55,7 @@ for channel_id in data:
                 "video_title": video_title,
                 "video_id": video_id,
                 "comment_by": comment_info["authorDisplayName"],
-                "comment_text": comment_info["textDisplay"].encode("utf-8").strip(),
+                "comment_text": comment_info["textDisplay"],
                 "comment_date": comment_info["publishedAt"],
                 "likes_count":  comment_info["likeCount"],
             }
@@ -91,7 +91,7 @@ for channel_id in data:
 
 
 
-with open("results/video_comments_crashcourse.json") as f:
+with open("results/video_comments_crashcourse.json", 'w') as f:
     f.write(json.dumps(comments_contents))
 
 
