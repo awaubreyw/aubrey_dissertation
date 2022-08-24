@@ -1,5 +1,5 @@
 # my dissertation 
-## python interpreter: 3.8.5
+## python interpreter: 3.9.13 ('.venv': venv)
 
 ## python -m venv .venv
 ## pip freeze > requirements.txt
@@ -19,3 +19,4 @@
 ```
 
 - powershell command to find number of files = `(ls src/results/crashcourse | Measure-Object -line).Lines`
+- some videos have comments disabled so extracted comment json files are less than total videos in a channel (e.g crashcourse 1400 videos but 400 comment files)
