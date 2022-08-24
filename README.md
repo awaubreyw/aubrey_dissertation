@@ -1,6 +1,12 @@
 # my dissertation 
 ## python interpreter: 3.8.5
 
+## python -m venv .venv
+## pip freeze > requirements.txt
+## Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+## .venv\Scripts\activate
+## .venv\Scripts\pip.exe install pandas (or another)
+
 ## channel names
 ```
 #Deep Look = KQEDDeepLook, CrashCourse = crashcourse, Khan Akademy = khanacademy, Vsauce = vsauce1, 3Blue1Brown = 3blue1brown, NancyPi = NancyPi, Smarter Every day = smartereveryday, Data Professor = DataProfessor, Kurzgesagt – In a Nutshell = inanutshell, TED Talks = TED, TKOR = Thekingofrandom, AsapSCIENCE = AsapSCIENCE, Michel van Beizen = MichelvanBiezen, Primer = PrimerLearning, Physics Girl = physicsgirl, SciShow = SciShow, and Everyday Astronaut = EverydayAstronaut. 

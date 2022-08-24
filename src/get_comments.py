@@ -3,6 +3,8 @@
 
 from googleapiclient.discovery import build
 
+import pandas as pd
+
 api_key = "AIzaSyBhZfAuqxNwPbkGon-mLaEI62Y78dxAJyM"
 # then put confidential api key in environment variable or secret configuration file
 youtube = build("youtube", "v3", developerKey=api_key)
@@ -44,7 +46,10 @@ for channel_id in data:
             # execute the request
             response = request.execute()
             
+            comments_contents = []
             comment_content = {}
+
+            dfa = []
             
             while response:
             
@@ -54,27 +59,29 @@ for channel_id in data:
                     comment_info = topLevelComment["snippet"]
                     channel_id = item["id"]
 
-                    ## comment_content = {
-                    # "channel_id": channel_id,
-                    # "video_title": video_title,
-                    # "video_id": video_id,
-                    # "comment_by": comment_info["authorDisplayName"],
-                    # "comment_text": comment_info["textDisplay"],
-                    # "comment_date": comment_info["publishedAt"],
-                    # "likes_count":  comment_info["likeCount"],
-                    #}
-
-                    comment_content = {video_id: { video_title: {
-                        "channel_id": channel_id,
+                    comment_content = {
                         "comment_by": comment_info["authorDisplayName"],
                         "comment_text": comment_info["textDisplay"],
                         "comment_date": comment_info["publishedAt"],
                         "likes_count":  comment_info["likeCount"],
-                    }}}
+                    }
+
+                    #comment_content = {video_id: { video_title: {
+                        #"channel_id": channel_id,
+                        #"comment_by": comment_info["authorDisplayName"],
+                        #"comment_text": comment_info["textDisplay"],
+                        #"comment_date": comment_info["publishedAt"],
+                        #"likes_count":  comment_info["likeCount"],
+                    #}}}
 
                     comments_contents.append(comment_content) #dict inside list
 
-            
+                #comments_contents.append({
+                    #'comment_by': comment_info["authorDisplayName"],
+                    #'comment_text': comment_info["textDisplay"],
+                    #'comment_date': comment_info["publishedAt"],
+                    #'likes_count':  comment_info["likeCount"],
+                #})
 
                 # Again repeat
                 if "nextPageToken" in response:
@@ -84,12 +91,16 @@ for channel_id in data:
                         maxResults=100,
                         pageToken=response["nextPageToken"]  # get 100 comments
                     ).execute()
+
+                #df = pd.DataFrame(comments_contents, columns=('comment_by', 'comment_text', 'comment_date', 'likes_count'))
+
                 else:
                     break
+                    
 
-            with open(f"results/crash_course/{video_id}.json", 'w') as f:
+            with open(f"results/crashcourse/{video_id}.json", 'w') as f:
                 f.write(json.dumps(comments_contents))
-
+                #f.write(df.to_json(orient='records', lines=True))
 
 
                 
