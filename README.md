@@ -21,4 +21,5 @@
 
 - powershell command to find number of files = `(ls src/results/crashcourse | Measure-Object -line).Lines`
 - some videos have comments disabled so extracted comment json files are less than total videos in a channel (e.g crashcourse 1400 videos but 400 comment files)
+- replies under comments are not included in comments json file because they are not always opinions on the actual video
 - shortcut to comment out multiple lines = ctrl + /
