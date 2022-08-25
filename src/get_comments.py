@@ -3,7 +3,7 @@
 
 from googleapiclient.discovery import build
 
-import pandas as pd
+from tqdm import tqdm #progress bar
 
 api_key = "AIzaSyBhZfAuqxNwPbkGon-mLaEI62Y78dxAJyM"
 # then put confidential api key in environment variable or secret configuration file
@@ -20,13 +20,14 @@ with open("results/crashcourse.json", "r") as f:
 
 
 for channel_id in data:
-    for video_id, video_data in data[channel_id]["video_data"].items(): 
+    for video_id, video_data in tqdm(data[channel_id]["video_data"].items()): 
         #only getting first 3 items (called list slicing [:number]) (while [] is for index)
 
         comments_contents = []
 
 #for video_id in video_ids_list:
         #print(video_id)
+        print(video_id)
 
         video_title = video_data['title']
         #print(video_title)
@@ -82,6 +83,7 @@ for channel_id in data:
                     #'comment_date': comment_info["publishedAt"],
                     #'likes_count':  comment_info["likeCount"],
                 #})
+                
 
                 # Again repeat
                 if "nextPageToken" in response:
