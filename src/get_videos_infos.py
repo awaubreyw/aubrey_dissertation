@@ -148,23 +148,6 @@ class YTstats:
         fused_data = {self.channel_id: {"channel_statistics": self.channel_statistics, "video_data": self.video_data}}
         
 
-
-        #KeyError: 'popitem(): dictionary is empty'
-        #channel_title = self.video_data.popitem()[1].get('channelTitle', self.channel_id)
-        #so...
-
-        #channelusernames = ['crashcourse', 'NancyPi'] #have to be same order as the one in main.py
-        #channel_ids = []
-        
-        #for channelusername in channelusernames:
-            #request = youtube.search().list(part="snippet", q=channelusername)
-            #response = request.execute()
-            #item = response['items'][0]
-            #channel_id = item['snippet']['channelId']
-            #channel_ids.append(channel_id)
-        #for channel_id in channel_ids:
-        #to get channel info, request with parameters
-        #request = youtube.channels().list(part='brandingSettings, snippet, contentDetails, statistics', forUsername=channelusername)
         request = youtube.channels().list(
                 part="snippet",
                 id=self.channel_id
@@ -181,7 +164,7 @@ class YTstats:
             channel_title = channel_title.replace(' ', '_').lower()
 
 
-            filename = channel_title + '.json'
+            filename = 'results/' + channel_title + '.json'
 
             with open(filename, 'w') as f:
                 json.dump(fused_data, f, indent=4)
@@ -195,8 +178,10 @@ class YTstats:
         for channel_id in data:
             for video_id, video_data in data[channel_id]['video_data'].items():
                 video_ids.append(video_id)
+                #maybe get comments with the video id keys under here instead of another py file?
+                #then dont need to manually type json filename in that other py file to grab comments
                 
-        filename = 'video_ids_' + channel_title + '.json'
+        filename = 'results/video_ids_' + channel_title + '.json'
         with open(filename, 'w') as f:
             json.dump(video_ids, f)
             
@@ -204,14 +189,17 @@ class YTstats:
 
 if __name__ == "__main__":
 
-    with open('constants/channel_info.json', 'r') as f:
-        channels_list = json.load(f)
+    #with open('constants/channel_info.json', 'r') as f:
+        #channels_list = json.load(f)
     
-    for each_channel_dict in channels_list:
+    #for each_channel_dict in channels_list:
         
-        channel_id_value = each_channel_dict['channel_id']
-        print(channel_id_value)
-        YT = YTstats(API_KEY, channel_id_value)
+        #channel_id_value = each_channel_dict['channel_id']
+        #print(channel_id_value)
+        #YT = YTstats(API_KEY, channel_id_value)
+
+        #manually
+        YT = YTstats(API_KEY, "UC4a-Gbdw7vOaccHmFo40b9g") #second is khan academy
         YT.get_channel_statistics()
         YT.get_channel_video_data()
         YT.dump()
