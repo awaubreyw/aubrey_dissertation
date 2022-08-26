@@ -4,13 +4,13 @@
 #https://www.youtube.com/watch?v=4FwXqOT4-FM
 #https://www.youtube.com/watch?v=1lxrb_ezP-g
 
-
+import creds
 import json
 import requests
 from tqdm import tqdm #progress bar
 from googleapiclient.discovery import build
 
-API_KEY = 'AIzaSyBhZfAuqxNwPbkGon-mLaEI62Y78dxAJyM'
+API_KEY = creds.api_key
 
 
 youtube = build('youtube', 'v3', developerKey=API_KEY)
@@ -189,6 +189,22 @@ class YTstats:
 
 if __name__ == "__main__":
 
+    with open('constants/channel_2_id.json', 'r') as f:
+        data = json.load(f)
+    
+    #slice list of data items and skip the first three channel name and id tuples
+    #for channelname, channelid in list(data.items())[3:]:
+    for channelname, channelid in list(data.items())[13:]:
+
+        #print(channelid)
+        #manually
+        #YT = YTstats(API_KEY, "UCUHW94eEFW7hkUMVaZz4eDg") #second is khan academy id
+        YT = YTstats(API_KEY, channelid)
+        YT.get_channel_statistics()
+        YT.get_channel_video_data()
+        YT.dump()
+
+
     #with open('constants/channel_info.json', 'r') as f:
         #channels_list = json.load(f)
     
@@ -198,11 +214,6 @@ if __name__ == "__main__":
         #print(channel_id_value)
         #YT = YTstats(API_KEY, channel_id_value)
 
-        #manually
-        YT = YTstats(API_KEY, "UC4a-Gbdw7vOaccHmFo40b9g") #second is khan academy
-        YT.get_channel_statistics()
-        YT.get_channel_video_data()
-        YT.dump()
 
 
 

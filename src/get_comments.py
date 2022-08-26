@@ -3,9 +3,10 @@
 
 from googleapiclient.discovery import build
 
+import creds
 from tqdm import tqdm #progress bar
 
-api_key = "AIzaSyBhZfAuqxNwPbkGon-mLaEI62Y78dxAJyM"
+api_key = creds.api_key
 # then put confidential api key in environment variable or secret configuration file
 youtube = build("youtube", "v3", developerKey=api_key)
 
@@ -14,7 +15,7 @@ import json
 
 #with open("results/video_ids_crashcourse.json", "r") as f:
     #video_ids_list = json.load(f)
-with open("results/crashcourse.json", "r") as f:
+with open("results/minutephysics.json", "r") as f: #kurzgesagt_–_in_a_nutshell
     data = json.load(f)
 
 
@@ -100,7 +101,7 @@ for channel_id in data:
                     break
                     
 
-            with open(f"results/crashcourse/{video_id}.json", 'w') as f:
+            with open(f"results/minutephysics/{video_id}.json", 'w') as f: #kurzgesagt_–_in_a_nutshell
                 f.write(json.dumps(comments_contents))
                 #f.write(df.to_json(orient='records', lines=True))
 

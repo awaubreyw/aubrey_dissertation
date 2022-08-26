@@ -1,10 +1,12 @@
+import creds
+#put confidential api key in environment variable or secret configuration file
 
 import json
 #to grab public info of youtube channels
 from googleapiclient.discovery import build
 
-api_key = 'AIzaSyBhZfAuqxNwPbkGon-mLaEI62Y78dxAJyM'
-#then put confidential api key in environment variable or secret configuration file
+api_key = creds.api_key
+
 
 youtube = build('youtube', 'v3', developerKey=api_key)
 
