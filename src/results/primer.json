@@ -1,0 +1,1020 @@
+{
+    "UCKzJFdi57J53Vr_BkTfN3uQ": {
+        "channel_statistics": {
+            "viewCount": "61927053",
+            "subscriberCount": "1520000",
+            "hiddenSubscriberCount": false,
+            "videoCount": "17"
+        },
+        "video_data": {
+            "r6sa_fWQB_4": {
+                "publishedAt": "2022-08-16T15:50:00Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "How many people might ever exist, calculated",
+                "description": "You can get 50% off What We Owe The Future and drive sales to local independent bookstores by using the promotion code PRIMER50 when buying from the following website: https://bookshop.org/books/what-we-owe-the-future/9781541618626\n\nI made this video in partnership with the Forethought Foundation for Global Priorities Research, where the author Will MacAskill serves as director. Their goal is to help the book reach more people, and I\u2019m very aligned with that goal. The more we can work together to think about our future, the better!\n\nSource links:\nhttps://ourworldindata.org/longtermism\nhttps://www.prb.org/articles/how-many-people-have-ever-lived-on-earth/\nhttps://ourworldindata.org/world-population-update-2022\nhttps://ourworldindata.org/grapher/children-per-woman-vs-human-development-index\n\nSupport these videos on Patreon: https://www.patreon.com/primerlearning\nPlush blobs and other stuff: https://store.dftba.com/collections/primer\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Twitter: @primerlearning\n- Reddit: r/primerlearning\n\nMade with Unity\nhttps://github.com/Helpsypoo/PrimerUnity\n\nMade possible by support through Patreon:\nAnthony Eufemio\nJon Mundle\nSpline\nChristian Gruber\nZachariah Richard Fournier\nVladimir Duchenchuk\nShayn Osborn\nJeremy\nGuguke\nAnders Fjeldv\u00e6r\nErik Broeders\nBrian Cloutier\nKairui Wang\nSean Barker\nEric Helps\nStevie Hryciw\nTim Barber\nBen Kamens\nSasha Verozub\nMatthew Michal\nJames Manning\nBez Noferesti\nKieran Boulton\nAndrew Lang\nFlavio Kindler\nJohn Shaffstall\nAlba Caparros-Roissard\nSam Shaw\nJeff Linse\nTimothy Furman\nKevo\nGabriele Siino\nGhost Goat\nabledbody\nKrum Valkov\nMatth\u00e4us Pawelczyk\nOuroCat\nketura\nSam Van Cise\nDaniel Rolandsgard Kjellevold\nJason Prado\nJeff\nGarrett\nRikard Eide\nChristy Serbus",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/r6sa_fWQB_4/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/r6sa_fWQB_4/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/r6sa_fWQB_4/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/r6sa_fWQB_4/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/r6sa_fWQB_4/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "How many people might ever exist, calculated",
+                    "description": "You can get 50% off What We Owe The Future and drive sales to local independent bookstores by using the promotion code PRIMER50 when buying from the following website: https://bookshop.org/books/what-we-owe-the-future/9781541618626\n\nI made this video in partnership with the Forethought Foundation for Global Priorities Research, where the author Will MacAskill serves as director. Their goal is to help the book reach more people, and I\u2019m very aligned with that goal. The more we can work together to think about our future, the better!\n\nSource links:\nhttps://ourworldindata.org/longtermism\nhttps://www.prb.org/articles/how-many-people-have-ever-lived-on-earth/\nhttps://ourworldindata.org/world-population-update-2022\nhttps://ourworldindata.org/grapher/children-per-woman-vs-human-development-index\n\nSupport these videos on Patreon: https://www.patreon.com/primerlearning\nPlush blobs and other stuff: https://store.dftba.com/collections/primer\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Twitter: @primerlearning\n- Reddit: r/primerlearning\n\nMade with Unity\nhttps://github.com/Helpsypoo/PrimerUnity\n\nMade possible by support through Patreon:\nAnthony Eufemio\nJon Mundle\nSpline\nChristian Gruber\nZachariah Richard Fournier\nVladimir Duchenchuk\nShayn Osborn\nJeremy\nGuguke\nAnders Fjeldv\u00e6r\nErik Broeders\nBrian Cloutier\nKairui Wang\nSean Barker\nEric Helps\nStevie Hryciw\nTim Barber\nBen Kamens\nSasha Verozub\nMatthew Michal\nJames Manning\nBez Noferesti\nKieran Boulton\nAndrew Lang\nFlavio Kindler\nJohn Shaffstall\nAlba Caparros-Roissard\nSam Shaw\nJeff Linse\nTimothy Furman\nKevo\nGabriele Siino\nGhost Goat\nabledbody\nKrum Valkov\nMatth\u00e4us Pawelczyk\nOuroCat\nketura\nSam Van Cise\nDaniel Rolandsgard Kjellevold\nJason Prado\nJeff\nGarrett\nRikard Eide\nChristy Serbus"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "355090",
+                "likeCount": "26769",
+                "favoriteCount": "0",
+                "commentCount": "1162",
+                "duration": "PT9M51S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "XTcP4oo4JI4": {
+                "publishedAt": "2022-06-25T16:45:31Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "How To Catch A Cheater With Math",
+                "description": "Try catching cheaters yourself: https://primerlearning.org/\n\nSupport these videos on Patreon: https://www.patreon.com/primerlearning\nPlush blobs and other stuff: https://store.dftba.com/collections/primer\n\nBinomial probability example (the whole section on Khan Academy may be helpful)\nhttps://www.khanacademy.org/math/statistics-probability/random-variables-stats-library/binomial-random-variables/v/probability-of-making-2-shots-in-6-attempts\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Twitter: @primerlearning\n- Reddit: r/primerlearning\n\nMade with Unity and Manim\nhttps://github.com/Helpsypoo/PrimerUnity\nhttps://www.manim.community/\n\nMade possible by support through Patreon:\nAnthony Eufemio\nJon Mundle\nZachariah Richard Fournier\nVladimir Duchenchuk\nSpline\nChristian Gruber\nKairui Wang\nLuc Cedric R.\nErik Broeders\nAnders Fjeldv\u00e6r\nJeremy\nGuguke\nShayn Osborn\nBrian Cloutier\nEric Helps\nSean Barker\nStevie Hryciw\nBen Kamens\nTim Barber\nChristy Serbus\nGhost Goat\nSam Shaw\nRikard Eide\nSam Van Cise\nKevin Holesh\nJason Prado\nJeff\nGarrett\nDaniel Kjellevold Steinsland\nAlex Garber\nKrum Valkov\nMatth\u00e4us Pawelczyk\nOuroCat\nJacob Luedecke\nketura\nGabriele Siino\nKevo\nabledbody\nAlba Caparros-Roissard\nJeff Linse\nTimothy Furman\nAndrew Lang\nFlavio Kindler\nJohn Shaffstall\nBez Noferesti",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/XTcP4oo4JI4/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/XTcP4oo4JI4/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/XTcP4oo4JI4/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/XTcP4oo4JI4/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/XTcP4oo4JI4/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "How To Catch A Cheater With Math",
+                    "description": "Try catching cheaters yourself: https://primerlearning.org/\n\nSupport these videos on Patreon: https://www.patreon.com/primerlearning\nPlush blobs and other stuff: https://store.dftba.com/collections/primer\n\nBinomial probability example (the whole section on Khan Academy may be helpful)\nhttps://www.khanacademy.org/math/statistics-probability/random-variables-stats-library/binomial-random-variables/v/probability-of-making-2-shots-in-6-attempts\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Twitter: @primerlearning\n- Reddit: r/primerlearning\n\nMade with Unity and Manim\nhttps://github.com/Helpsypoo/PrimerUnity\nhttps://www.manim.community/\n\nMade possible by support through Patreon:\nAnthony Eufemio\nJon Mundle\nZachariah Richard Fournier\nVladimir Duchenchuk\nSpline\nChristian Gruber\nKairui Wang\nLuc Cedric R.\nErik Broeders\nAnders Fjeldv\u00e6r\nJeremy\nGuguke\nShayn Osborn\nBrian Cloutier\nEric Helps\nSean Barker\nStevie Hryciw\nBen Kamens\nTim Barber\nChristy Serbus\nGhost Goat\nSam Shaw\nRikard Eide\nSam Van Cise\nKevin Holesh\nJason Prado\nJeff\nGarrett\nDaniel Kjellevold Steinsland\nAlex Garber\nKrum Valkov\nMatth\u00e4us Pawelczyk\nOuroCat\nJacob Luedecke\nketura\nGabriele Siino\nKevo\nabledbody\nAlba Caparros-Roissard\nJeff Linse\nTimothy Furman\nAndrew Lang\nFlavio Kindler\nJohn Shaffstall\nBez Noferesti"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "1880081",
+                "likeCount": "90156",
+                "favoriteCount": "0",
+                "commentCount": "3143",
+                "duration": "PT22M38S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "QC91Bf8hQVo": {
+                "publishedAt": "2022-04-09T14:48:15Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "Coin Flip Cheaters: A game from Primer",
+                "description": "Play at https://primerlearning.org\nOr on Google Play: https://play.google.com/store/apps/details?id=com.Primer.CatchtheCheaters\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Twitter: @primerlearning\n- Reddit: r/primerlearning\n\nPlush blobs and other merch: https://store.dftba.com/collections/primer\nSupport these videos on Patreon: https://www.patreon.com/primerlearning\n\nMade with Unity\nhttps://github.com/Helpsypoo/PrimerUnity\n\nMade possible by support through Patreon:\nAnthony Eufemio\nJon Mundle\nSpline\nZachariah Richard Fournier\nVladimir Duchenchuk\nRoy & BreAnna Steves\nShayn Osborn\nJeremy\nGuguke\nAnders Fjeldv\u00e6r\nLuc Cedric R.\nErik Broeders\nKairui Wang\nSean Barker\nEric Helps\nStevie Hryciw\nTim Barber\nBen Kamens\nBez Noferesti\nKieran Boulton\nvigo oudenaarden\nAndrew Lang\nFlavio Kindler\nCowit\nJohn Shaffstall\nAlba Caparros-Roissard\nSam Shaw\nJeff Linse\nTimothy Furman\nKevo\nGabriele Siino\nGhost Goat\nabledbody\nAlex Garber\nKrum Valkov\nMatth\u00e4us Pawelczyk\nOuroCat\nJacob Luedecke\nketura\nSam Van Cise\nKevin Holesh\nDaniel Kjellevold Steinsland\nDaniel Schramm\nJason Prado\nJeff\nGarrett\nBrian Cloutier\nRikard Eide\nChristy Serbus",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/QC91Bf8hQVo/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/QC91Bf8hQVo/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/QC91Bf8hQVo/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/QC91Bf8hQVo/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/QC91Bf8hQVo/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Coin Flip Cheaters: A game from Primer",
+                    "description": "Play at https://primerlearning.org\nOr on Google Play: https://play.google.com/store/apps/details?id=com.Primer.CatchtheCheaters\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Twitter: @primerlearning\n- Reddit: r/primerlearning\n\nPlush blobs and other merch: https://store.dftba.com/collections/primer\nSupport these videos on Patreon: https://www.patreon.com/primerlearning\n\nMade with Unity\nhttps://github.com/Helpsypoo/PrimerUnity\n\nMade possible by support through Patreon:\nAnthony Eufemio\nJon Mundle\nSpline\nZachariah Richard Fournier\nVladimir Duchenchuk\nRoy & BreAnna Steves\nShayn Osborn\nJeremy\nGuguke\nAnders Fjeldv\u00e6r\nLuc Cedric R.\nErik Broeders\nKairui Wang\nSean Barker\nEric Helps\nStevie Hryciw\nTim Barber\nBen Kamens\nBez Noferesti\nKieran Boulton\nvigo oudenaarden\nAndrew Lang\nFlavio Kindler\nCowit\nJohn Shaffstall\nAlba Caparros-Roissard\nSam Shaw\nJeff Linse\nTimothy Furman\nKevo\nGabriele Siino\nGhost Goat\nabledbody\nAlex Garber\nKrum Valkov\nMatth\u00e4us Pawelczyk\nOuroCat\nJacob Luedecke\nketura\nSam Van Cise\nKevin Holesh\nDaniel Kjellevold Steinsland\nDaniel Schramm\nJason Prado\nJeff\nGarrett\nBrian Cloutier\nRikard Eide\nChristy Serbus"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "359357",
+                "likeCount": "22574",
+                "favoriteCount": "0",
+                "commentCount": "1168",
+                "duration": "PT5M48S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "iLX_r_WPrIw": {
+                "publishedAt": "2021-08-28T20:22:27Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "Simulating the Evolution of Sacrificing for Family",
+                "description": "More than you ever wanted to know about Hamilton's rule:\nhttps://users.ox.ac.uk/~grafen/cv/oseb.pdf\n\nFor discussion and updates\n- Twitter: @primerlearning\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n\nPlush blobs and other merch: https://store.dftba.com/collections/primer\nSupport these videos on Patreon: https://www.patreon.com/primerlearning\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Unity and Manim\nhttps://github.com/Helpsypoo/PrimerUnity\nhttps://www.manim.community\n\nMusic by Mathieu Keith. For business inquiries: mathieu.keith@gmail.com\n\nSeveral other inputs into the graphics are from public domain contributions to blendswap.com\n\nMade possible by support through Patreon:\nabledbody\nAlba Caparros-Roissard\nAlecZero\nAlex Garber\nALoneCoder\nAnders Fjeldv\u00e6r\nAndrew Lang\nAndrew Panin\nAngela Tam\nAnthony Eufemio\nAymeric Duigou--Majumdar\nBen\nBen Kamens\nBen Komalo\nBrian Cloutier\nBrodie Alexander\nChristian Gruber\nChristopher\nChristy Serbus\ncooper\nCowit\nCynical Manchild\nDaniel Kjellevold Steinsland\nDaniel Schramm\nDuncan Kight\nEdono Dondolo\nEric Helps\nErik Broeders\nFabian Aisenbrey\nFabien Espanol\nFlavio Kindler\nGabriele Siino\nGarrett\nGhost Goat\nGuguke\nJacob Luedecke\nJason Prado\nJeff\nJeff Linse\nJeremy\nJohn Shaffstall\nJon Mundle\nJorge Arroyo\nJos\u00e9 Hamilton\nJosh White\nJuan Camilo Chaparro\nKairui Wang\nketura\nKevin Holesh\nKevo\nKrum Valkov\nLotus Moonveil\nLuc Cedric R.\nMarcial Abrahantes\nMatt Welke\nMatth\u00e4us Pawelczyk\nMatthijs Ruijgrok\nMike Schmidt\nNoah\nNoah Healy\nOuroCat\nPhilipp Lanwert\nRide To Vote\nRikard Eide\nRoy & BreAnna Steves\nSam Shaw\nSam Van Cise\nSean Barker\nStevie Hryciw\nsunny ho\nSven Le Moine Bauer\nTalon Howitt\nTimothy Furman\nTobias Kienzler\nTrip Might\nvigo oudenaarden\nVladimir Duchenchuk\nWill Robinson\nZachariah Richard Fournier\n3blue1brown",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/iLX_r_WPrIw/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/iLX_r_WPrIw/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/iLX_r_WPrIw/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/iLX_r_WPrIw/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/iLX_r_WPrIw/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Simulating the Evolution of Sacrificing for Family",
+                    "description": "More than you ever wanted to know about Hamilton's rule:\nhttps://users.ox.ac.uk/~grafen/cv/oseb.pdf\n\nFor discussion and updates\n- Twitter: @primerlearning\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n\nPlush blobs and other merch: https://store.dftba.com/collections/primer\nSupport these videos on Patreon: https://www.patreon.com/primerlearning\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Unity and Manim\nhttps://github.com/Helpsypoo/PrimerUnity\nhttps://www.manim.community\n\nMusic by Mathieu Keith. For business inquiries: mathieu.keith@gmail.com\n\nSeveral other inputs into the graphics are from public domain contributions to blendswap.com\n\nMade possible by support through Patreon:\nabledbody\nAlba Caparros-Roissard\nAlecZero\nAlex Garber\nALoneCoder\nAnders Fjeldv\u00e6r\nAndrew Lang\nAndrew Panin\nAngela Tam\nAnthony Eufemio\nAymeric Duigou--Majumdar\nBen\nBen Kamens\nBen Komalo\nBrian Cloutier\nBrodie Alexander\nChristian Gruber\nChristopher\nChristy Serbus\ncooper\nCowit\nCynical Manchild\nDaniel Kjellevold Steinsland\nDaniel Schramm\nDuncan Kight\nEdono Dondolo\nEric Helps\nErik Broeders\nFabian Aisenbrey\nFabien Espanol\nFlavio Kindler\nGabriele Siino\nGarrett\nGhost Goat\nGuguke\nJacob Luedecke\nJason Prado\nJeff\nJeff Linse\nJeremy\nJohn Shaffstall\nJon Mundle\nJorge Arroyo\nJos\u00e9 Hamilton\nJosh White\nJuan Camilo Chaparro\nKairui Wang\nketura\nKevin Holesh\nKevo\nKrum Valkov\nLotus Moonveil\nLuc Cedric R.\nMarcial Abrahantes\nMatt Welke\nMatth\u00e4us Pawelczyk\nMatthijs Ruijgrok\nMike Schmidt\nNoah\nNoah Healy\nOuroCat\nPhilipp Lanwert\nRide To Vote\nRikard Eide\nRoy & BreAnna Steves\nSam Shaw\nSam Van Cise\nSean Barker\nStevie Hryciw\nsunny ho\nSven Le Moine Bauer\nTalon Howitt\nTimothy Furman\nTobias Kienzler\nTrip Might\nvigo oudenaarden\nVladimir Duchenchuk\nWill Robinson\nZachariah Richard Fournier\n3blue1brown"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "4025012",
+                "likeCount": "148972",
+                "favoriteCount": "0",
+                "commentCount": "5043",
+                "duration": "PT20M49S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "goePYJ74Ydg": {
+                "publishedAt": "2021-03-27T15:00:16Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "Simulating Green Beard Altruism",
+                "description": "Brilliant: http://www.brilliant.org/primer\n\nPapers:\n- https://www.researchgate.net/publication/41910312_Altruism_Spite_and_Greenbeards\n- https://www.reed.edu/biology/professors/srenn/pages/teaching/2007_syllabus/2007_readings/a13_Keller_1998.pdf\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n\nSometimes streaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Unity\nhttps://github.com/Helpsypoo/PrimerUnity\n\nMusic by Mathieu Keith. For business inquiries: mathieu.keith@gmail.com\n\nSeveral other inputs into the graphics are from public domain contributions to blendswap.com\n\nPlush blobs and other merch: https://store.dftba.com/collections/primer\nSupport these videos on Patreon: https://www.patreon.com/primerlearning\n\nMade possible by support through Patreon:\nabledbody\nAlba Caparros-Roissard\nAlecZero\nAlex Garber\nALoneCoder\nAnders Fjeldv\u00e6r\nAndrew Lang\nAngela Tam\nAnselm Eickhoff\nAnthony Eufemio\nAymeric Duigou--Majumdar\nBen Kamens\nBen Komalo\nBen McGill\nBrian Cloutier\nChristian Gruber\nChristopher\nChristy Serbus\ncooper\nCowit\nDaniel Kjellevold Steinsland\nDaniel Schramm\nDarrien Kennedy\nEdono Dondolo\nEric Helps\nErik Broeders\nFabian Aisenbrey\nFlavio Kindler\nGabriele Siino\nGarrett\nGhost Goat\nGuguke\nJacob Luedecke\nJason Prado\nJason Singh\nJeff\nJeff Linse\nJeremy\nJMakes\nJohn Shaffstall\nJohnny Vaughan\nJon Mundle\nJorge Arroyo\nJos\u00e9 Hamilton\nJosh White\nJuan Camilo Chaparro\nKairui Wang\nketura\nKevin Holesh\nKevo\nKrum Valkov\nLotus\nLuc Cedric R.\nLunchbag Rodriguez\nMarcial Abrahantes\nMatt Welke\nMatth\u00e4us Pawelczyk\nMatthijs Ruijgrok\nMelvin Sowah\nMichael Wang\nMike Schmidt\nNicky Case\nNoah Healy\nOuroCat\nPaul Straw\nRavi Jayanti\nRide To Vote\nRikard Eide\nRoy Steves\nSam Shaw\nSam Van Cise\nSean Barker\nsunny ho\nSven Le Moine Bauer\nTalon Howitt\nTengou\nTimothy Furman\nVladimir Duchenchuk\nWill Robinson\nWilliam Holz\nWyatt Nelson\nZachariah Richard Fournier\n3blue1brown",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/goePYJ74Ydg/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/goePYJ74Ydg/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/goePYJ74Ydg/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/goePYJ74Ydg/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/goePYJ74Ydg/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Simulating Green Beard Altruism",
+                    "description": "Brilliant: http://www.brilliant.org/primer\n\nPapers:\n- https://www.researchgate.net/publication/41910312_Altruism_Spite_and_Greenbeards\n- https://www.reed.edu/biology/professors/srenn/pages/teaching/2007_syllabus/2007_readings/a13_Keller_1998.pdf\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n\nSometimes streaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Unity\nhttps://github.com/Helpsypoo/PrimerUnity\n\nMusic by Mathieu Keith. For business inquiries: mathieu.keith@gmail.com\n\nSeveral other inputs into the graphics are from public domain contributions to blendswap.com\n\nPlush blobs and other merch: https://store.dftba.com/collections/primer\nSupport these videos on Patreon: https://www.patreon.com/primerlearning\n\nMade possible by support through Patreon:\nabledbody\nAlba Caparros-Roissard\nAlecZero\nAlex Garber\nALoneCoder\nAnders Fjeldv\u00e6r\nAndrew Lang\nAngela Tam\nAnselm Eickhoff\nAnthony Eufemio\nAymeric Duigou--Majumdar\nBen Kamens\nBen Komalo\nBen McGill\nBrian Cloutier\nChristian Gruber\nChristopher\nChristy Serbus\ncooper\nCowit\nDaniel Kjellevold Steinsland\nDaniel Schramm\nDarrien Kennedy\nEdono Dondolo\nEric Helps\nErik Broeders\nFabian Aisenbrey\nFlavio Kindler\nGabriele Siino\nGarrett\nGhost Goat\nGuguke\nJacob Luedecke\nJason Prado\nJason Singh\nJeff\nJeff Linse\nJeremy\nJMakes\nJohn Shaffstall\nJohnny Vaughan\nJon Mundle\nJorge Arroyo\nJos\u00e9 Hamilton\nJosh White\nJuan Camilo Chaparro\nKairui Wang\nketura\nKevin Holesh\nKevo\nKrum Valkov\nLotus\nLuc Cedric R.\nLunchbag Rodriguez\nMarcial Abrahantes\nMatt Welke\nMatth\u00e4us Pawelczyk\nMatthijs Ruijgrok\nMelvin Sowah\nMichael Wang\nMike Schmidt\nNicky Case\nNoah Healy\nOuroCat\nPaul Straw\nRavi Jayanti\nRide To Vote\nRikard Eide\nRoy Steves\nSam Shaw\nSam Van Cise\nSean Barker\nsunny ho\nSven Le Moine Bauer\nTalon Howitt\nTengou\nTimothy Furman\nVladimir Duchenchuk\nWill Robinson\nWilliam Holz\nWyatt Nelson\nZachariah Richard Fournier\n3blue1brown"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "3074497",
+                "likeCount": "147544",
+                "favoriteCount": "0",
+                "commentCount": "9259",
+                "duration": "PT13M23S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "t9N9S4loyu8": {
+                "publishedAt": "2020-12-06T23:42:41Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "How I deceived myself",
+                "description": "Plush blobs: https://store.dftba.com/collections/primer\nSupport these videos on Patreon: https://www.patreon.com/primerlearning\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nA good place for learning more about how to be less wrong:\nhttps://www.lesswrong.com/\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nMade possible by support through Patreon:\nChristian Gruber\nMatthijs Ruijgrok\nChristopher\nAnthony Eufemio\nJos\u00e9 Hamilton\nZachariah Richard Fournier\nVladimir Duchenchuk\nNoah Healy\nJMakes\nMike Schmidt\nPeepPhysics\nAnders Fjeldv\u00e6r\nGhost Goat\nJ\u00e9r\u00f4me Graf\nLuc Cedric R.\nErik Broeders\nRoy Steves\nMarcial Abrahantes\nKairui Wang\nTamas Gombkoto\nSean Barker\nEric Helps\nJosh White\nBen Komalo\nBen Kamens\nAymeric Duigou--Majumdar\nJay\nDarrien Kennedy\nAlba Caparros-Roissard\nJuan Camilo Chaparro\nJeff Linse\nTimothy Furman\nClinton Soll\nAlecZero\nKevo\nGabriele Siino\nabledbody\nJorge Arroyo\nsunny ho\nRavi Jayanti\nMichael Wang\nFrank Lin\nJason Louro\nEdono Dondolo\nAlex Garber\nALoneCoder\nKrum Valkov\nMatth\u00e4us Pawelczyk\nNicky Case\nBen McGill\nLee Berman\nLotus\nTengou\nOuroCat\nJacob Luedecke\nketura\nSam Van Cise\nKevin Holesh\nDaniel Kjellevold Steinsland\nAnselm Eickhoff\nWill Robinson\nDaniel Schramm\nJason Prado\nJeff\nGarrett\nTalon Howitt\nPaul Straw\nBrian Cloutier\nMitchell Douglass\nWyatt Nelson\nRikard Eide\n3blue1brown\nChristy Serbus",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/t9N9S4loyu8/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/t9N9S4loyu8/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/t9N9S4loyu8/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/t9N9S4loyu8/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/t9N9S4loyu8/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "How I deceived myself",
+                    "description": "Plush blobs: https://store.dftba.com/collections/primer\nSupport these videos on Patreon: https://www.patreon.com/primerlearning\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nA good place for learning more about how to be less wrong:\nhttps://www.lesswrong.com/\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nMade possible by support through Patreon:\nChristian Gruber\nMatthijs Ruijgrok\nChristopher\nAnthony Eufemio\nJos\u00e9 Hamilton\nZachariah Richard Fournier\nVladimir Duchenchuk\nNoah Healy\nJMakes\nMike Schmidt\nPeepPhysics\nAnders Fjeldv\u00e6r\nGhost Goat\nJ\u00e9r\u00f4me Graf\nLuc Cedric R.\nErik Broeders\nRoy Steves\nMarcial Abrahantes\nKairui Wang\nTamas Gombkoto\nSean Barker\nEric Helps\nJosh White\nBen Komalo\nBen Kamens\nAymeric Duigou--Majumdar\nJay\nDarrien Kennedy\nAlba Caparros-Roissard\nJuan Camilo Chaparro\nJeff Linse\nTimothy Furman\nClinton Soll\nAlecZero\nKevo\nGabriele Siino\nabledbody\nJorge Arroyo\nsunny ho\nRavi Jayanti\nMichael Wang\nFrank Lin\nJason Louro\nEdono Dondolo\nAlex Garber\nALoneCoder\nKrum Valkov\nMatth\u00e4us Pawelczyk\nNicky Case\nBen McGill\nLee Berman\nLotus\nTengou\nOuroCat\nJacob Luedecke\nketura\nSam Van Cise\nKevin Holesh\nDaniel Kjellevold Steinsland\nAnselm Eickhoff\nWill Robinson\nDaniel Schramm\nJason Prado\nJeff\nGarrett\nTalon Howitt\nPaul Straw\nBrian Cloutier\nMitchell Douglass\nWyatt Nelson\nRikard Eide\n3blue1brown\nChristy Serbus"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "992943",
+                "likeCount": "75766",
+                "favoriteCount": "0",
+                "commentCount": "3541",
+                "duration": "PT8M31S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "yhO6jfHPFQU": {
+                "publishedAt": "2020-11-02T00:51:48Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "Simulating alternate voting systems",
+                "description": "Support these videos on Patreon: https://www.patreon.com/primerlearning\nStore: https://store.dftba.com/collections/primer\n\nMore on voting theory:\n- Interactive by Nicky Case: https://ncase.me/ballot/\n-  Interactive by Paretoman: https://www.smartvotesim.com/\n- The best single resource I found: https://www.lesswrong.com/posts/D6trAzh6DApKPhbv4/a-voting-theory-primer-for-rationalists\n\nOrganizations that advocate for voting reform:\n- Team Approval: https://electionscience.org/\n- Team Instant Runoff: https://www.fairvote.org/\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Unity\nhttps://github.com/Helpsypoo/PrimerUnity\n\nMusic by Mathieu Keith. For business inquiries: mathieu.keith@gmail.com\n\nSeveral other inputs into the graphics are from public domain contributions to blendswap.com\n\nThanks to supporters on Patreon, especially:\nZachariah Richard Fournier\nVladimir Duchenchuk\nNoah Healy\nJos\u00e9 Hamilton\nMatthijs Ruijgrok\nChristopher\nSam Shaw\nAnthony Eufemio\nJMakes\nKairui Wang\nMarcial Abrahantes\nLuc Cedric R.\nErik Broeders\nAnders Fjeldv\u00e6r\nGhost Goat\nJ\u00e9r\u00f4me Graf\nRoy Steves\nMike Schmidt\nPeepPhysics\nEric Helps\nSean Barker\nTamas Gombkoto\nBen Kamens\nBen Komalo\nJosh White\nAymeric Duigou--Majumdar\nChristy Serbus\nRikard Eide\nWyatt Nelson\n3blue1brown\nBas Velner\nSam Van Cise\nKevin Holesh\nAnselm Eickhoff\nWill Robinson\nDaniel Schramm\nJason Prado\nElliot Press\nJeff\nGarrett\nTalon Howitt\nPaul Straw\nBrian Cloutier\nMitchell Douglass\nDaniel Kjellevold Steinsland\nMichael Wang\nFrank Lin\nJason Louro\nEdono Dondolo\nChris\nAlex Garber\nALoneCoder\nKrum Valkov\nMatth\u00e4us Pawelczyk\nNicky Case\nBen McGill\nLee Berman\nLotus\nDanSoc\nTengou\nOuroCat\nJacob Luedecke\nketura\nJulien\nKevo\nAlexander Mantzoukas\nabledbody\nJorge Arroyo\nChad Fertig\nsunny ho\nRavi Jayanti\nGabriele Siino\nJay\nDarrien Kennedy\nAlba Caparros-Roissard\nJuan Camilo Chaparro\nJeff Linse\nTimothy Furman\nClinton Soll\nAlecZero",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/yhO6jfHPFQU/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/yhO6jfHPFQU/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/yhO6jfHPFQU/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/yhO6jfHPFQU/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/yhO6jfHPFQU/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Simulating alternate voting systems",
+                    "description": "Support these videos on Patreon: https://www.patreon.com/primerlearning\nStore: https://store.dftba.com/collections/primer\n\nMore on voting theory:\n- Interactive by Nicky Case: https://ncase.me/ballot/\n-  Interactive by Paretoman: https://www.smartvotesim.com/\n- The best single resource I found: https://www.lesswrong.com/posts/D6trAzh6DApKPhbv4/a-voting-theory-primer-for-rationalists\n\nOrganizations that advocate for voting reform:\n- Team Approval: https://electionscience.org/\n- Team Instant Runoff: https://www.fairvote.org/\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Unity\nhttps://github.com/Helpsypoo/PrimerUnity\n\nMusic by Mathieu Keith. For business inquiries: mathieu.keith@gmail.com\n\nSeveral other inputs into the graphics are from public domain contributions to blendswap.com\n\nThanks to supporters on Patreon, especially:\nZachariah Richard Fournier\nVladimir Duchenchuk\nNoah Healy\nJos\u00e9 Hamilton\nMatthijs Ruijgrok\nChristopher\nSam Shaw\nAnthony Eufemio\nJMakes\nKairui Wang\nMarcial Abrahantes\nLuc Cedric R.\nErik Broeders\nAnders Fjeldv\u00e6r\nGhost Goat\nJ\u00e9r\u00f4me Graf\nRoy Steves\nMike Schmidt\nPeepPhysics\nEric Helps\nSean Barker\nTamas Gombkoto\nBen Kamens\nBen Komalo\nJosh White\nAymeric Duigou--Majumdar\nChristy Serbus\nRikard Eide\nWyatt Nelson\n3blue1brown\nBas Velner\nSam Van Cise\nKevin Holesh\nAnselm Eickhoff\nWill Robinson\nDaniel Schramm\nJason Prado\nElliot Press\nJeff\nGarrett\nTalon Howitt\nPaul Straw\nBrian Cloutier\nMitchell Douglass\nDaniel Kjellevold Steinsland\nMichael Wang\nFrank Lin\nJason Louro\nEdono Dondolo\nChris\nAlex Garber\nALoneCoder\nKrum Valkov\nMatth\u00e4us Pawelczyk\nNicky Case\nBen McGill\nLee Berman\nLotus\nDanSoc\nTengou\nOuroCat\nJacob Luedecke\nketura\nJulien\nKevo\nAlexander Mantzoukas\nabledbody\nJorge Arroyo\nChad Fertig\nsunny ho\nRavi Jayanti\nGabriele Siino\nJay\nDarrien Kennedy\nAlba Caparros-Roissard\nJuan Camilo Chaparro\nJeff Linse\nTimothy Furman\nClinton Soll\nAlecZero"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "2880079",
+                "likeCount": "141005",
+                "favoriteCount": "0",
+                "commentCount": "10308",
+                "duration": "PT14M3S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "7OLpKqTriio": {
+                "publishedAt": "2020-05-17T15:00:16Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "Epidemic, Endemic, and Eradication Simulations",
+                "description": "Thanks to Dr Rohin Francis of Medlife Crisis and Dr Rishi Desai of Osmosis for their feedback.\nMore info on GiveDirectly\n- https://www.givedirectly.org/\n- https://www.givewell.org/charities/give-directly\n\nInteractive COVID-19 simulations from Nicky Case and epidemiologist Marcel Salath\u00e9:\n- https://ncase.me/covid-19\n\nMore on logistic growth\n- 3Blue1Brown, also regarding disease spread: https://youtu.be/Kas0tIxDvrg\n- Primer, regarding carrying capacity: https://youtu.be/uRTtlpD_U54\n- Khan Academy, modeling biology with calculus: https://www.khanacademy.org/math/ap-calculus-bc/bc-differential-equations-new/bc-7-9/v/modeling-population-with-differential-equations\n\nWays to support Primer\n- Patreon: https://www.patreon.com/primerlearning\n- Store: https://store.dftba.com/collections/primer\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Unity\nThanks to Same Van Cise and Sebastian Lague for helping me learn Unity. You can find some of their work here:\n- https://vancisesam.com/\n- https://www.youtube.com/user/Cercopithecan \n\nMusic by Mathieu Keith. For business inquiries: mathieu.keith@gmail.com\n\nSeveral other inputs into the graphics are from public domain contributions to blendswap.com\n\nThanks to supporters on Patreon, especially:\nJos\u00e9 Hamilton\nNoah Healy\nVladimir Duchenchuk\nZachariah Richard Fournier\nJordan Scales\nAnders Fjeldv\u00e6r\nErik Broeders\nGhost Goat\nJ\u00e9r\u00f4me Graf\nKairui Wang\nLuc Cedric R.\nMarcial Abrahantes\nThomas Roggina\nBas Velner\nEric Helps\nLeonardo Kluppel\nSean Barker\nTamas Gombkoto\nBen Kamens\nBen Komalo\nJosh White\nTudor Lincu\nAymeric Duigou--Majumdar\nCharly Carde\u00f1o\n3blue1brown\nabledbody\nAlex Beardsley\nAlex Garber\nAlexander Mahone\nAlexander Mantzoukas\nALoneCoder\nAnselm Eickhoff\nBen McGill\nBrian Cloutier\nChad Fertig\nChris\nChristy Serbus\nColin Winhall\nDaniel Kjellevold Steinsland\nDaniel Schramm\nDanSoc\nEdono Dondolo\nElliot Press\nFrank Lin\nGarrett F\nJacob Luedecke\nJason Louro\nJason Prado\nJeff\nJorge Arroyo\nJulien\nKataklyst\nketura\nKev O.\nKevin Holesh\nKrum Valkov\nLee Berman\nLotus\nMartin Obretenov\nMatth\u00e4us Pawelczyk\nMax Kaye\nMichael Jones\nMichael Wang\nMitchell Douglass\nNicky Case\nPaul Straw\nPhilippe Panzini\nRamon Leon\nRavi Jayanti\nRikard Eide\nRyan Mahuron\nSam Van Cise\nsunny ho\nTalon Howitt\nTengou\nThePotatoGuy\nWill Robinson\nWyatt Nelson",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/7OLpKqTriio/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/7OLpKqTriio/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/7OLpKqTriio/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/7OLpKqTriio/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/7OLpKqTriio/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Epidemic, Endemic, and Eradication Simulations",
+                    "description": "Thanks to Dr Rohin Francis of Medlife Crisis and Dr Rishi Desai of Osmosis for their feedback.\nMore info on GiveDirectly\n- https://www.givedirectly.org/\n- https://www.givewell.org/charities/give-directly\n\nInteractive COVID-19 simulations from Nicky Case and epidemiologist Marcel Salath\u00e9:\n- https://ncase.me/covid-19\n\nMore on logistic growth\n- 3Blue1Brown, also regarding disease spread: https://youtu.be/Kas0tIxDvrg\n- Primer, regarding carrying capacity: https://youtu.be/uRTtlpD_U54\n- Khan Academy, modeling biology with calculus: https://www.khanacademy.org/math/ap-calculus-bc/bc-differential-equations-new/bc-7-9/v/modeling-population-with-differential-equations\n\nWays to support Primer\n- Patreon: https://www.patreon.com/primerlearning\n- Store: https://store.dftba.com/collections/primer\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Unity\nThanks to Same Van Cise and Sebastian Lague for helping me learn Unity. You can find some of their work here:\n- https://vancisesam.com/\n- https://www.youtube.com/user/Cercopithecan \n\nMusic by Mathieu Keith. For business inquiries: mathieu.keith@gmail.com\n\nSeveral other inputs into the graphics are from public domain contributions to blendswap.com\n\nThanks to supporters on Patreon, especially:\nJos\u00e9 Hamilton\nNoah Healy\nVladimir Duchenchuk\nZachariah Richard Fournier\nJordan Scales\nAnders Fjeldv\u00e6r\nErik Broeders\nGhost Goat\nJ\u00e9r\u00f4me Graf\nKairui Wang\nLuc Cedric R.\nMarcial Abrahantes\nThomas Roggina\nBas Velner\nEric Helps\nLeonardo Kluppel\nSean Barker\nTamas Gombkoto\nBen Kamens\nBen Komalo\nJosh White\nTudor Lincu\nAymeric Duigou--Majumdar\nCharly Carde\u00f1o\n3blue1brown\nabledbody\nAlex Beardsley\nAlex Garber\nAlexander Mahone\nAlexander Mantzoukas\nALoneCoder\nAnselm Eickhoff\nBen McGill\nBrian Cloutier\nChad Fertig\nChris\nChristy Serbus\nColin Winhall\nDaniel Kjellevold Steinsland\nDaniel Schramm\nDanSoc\nEdono Dondolo\nElliot Press\nFrank Lin\nGarrett F\nJacob Luedecke\nJason Louro\nJason Prado\nJeff\nJorge Arroyo\nJulien\nKataklyst\nketura\nKev O.\nKevin Holesh\nKrum Valkov\nLee Berman\nLotus\nMartin Obretenov\nMatth\u00e4us Pawelczyk\nMax Kaye\nMichael Jones\nMichael Wang\nMitchell Douglass\nNicky Case\nPaul Straw\nPhilippe Panzini\nRamon Leon\nRavi Jayanti\nRikard Eide\nRyan Mahuron\nSam Van Cise\nsunny ho\nTalon Howitt\nTengou\nThePotatoGuy\nWill Robinson\nWyatt Nelson"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "3990554",
+                "likeCount": "182178",
+                "favoriteCount": "0",
+                "commentCount": "6406",
+                "duration": "PT12M50S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "nsVD8VPh96w": {
+                "publishedAt": "2020-03-14T15:00:33Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "Simulating Foraging Decisions",
+                "description": "Primer Merchandise: https://store.dftba.com/collections/primer\nSupport Primer on Patreon: https://www.patreon.com/primerlearning\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Unity\nThanks to Same Van Cise and Sebastian Lague for helping me learn Unity. You can find some of their work here:\nhttps://vancisesam.com/\nhttps://www.youtube.com/user/Cercopithecan \n\nMusic by Mathieu Keith. For business inquiries: mathieu.keith@gmail.com\n\nSeveral other inputs into the graphics are from public domain contributions to blendswap.com\n\nThanks to supporters on Patreon, especially:\nZachariah Richard Fournier\nVladimir Duchenchuk\nNoah Healy\nJason Han\nJordan Scales\nJacob Maes\nMarcial Abrahantes\nLuc Cedric R.\nKairui Wang\nFeimeng Zheng\nErik Broeders\nTamas Gombkoto\nSean Barker\nLeonardo Kluppel\nEric Helps\nBas Velner\nVictor Moisescu\nTudor Lincu\nJosh White\nBen Komalo\nBen Kamens\nCharly Carde\u00f1o\nAymeric Duigou--Majumdar\nWyatt Nelson\nWill Robinson\nTom\nThePotatoGuy\nTengou\nTalon Howitt\nSam Van Cise\nRyan Mahuron\nRoy Steves\nRikard Eide\nRamon Leon\npotted_penguin\nPhilippe Panzini\nPaul Straw\nNiko\nNicky Case\nMorgan Baglin-Clarke\nMitchell Douglass\nMichael Wang\nMichael Jones\nMax Kaye\nMatth\u00e4us Pawelczyk\nMartin Obretenov\nLotus\nLee Berman\nKrum Valkov\nKevin Holesh\nketura\nJonathan Sterkenburg\nJeff\nJason Prado\nJason Louro\nJacob Luedecke\nGarrett F\nEndyStar\nElliot Press\nEdono Dondolo\nDanSoc\nDaniel Schramm\nDaniel Kjellevold Steinsland\nDaniel Giavedoni\nColin Winhall\nChristy Serbus\nChris Loftus\nChris\nBrian\nBen McGill\nAnselm Eickhoff\nAndreas Carbel\nALoneCoder\nAlexander Mahone\nAlex Garber\nAlex Beardsley\nAlec Burns\n3blue1brown",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/nsVD8VPh96w/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/nsVD8VPh96w/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/nsVD8VPh96w/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/nsVD8VPh96w/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/nsVD8VPh96w/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Simulating Foraging Decisions",
+                    "description": "Primer Merchandise: https://store.dftba.com/collections/primer\nSupport Primer on Patreon: https://www.patreon.com/primerlearning\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Unity\nThanks to Same Van Cise and Sebastian Lague for helping me learn Unity. You can find some of their work here:\nhttps://vancisesam.com/\nhttps://www.youtube.com/user/Cercopithecan \n\nMusic by Mathieu Keith. For business inquiries: mathieu.keith@gmail.com\n\nSeveral other inputs into the graphics are from public domain contributions to blendswap.com\n\nThanks to supporters on Patreon, especially:\nZachariah Richard Fournier\nVladimir Duchenchuk\nNoah Healy\nJason Han\nJordan Scales\nJacob Maes\nMarcial Abrahantes\nLuc Cedric R.\nKairui Wang\nFeimeng Zheng\nErik Broeders\nTamas Gombkoto\nSean Barker\nLeonardo Kluppel\nEric Helps\nBas Velner\nVictor Moisescu\nTudor Lincu\nJosh White\nBen Komalo\nBen Kamens\nCharly Carde\u00f1o\nAymeric Duigou--Majumdar\nWyatt Nelson\nWill Robinson\nTom\nThePotatoGuy\nTengou\nTalon Howitt\nSam Van Cise\nRyan Mahuron\nRoy Steves\nRikard Eide\nRamon Leon\npotted_penguin\nPhilippe Panzini\nPaul Straw\nNiko\nNicky Case\nMorgan Baglin-Clarke\nMitchell Douglass\nMichael Wang\nMichael Jones\nMax Kaye\nMatth\u00e4us Pawelczyk\nMartin Obretenov\nLotus\nLee Berman\nKrum Valkov\nKevin Holesh\nketura\nJonathan Sterkenburg\nJeff\nJason Prado\nJason Louro\nJacob Luedecke\nGarrett F\nEndyStar\nElliot Press\nEdono Dondolo\nDanSoc\nDaniel Schramm\nDaniel Kjellevold Steinsland\nDaniel Giavedoni\nColin Winhall\nChristy Serbus\nChris Loftus\nChris\nBrian\nBen McGill\nAnselm Eickhoff\nAndreas Carbel\nALoneCoder\nAlexander Mahone\nAlex Garber\nAlex Beardsley\nAlec Burns\n3blue1brown"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "3625446",
+                "likeCount": "150957",
+                "favoriteCount": "0",
+                "commentCount": "5615",
+                "duration": "PT10M22S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "YNMkADpvO4w": {
+                "publishedAt": "2019-07-27T23:57:50Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "Simulating the Evolution of Aggression",
+                "description": "Support Primer on Patreon: https://www.patreon.com/primerlearning\nCheck out 3Blue1Brown: https://www.youtube.com/c/3blue1brown\n\nBooks that inspired this video and have more information:\n- The Selfish Gene, Richard Dawkins, https://amzn.to/2LpffQl\n- An Introduction to Behavioral Ecology, https://amzn.to/2YspPQz\n(If you decide to buy one of these books, doing so through one of these links helps support the channel)\n\nThanks to supporters on Patreon, especially:\nVladimir Duchenchuk, Victor Anne, Noah Healy, Zachariah Richard Fournier, Patrick Gorrell, Jordan Scales, Jacob Maes, Kairui Wang, Josh Levent, StackAbuse.com, Marcial Abrahantes, Feimeng Zheng, Eric Helps, Sean Barker, Leonardo Kluppel, Tamas Gombkoto, Ben Kamens, Ben Komalo, Victor Moisescu, Alexander Mahone, Bjarke, Aur\u00e9lien G\u00e9ron, Daniel Giavedoni, Jeff, Jason Prado, Ryan Mahuron, Laura Picard, Anselm Eickhoff, Christy Serbus, 3blue1brown, Paul Straw, Roy Steves, Max Kaye, Elliot Press, ThePotatoGuy, Kevin Holesh, Talon Howitt, Mitchell Douglass, Sam Van Cise, Rikard Eide, Garrett F, Brian, Daniel Schramm, Wyatt Nelson, Mr_Chimick \n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Blender and python. \n- Github: https://github.com/Helpsypoo/primer\n\nThe music is \"A Song of Doves and Hawks\" donated by Mathieu Keith. For business inquiries: mathieu.keith@gmail.com\n\nSeveral other inputs into the graphics are from public domain contributions to blendswap.com",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/YNMkADpvO4w/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/YNMkADpvO4w/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/YNMkADpvO4w/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/YNMkADpvO4w/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/YNMkADpvO4w/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "tags": [
+                    "biology",
+                    "evolution",
+                    "hawk",
+                    "dove",
+                    "game theory",
+                    "natural selection",
+                    "nash equilibrium",
+                    "science",
+                    "simulation",
+                    "survival of the fittest",
+                    "math",
+                    "gene",
+                    "selfish gene",
+                    "equilibrium"
+                ],
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Simulating the Evolution of Aggression",
+                    "description": "Support Primer on Patreon: https://www.patreon.com/primerlearning\nCheck out 3Blue1Brown: https://www.youtube.com/c/3blue1brown\n\nBooks that inspired this video and have more information:\n- The Selfish Gene, Richard Dawkins, https://amzn.to/2LpffQl\n- An Introduction to Behavioral Ecology, https://amzn.to/2YspPQz\n(If you decide to buy one of these books, doing so through one of these links helps support the channel)\n\nThanks to supporters on Patreon, especially:\nVladimir Duchenchuk, Victor Anne, Noah Healy, Zachariah Richard Fournier, Patrick Gorrell, Jordan Scales, Jacob Maes, Kairui Wang, Josh Levent, StackAbuse.com, Marcial Abrahantes, Feimeng Zheng, Eric Helps, Sean Barker, Leonardo Kluppel, Tamas Gombkoto, Ben Kamens, Ben Komalo, Victor Moisescu, Alexander Mahone, Bjarke, Aur\u00e9lien G\u00e9ron, Daniel Giavedoni, Jeff, Jason Prado, Ryan Mahuron, Laura Picard, Anselm Eickhoff, Christy Serbus, 3blue1brown, Paul Straw, Roy Steves, Max Kaye, Elliot Press, ThePotatoGuy, Kevin Holesh, Talon Howitt, Mitchell Douglass, Sam Van Cise, Rikard Eide, Garrett F, Brian, Daniel Schramm, Wyatt Nelson, Mr_Chimick \n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Blender and python. \n- Github: https://github.com/Helpsypoo/primer\n\nThe music is \"A Song of Doves and Hawks\" donated by Mathieu Keith. For business inquiries: mathieu.keith@gmail.com\n\nSeveral other inputs into the graphics are from public domain contributions to blendswap.com"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "18586129",
+                "likeCount": "620762",
+                "favoriteCount": "0",
+                "commentCount": "20443",
+                "duration": "PT13M17S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "PNtKXWNKGN8": {
+                "publishedAt": "2019-04-27T11:09:28Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "Simulating Supply and Demand",
+                "description": "Thanks to supporters on Patreon, especially:\nJordan Scales\nKairui Wang\nEric Helps\nBen Kamens\nBen Komalo\nChristy Serbus\nSean Barker\nRikard Eide\nWyatt Nelson\nAur\u00e9lien G\u00e9ron\nPatrick Foster\n\nSend market signals by supporting Primer on Patreon! \nhttps://www.patreon.com/primerlearning\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Blender and python. \n- Github: https://github.com/Helpsypoo/primer\n\nSpeaking of attribution:\n- The music is \"Divider\" by Chris Zabriskie, distributed under a CC-BY license via Free Music Archive.\n- Several other inputs into the graphics are from public domain contributions to blendswap.com",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/PNtKXWNKGN8/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/PNtKXWNKGN8/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/PNtKXWNKGN8/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/PNtKXWNKGN8/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/PNtKXWNKGN8/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "tags": [
+                    "economics",
+                    "supply",
+                    "demand",
+                    "supply and demand",
+                    "market",
+                    "surplus",
+                    "consumer and producer surplus",
+                    "market equilibrium",
+                    "simulation",
+                    "market simulation",
+                    "quantity supplied",
+                    "quantity demanded",
+                    "market regulation",
+                    "perfect competition",
+                    "equilibrium price",
+                    "equilibrium quantity",
+                    "microeconomics",
+                    "value",
+                    "defining value"
+                ],
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Simulating Supply and Demand",
+                    "description": "Thanks to supporters on Patreon, especially:\nJordan Scales\nKairui Wang\nEric Helps\nBen Kamens\nBen Komalo\nChristy Serbus\nSean Barker\nRikard Eide\nWyatt Nelson\nAur\u00e9lien G\u00e9ron\nPatrick Foster\n\nSend market signals by supporting Primer on Patreon! \nhttps://www.patreon.com/primerlearning\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Blender and python. \n- Github: https://github.com/Helpsypoo/primer\n\nSpeaking of attribution:\n- The music is \"Divider\" by Chris Zabriskie, distributed under a CC-BY license via Free Music Archive.\n- Several other inputs into the graphics are from public domain contributions to blendswap.com"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "3685988",
+                "likeCount": "155027",
+                "favoriteCount": "0",
+                "commentCount": "5936",
+                "duration": "PT12M22S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "2mTVtToioLg": {
+                "publishedAt": "2018-12-16T16:52:45Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "What's a \"selfish gene\"?",
+                "description": "Support Primer on Patreon! patreon.com/primerlearning\n\nHere are the books I found helpful when writing for this video.\n- The Selfish Gene, Richard Dawkins, https://amzn.to/2LpffQl\n- Behave, Robert M. Sapolsky, https://amzn.to/2UTgyLX\n(If you want to read them yourself, you can help support the channel by purchasing them through the links here.)\n\nSpecial thanks to supporters on Patreon, especially:\nJordan Scales\nEric Helps\nBen Kamens\nBen Komalo\nChristy Serbus\nSean Barker\nRikard Eide\n\nFor discussion and updates:\n- Discord: https://discord.gg/NbruaNW\n- Reddit r/primerlearning\n- Twitter @primerlearning\n- Facebook: facebook.com/primerlearning\n\nMade with Blender and python. \n- Github: https://github.com/Helpsypoo/primer\n\nLicense information:\nCreative Commons 4.0 (CC-BY-NC). More info at https://creativecommons.org/licenses/by-nc/4.0/\n\nSpeaking of attribution:\n- The music is \"Scheming Weasel\" by Kevin MacLeod, distributed under a CC-BY license via incompetech.com.\n- Several other inputs into the graphics are from public domain contributions to blendswap.com.\n\nDawkins on his not being a diplomat: https://youtu.be/N4yFdM7LIQk?t=54",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/2mTVtToioLg/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/2mTVtToioLg/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/2mTVtToioLg/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/2mTVtToioLg/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/2mTVtToioLg/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "tags": [
+                    "selfish gene",
+                    "richard dawkins",
+                    "dawkins",
+                    "altruism",
+                    "individual selection",
+                    "group selection",
+                    "gene",
+                    "evolution",
+                    "genetics",
+                    "biology"
+                ],
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "What's a \"selfish gene\"?",
+                    "description": "Support Primer on Patreon! patreon.com/primerlearning\n\nHere are the books I found helpful when writing for this video.\n- The Selfish Gene, Richard Dawkins, https://amzn.to/2LpffQl\n- Behave, Robert M. Sapolsky, https://amzn.to/2UTgyLX\n(If you want to read them yourself, you can help support the channel by purchasing them through the links here.)\n\nSpecial thanks to supporters on Patreon, especially:\nJordan Scales\nEric Helps\nBen Kamens\nBen Komalo\nChristy Serbus\nSean Barker\nRikard Eide\n\nFor discussion and updates:\n- Discord: https://discord.gg/NbruaNW\n- Reddit r/primerlearning\n- Twitter @primerlearning\n- Facebook: facebook.com/primerlearning\n\nMade with Blender and python. \n- Github: https://github.com/Helpsypoo/primer\n\nLicense information:\nCreative Commons 4.0 (CC-BY-NC). More info at https://creativecommons.org/licenses/by-nc/4.0/\n\nSpeaking of attribution:\n- The music is \"Scheming Weasel\" by Kevin MacLeod, distributed under a CC-BY license via incompetech.com.\n- Several other inputs into the graphics are from public domain contributions to blendswap.com.\n\nDawkins on his not being a diplomat: https://youtu.be/N4yFdM7LIQk?t=54"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "973614",
+                "likeCount": "38042",
+                "favoriteCount": "0",
+                "commentCount": "1241",
+                "duration": "PT5M54S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "0ZGbIKd0XrM": {
+                "publishedAt": "2018-11-15T06:14:20Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "Simulating Natural Selection",
+                "description": "There is an interactive simulation: https://labs.minutelabs.io/evolution-simulator\nAnd an overview video of that simulator: https://youtu.be/6nMo8T3T0L4\n\nA few places to learn more about evolution and natural selection:\nhttps://evolution.berkeley.edu/evolibrary/misconceptions_faq.php\nhttps://www.khanacademy.org/science/biology/her\nAny intro biology text you might have access to.\n\nSpecial thanks to supporters on Patreon, especially:\nJordan Scales\nEric Helps\nBen Kamens\nBen Komalo\nChristy Serbus\nSean Barker\n\nSupport Primer on Patreon: \nhttps://www.patreon.com/primerlearning\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Blender and python. \nGithub: https://github.com/Helpsypoo/primer\n\nThe music is \"Investigations\" by Kevin MacLeod, distributed under a CC-BY license via incompetech.com.\n\nSeveral other inputs into the graphics are from public domain contributions to https://www.blendswap.com.",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/0ZGbIKd0XrM/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/0ZGbIKd0XrM/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/0ZGbIKd0XrM/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/0ZGbIKd0XrM/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/0ZGbIKd0XrM/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "tags": [
+                    "natural selection",
+                    "evolution",
+                    "simulation",
+                    "competition",
+                    "selfish gene",
+                    "ecology",
+                    "science",
+                    "environment",
+                    "biology"
+                ],
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Simulating Natural Selection",
+                    "description": "There is an interactive simulation: https://labs.minutelabs.io/evolution-simulator\nAnd an overview video of that simulator: https://youtu.be/6nMo8T3T0L4\n\nA few places to learn more about evolution and natural selection:\nhttps://evolution.berkeley.edu/evolibrary/misconceptions_faq.php\nhttps://www.khanacademy.org/science/biology/her\nAny intro biology text you might have access to.\n\nSpecial thanks to supporters on Patreon, especially:\nJordan Scales\nEric Helps\nBen Kamens\nBen Komalo\nChristy Serbus\nSean Barker\n\nSupport Primer on Patreon: \nhttps://www.patreon.com/primerlearning\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nThis video is presented under a Creative Commons Attribution-NonCommercial-ShareAlike License. More at:\nhttps://creativecommons.org/licenses/by-nc-sa/4.0/\n\nMade with Blender and python. \nGithub: https://github.com/Helpsypoo/primer\n\nThe music is \"Investigations\" by Kevin MacLeod, distributed under a CC-BY license via incompetech.com.\n\nSeveral other inputs into the graphics are from public domain contributions to https://www.blendswap.com."
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "12400935",
+                "likeCount": "457657",
+                "favoriteCount": "0",
+                "commentCount": "10955",
+                "duration": "PT10M",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "uRTtlpD_U54": {
+                "publishedAt": "2018-08-26T13:12:37Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "Simulating Competition and Logistic Growth",
+                "description": "Resource limits bend exponential curves into S-shaped logistic curves. The fourth in a series on evolution.\n\nMade with Blender and python. \nGithub: https://github.com/Helpsypoo/primer\n\nSpecial thanks to supporters on Patreon, especially:\nJordan Scales\n\u4e16\u73c9 \u5321\nEric Helps\nBen Kamens\nChristy Serbus\nSean Barker\n\nSupport Primer on Patreon: \nhttps://www.patreon.com/primerlearning\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nMore on logistic growth on Khan Academy:\nhttps://www.khanacademy.org/math/ap-calculus-bc/bc-differential-equations-new/bc-7-9/v/modeling-population-with-differential-equations\nhttps://www.khanacademy.org/science/high-school-biology/hs-ecology/hs-population-ecology/v/exponential-and-logistic-growth-in-populations\n\nLicense information:\nCreative Commons 4.0 (CC-BY-NC). More info at https://creativecommons.org/licenses/by-nc/4.0/\n\nSpeaking of attribution:\n\nThe 3D bunny model comes from the Stanford Computer Graphics Laboratory: http://graphics.stanford.edu/data/3Ds...\n\nThe music is \"Summer Days\" by Kai Engel, distributed under a CC-BY-NC license via the Free Music Archive. http://freemusicarchive.org/music/Kai_Engel/\n\nSeveral other inputs into the graphics are from public domain contributions to https://www.blendswap.com.",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/uRTtlpD_U54/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/uRTtlpD_U54/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/uRTtlpD_U54/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/uRTtlpD_U54/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/uRTtlpD_U54/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "tags": [
+                    "biology",
+                    "evolution",
+                    "competition",
+                    "exponential growth",
+                    "logistic growth",
+                    "simulation",
+                    "science",
+                    "math"
+                ],
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Simulating Competition and Logistic Growth",
+                    "description": "Resource limits bend exponential curves into S-shaped logistic curves. The fourth in a series on evolution.\n\nMade with Blender and python. \nGithub: https://github.com/Helpsypoo/primer\n\nSpecial thanks to supporters on Patreon, especially:\nJordan Scales\n\u4e16\u73c9 \u5321\nEric Helps\nBen Kamens\nChristy Serbus\nSean Barker\n\nSupport Primer on Patreon: \nhttps://www.patreon.com/primerlearning\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nMore on logistic growth on Khan Academy:\nhttps://www.khanacademy.org/math/ap-calculus-bc/bc-differential-equations-new/bc-7-9/v/modeling-population-with-differential-equations\nhttps://www.khanacademy.org/science/high-school-biology/hs-ecology/hs-population-ecology/v/exponential-and-logistic-growth-in-populations\n\nLicense information:\nCreative Commons 4.0 (CC-BY-NC). More info at https://creativecommons.org/licenses/by-nc/4.0/\n\nSpeaking of attribution:\n\nThe 3D bunny model comes from the Stanford Computer Graphics Laboratory: http://graphics.stanford.edu/data/3Ds...\n\nThe music is \"Summer Days\" by Kai Engel, distributed under a CC-BY-NC license via the Free Music Archive. http://freemusicarchive.org/music/Kai_Engel/\n\nSeveral other inputs into the graphics are from public domain contributions to https://www.blendswap.com."
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "1591073",
+                "likeCount": "48435",
+                "favoriteCount": "0",
+                "commentCount": "808",
+                "duration": "PT7M30S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "UhSStR-FpQc": {
+                "publishedAt": "2018-07-21T20:12:57Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "Mutations and the First Replicators",
+                "description": "In this video, we see how mutations can lead from simple replicators to complex organisms. The third in a series on evolution.\n\nMade with Blender and python.\n\nMore on RNA as the first replicator: https://en.wikipedia.org/wiki/RNA_world\n\nSpecial thanks to supporters on Patreon, especially:\nJordan Scales\n\u4e16\u73c9 \u5321\nEric Helps\nBen Kamens\nChristy Serbus\n\nSupport Primer on Patreon: \nhttps://www.patreon.com/primerlearning\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nLicense information:\nCreative Commons 4.0 (CC-BY-NC). More info at https://creativecommons.org/licenses/by-nc/4.0/\n\nSpeaking of attribution:\n\nThe 3D bunny model comes from the Stanford Computer Graphics Laboratory: http://graphics.stanford.edu/data/3Ds...\n\nThe music is \"Summer Days\" by Kai Engel, distributed under a CC-BY-NC license via the Free Music Archive. http://freemusicarchive.org/music/Kai_Engel/The_Scope/Kai_Engel_-_The_Scope_-_03_Summer_Days\n\nSeveral other inputs into the graphics are from public domain contributions to https://www.blendswap.com.",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/UhSStR-FpQc/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/UhSStR-FpQc/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/UhSStR-FpQc/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/UhSStR-FpQc/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/UhSStR-FpQc/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "tags": [
+                    "evolution",
+                    "biology",
+                    "rna",
+                    "origin of life",
+                    "abiogenesis",
+                    "simulation",
+                    "replication",
+                    "replicator",
+                    "science",
+                    "mutation"
+                ],
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Mutations and the First Replicators",
+                    "description": "In this video, we see how mutations can lead from simple replicators to complex organisms. The third in a series on evolution.\n\nMade with Blender and python.\n\nMore on RNA as the first replicator: https://en.wikipedia.org/wiki/RNA_world\n\nSpecial thanks to supporters on Patreon, especially:\nJordan Scales\n\u4e16\u73c9 \u5321\nEric Helps\nBen Kamens\nChristy Serbus\n\nSupport Primer on Patreon: \nhttps://www.patreon.com/primerlearning\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nLicense information:\nCreative Commons 4.0 (CC-BY-NC). More info at https://creativecommons.org/licenses/by-nc/4.0/\n\nSpeaking of attribution:\n\nThe 3D bunny model comes from the Stanford Computer Graphics Laboratory: http://graphics.stanford.edu/data/3Ds...\n\nThe music is \"Summer Days\" by Kai Engel, distributed under a CC-BY-NC license via the Free Music Archive. http://freemusicarchive.org/music/Kai_Engel/The_Scope/Kai_Engel_-_The_Scope_-_03_Summer_Days\n\nSeveral other inputs into the graphics are from public domain contributions to https://www.blendswap.com."
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "1201394",
+                "likeCount": "42880",
+                "favoriteCount": "0",
+                "commentCount": "1326",
+                "duration": "PT9M28S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "mMc_z1r96gs": {
+                "publishedAt": "2018-06-20T08:43:49Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "How life grows exponentially",
+                "description": "In this video, we go beyond equilibrium and think about how populations of replicators grow, or don't. The second in a series on evolution.\n\nMade with Blender and python.\n\nSpecial thanks to supporters on Patreon, especially:\nJordan Scales\nEric Helps\nBen Kamens\n\nSupport Primer on Patreon: \nhttps://www.patreon.com/primerlearning\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nExplanation of how exponential growth comes from a linear rate function. (Promised at 7:00)\nhttps://www.khanacademy.org/math/ap-calculus-bc/bc-diff-equations/bc-exp-models/v/modeling-population-with-simple-differential-equation\n\nLicense information:\nCreative Commons 4.0 (CC-BY-NC). More info at https://creativecommons.org/licenses/by-nc/4.0/\n\nSpeaking of attribution:\n\nThe music is \"A remedy for melancholy\" by Kai Engel, distributed under a CC-BY license via the Free Music Archive. http://freemusicarchive.org/music/Kai...\n\nThe chicken is from a public domain contribution to https://www.blendswap.com/",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/mMc_z1r96gs/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/mMc_z1r96gs/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/mMc_z1r96gs/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/mMc_z1r96gs/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/mMc_z1r96gs/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "tags": [
+                    "evolution",
+                    "differential equation example",
+                    "differential equation",
+                    "population dynamics",
+                    "chicken and egg",
+                    "biology",
+                    "education",
+                    "exponential growth",
+                    "simulation",
+                    "blob",
+                    "science",
+                    "statistics",
+                    "equilibrium"
+                ],
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "How life grows exponentially",
+                    "description": "In this video, we go beyond equilibrium and think about how populations of replicators grow, or don't. The second in a series on evolution.\n\nMade with Blender and python.\n\nSpecial thanks to supporters on Patreon, especially:\nJordan Scales\nEric Helps\nBen Kamens\n\nSupport Primer on Patreon: \nhttps://www.patreon.com/primerlearning\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nExplanation of how exponential growth comes from a linear rate function. (Promised at 7:00)\nhttps://www.khanacademy.org/math/ap-calculus-bc/bc-diff-equations/bc-exp-models/v/modeling-population-with-simple-differential-equation\n\nLicense information:\nCreative Commons 4.0 (CC-BY-NC). More info at https://creativecommons.org/licenses/by-nc/4.0/\n\nSpeaking of attribution:\n\nThe music is \"A remedy for melancholy\" by Kai Engel, distributed under a CC-BY license via the Free Music Archive. http://freemusicarchive.org/music/Kai...\n\nThe chicken is from a public domain contribution to https://www.blendswap.com/"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "1212796",
+                "likeCount": "36353",
+                "favoriteCount": "0",
+                "commentCount": "565",
+                "duration": "PT8M48S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "oDvzbBRiNlA": {
+                "publishedAt": "2018-05-19T18:50:19Z",
+                "channelId": "UCKzJFdi57J53Vr_BkTfN3uQ",
+                "title": "Why do things exist? Setting the stage for evolution.",
+                "description": "This video kicks off the evolution series by going broad and thinking about why things - including non-living things - exist at all. The first in a series on evolution.\n\nIn-video links are unfortunately disabled because this channel is new. If you'd like to discuss or support, links to reddit and Patreon are below.\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nSupport Primer on Patreon: \nhttps://www.patreon.com/user?u=5048981\n\nLicense information:\nCreative Commons 4.0 (CC-BY-NC). More info at https://creativecommons.org/licenses/by-nc/4.0/\n\nSpeaking of attribution:\n\nThe 3D bunny model comes from the Stanford Computer Graphics Laboratory: http://graphics.stanford.edu/data/3Dscanrep/\n\nThe music is \"A remedy for melancholy\" by Kai Engel, distributed under a CC-BY license via the Free Music Archive. http://freemusicarchive.org/music/Kai_Engel/Idea/Kai_Engel_-_Idea_-_06_Remedy_for_Melancholy\n\nSeveral other inputs into the graphics are from public domain contributions to https://www.blendswap.com/",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/oDvzbBRiNlA/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/oDvzbBRiNlA/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/oDvzbBRiNlA/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/oDvzbBRiNlA/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/oDvzbBRiNlA/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Primer",
+                "tags": [
+                    "education",
+                    "evolution",
+                    "biology",
+                    "simulation",
+                    "science",
+                    "philosophy",
+                    "reproduction",
+                    "replication",
+                    "replicator"
+                ],
+                "categoryId": "27",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "Why do things exist? Setting the stage for evolution.",
+                    "description": "This video kicks off the evolution series by going broad and thinking about why things - including non-living things - exist at all. The first in a series on evolution.\n\nIn-video links are unfortunately disabled because this channel is new. If you'd like to discuss or support, links to reddit and Patreon are below.\n\nFor discussion and updates\n- Discord: https://discord.gg/NbruaNW\n- Reddit: r/primerlearning\n- Twitter: @primerlearning\n- Facebook: facebook.com/primerlearning\n\nStreaming myself working on these monstrosities:\n- Twitch: https://www.twitch.tv/primerjustin\n\nSupport Primer on Patreon: \nhttps://www.patreon.com/user?u=5048981\n\nLicense information:\nCreative Commons 4.0 (CC-BY-NC). More info at https://creativecommons.org/licenses/by-nc/4.0/\n\nSpeaking of attribution:\n\nThe 3D bunny model comes from the Stanford Computer Graphics Laboratory: http://graphics.stanford.edu/data/3Dscanrep/\n\nThe music is \"A remedy for melancholy\" by Kai Engel, distributed under a CC-BY license via the Free Music Archive. http://freemusicarchive.org/music/Kai_Engel/Idea/Kai_Engel_-_Idea_-_06_Remedy_for_Melancholy\n\nSeveral other inputs into the graphics are from public domain contributions to https://www.blendswap.com/"
+                },
+                "defaultAudioLanguage": "en",
+                "viewCount": "1097806",
+                "likeCount": "45338",
+                "favoriteCount": "0",
+                "commentCount": "1348",
+                "duration": "PT9M",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            }
+        }
+    }
+}
