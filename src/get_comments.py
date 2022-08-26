@@ -3,11 +3,16 @@
 
 from googleapiclient.discovery import build
 
-import creds
+#import creds
+#api_key = creds.api_key
+# then put confidential api key in environment variable or secret configuration file
+
 from tqdm import tqdm #progress bar
 
-api_key = creds.api_key
-# then put confidential api key in environment variable or secret configuration file
+import os
+api_key = os.environ.get('YOUTUBE_DATA_API_KEY')
+#CREDITS https://www.youtube.com/watch?v=IolxqkL7cD8
+
 youtube = build("youtube", "v3", developerKey=api_key)
 
 import json
