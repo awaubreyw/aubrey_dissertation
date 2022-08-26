@@ -23,3 +23,11 @@
 - some videos have comments disabled so extracted comment json files are less than total videos in a channel (e.g crashcourse 1400 videos but 400 comment files)
 - replies under comments are not included in comments json file because they are not always opinions on the actual video
 - shortcut to comment out multiple lines = ctrl + /
+
+**Project Scale and Scope**
+- top 10 videos based on views
+- sentiment scores, findings and insights
+- top 10 videos with highest positive sentiment scores
+- 17 educational channels with a minimum of 1 million subs 
+- visualizations and recommendations of the best videos of the same tags/genres/categories on Streamlit web app 
+
