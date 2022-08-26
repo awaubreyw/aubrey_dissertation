@@ -2,13 +2,13 @@
 😣❗
 ## python interpreter: 3.9.13 ('.venv': venv)
 
-`python -m venv .venv`
-`pip freeze > requirements.txt`
-`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`
-`.venv\Scripts\activate`
-`.venv\Scripts\pip.exe install pandas (or another)`
-powershell command to find number of files = `(ls src/results/crashcourse | Measure-Object -line).Lines`
-shortcut to comment out multiple lines = ctrl + /
+1. `python -m venv .venv`
+2. `pip freeze > requirements.txt`
+3. `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`
+4. `.venv\Scripts\activate`
+5. `.venv\Scripts\pip.exe install pandas (or another)`
+6. powershell command to find number of files = `(ls src/results/crashcourse | Measure-Object -line).Lines`
+7. shortcut to comment out multiple lines = ctrl + /
 
 ### channel names
 ```
