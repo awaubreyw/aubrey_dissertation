@@ -4,8 +4,8 @@
 #https://www.youtube.com/watch?v=4FwXqOT4-FM
 #https://www.youtube.com/watch?v=1lxrb_ezP-g
 
-#import creds
-#API_KEY = creds.api_key
+import creds
+API_KEY = creds.api_key
 
 import json
 import requests
@@ -13,8 +13,8 @@ from tqdm import tqdm #progress bar
 from googleapiclient.discovery import build
 
 
-import os
-API_KEY = os.environ.get('YOUTUBE_DATA_API_KEY')
+#import os
+#API_KEY = os.environ.get('YOUTUBE_DATA_API_KEY')
 #CREDITS https://www.youtube.com/watch?v=IolxqkL7cD8
 
 youtube = build('youtube', 'v3', developerKey=API_KEY)
