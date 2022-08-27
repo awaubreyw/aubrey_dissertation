@@ -3,7 +3,7 @@
 ## python interpreter: 3.9.13 ('.venv': venv)
 
 1. `python -m venv .venv`
-2. `pip freeze > requirements.txt`
+2. `pip freeze > requirements.txt` or `pip3 freeze | Out-File -FilePath requirements.txt`
 3. `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`
 4. `.venv\Scripts\activate`
 5. `.venv\Scripts\pip.exe install pandas (or another)`
