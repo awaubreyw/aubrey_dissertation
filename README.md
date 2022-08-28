@@ -10,6 +10,10 @@
 6. powershell command to find number of files = `(ls src/results/crashcourse | Measure-Object -line).Lines`
 7. shortcut to comment out multiple lines = ctrl + /
 
+## YOUTUBE DATA API v3 api key credential (confidential)
+- stored in creds.py file then imported api_key variable to other files that call the api and request data 
+- Python Quick Tip: Hiding Passwords and Secret Keys in Environment Variables (Windows) https://www.youtube.com/watch?v=IolxqkL7cD8
+
 ### channel names
 ```
 #Deep Look = KQEDDeepLook, CrashCourse = crashcourse, Khan Akademy = khanacademy, Vsauce = vsauce1, 3Blue1Brown = 3blue1brown, NancyPi = NancyPi, Smarter Every day = smartereveryday, Data Professor = DataProfessor, Kurzgesagt – In a Nutshell = inanutshell, TED Talks = TED, TKOR = Thekingofrandom, AsapSCIENCE = AsapSCIENCE, Michel van Beizen = MichelvanBiezen, Primer = PrimerLearning, Physics Girl = physicsgirl, SciShow = SciShow, and Everyday Astronaut = EverydayAstronaut. 
@@ -22,6 +26,7 @@
 
 **some videos have comments disabled so extracted comment json files are less than total videos in a channel (e.g crashcourse 1400 videos but 400 comment files)*
 **replies under comments are not included in comments json file because they are not always opinions on the actual video*
+**some python files for data extraction are done manually per channel id due to api quota limitations*
 
 
 **Project Scale and Scope**
