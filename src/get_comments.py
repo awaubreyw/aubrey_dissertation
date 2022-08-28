@@ -20,7 +20,7 @@ import json
 
 #with open("results/video_ids_crashcourse.json", "r") as f:
     #video_ids_list = json.load(f)
-with open("results/minutephysics.json", "r") as f: #kurzgesagt_–_in_a_nutshell
+with open("results/vsauce.json", "r") as f: #kurzgesagt_–_in_a_nutshell
     data = json.load(f)
 
 
@@ -33,7 +33,7 @@ for channel_id in data:
 
 #for video_id in video_ids_list:
         #print(video_id)
-        print(video_id)
+        
 
         video_title = video_data['title']
         #print(video_title)
@@ -106,7 +106,7 @@ for channel_id in data:
                     break
                     
 
-            with open(f"results/minutephysics/{video_id}.json", 'w') as f: #kurzgesagt_–_in_a_nutshell
+            with open(f"results/vsauce/{video_id}.json", 'w') as f: #kurzgesagt_–_in_a_nutshell
                 f.write(json.dumps(comments_contents))
                 #f.write(df.to_json(orient='records', lines=True))
 
