@@ -31,8 +31,9 @@
 
 **Project Scale and Scope**
 - top 10 videos based on views
-- sentiment scores, findings and insights
-- top 10 videos with highest positive sentiment scores
+- top 10 videos based on likes 
+- top 10 videos based on highest avg positive sentiment 
+- sentiment scores, visualizations, findings and insights
 - 17 english-only educational channels with a minimum of 1 million subs 
 - visualizations and recommendations of the best videos of the same tags/genres/categories on Streamlit web app 
 
