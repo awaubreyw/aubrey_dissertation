@@ -37,7 +37,6 @@
 - visualizations and recommendations of the best videos of the same tags/genres/categories on Streamlit web app 
 
 **Feedback from meeting with supervisor (30/08/2022)**
-**ToDo list:**
 - [ ] web app UI wireframe draw.io
 - [ ] normalize sentiments to be able to fairly compare against various videos on a constant scale (bar chart's y-axis labelled as percentage)
 - [ ] automate and reuse sentiment analysis code to present top 10 most positively acclaimed videos 
