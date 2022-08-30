@@ -34,8 +34,13 @@
 - top 10 videos based on likes 
 - top 10 videos based on highest avg positive sentiment 
 - sentiment scores, visualizations, findings and insights
-- 17 english-only educational channels with a minimum of 1 million subs 
+- 17 english-only educational channels benchmarked against a standard of/a minimum of 1 million subs 
 - visualizations and recommendations of the best videos of the same tags/genres/categories on Streamlit web app 
+
+**Limitations/out of scope**
+- web app does not automatically update with records of future educational channels that reach/surpass 1M subs nor future video uploads including their comments
+- web app does not have video genre/category options for users yet (videos are only organized by channels)
+- no coding channels in data input because the youtube channels' subscriberCount < 1M. This acts as a control used as a standard of comparison for checking results
 
 **Feedback from meeting with supervisor (30/08/2022)**
 - [ ] web app UI wireframe draw.io
