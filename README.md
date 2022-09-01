@@ -41,6 +41,7 @@
 8. thumbnails of embedded youtube video URLs could be added (instead of only listing youtube video titles)
 9. users won't be able to interfere/upload/update web app with new youtube videos for system security, data and level of sophistication reasons/concerns/limitations
 10. users must be able to navigate their way around the software smoothly and have a good user experience (click on Home button to return to main dashboard or click on About to read more about problem specification and purpose/aim)
+11. users could be able to select genres/categories (based on channel keywords or video tags) to produce and organize a recommendation of videos of the same genre (SUBJECT TO CHANGE IN PROJECT PLAN)
 
 **Project Scale and Scope**
 - top 10 videos based on views
