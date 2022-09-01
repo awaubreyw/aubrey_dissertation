@@ -55,6 +55,7 @@
 - web app does not automatically update with records of future educational channels that reach/surpass 1M subs nor future video uploads including their comments
 - web app does not have video genre/category options for users yet (videos are only organized by channels)
 - no coding channels in data input because the youtube channels' subscriberCount < 1M. This acts as a control used as a standard of comparison for checking results
+- web app does not have access to QUB student credentials database so unable to authenticate log ins (require integration of backends for a professional/sophisticated student learning site)
 
 **Feedback from meeting with supervisor (30/08/2022)**
 - [ ] web app UI wireframe draw.io
