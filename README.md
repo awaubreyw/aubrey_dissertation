@@ -28,6 +28,19 @@
 **replies under comments are not included in comments json file because they are not always opinions on the actual video*
 **some python files for data extraction are done manually per channel id due to api quota limitations*
 
+**Requirements**
+- MoSCoW framework/technique for prioritising requirements has 4 categories (must, should, could, won't)
+- List of requirements for my web app/software:
+1. users must be able to pick one channel name and action/function/goal/section (what to do with chosen channel)
+2. channel names must be shown as options in drop down menu
+3. actions must be shown as options in drop down menu
+4. users could opt to input a youtube video id as an additional feature/tool that accomplishes recommendation function or analysis function
+5. visualizations/figures/charts/graphs should be displayed/featured in analysis section/page if picked
+6. dataframes and numericals/scoring/innerworkings could be displayed/included
+7. recommended videos starting from the video of the most positive sentiment should appear and be listed out in recommendation section/page if picked
+8. thumbnails of embedded youtube video URLs could be added (instead of only listing youtube video titles)
+9. users won't be able to interfere/upload/update web app with new youtube videos for system security, data and level of sophistication reasons/concerns/limitations
+10. users must be able to navigate their way around the software smoothly and have a good user experience (click on Home button to return to main dashboard or click on About to read more about problem specification and purpose/aim)
 
 **Project Scale and Scope**
 - top 10 videos based on views
