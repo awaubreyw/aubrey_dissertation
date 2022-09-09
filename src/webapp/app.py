@@ -2,8 +2,19 @@ import streamlit as st
 import json
 import pandas as pd
 
-st.set_page_config(layout="wide", page_title="Comment Sentiment Analyzer and Visualizer", page_icon=":bar_chart:")
+#MAIN PAGE
+
+st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️")
+
+st.title("Project CAV²R") #Comment Analyzer, Visualizer & Video Recommender
+st.sidebar.success("Select a page above.")
 #https://www.webfx.com/tools/emoji-cheat-sheet/
+
+#USER INTERFACE
+
+
+
+
 
 
 st.sidebar.info("Select an educational channel or a category for recommendations of videos with the most positive sentiment.")
@@ -26,6 +37,34 @@ st.dataframe(df)
 for video_id in jsonfile:
     df = pd.read_json(f'results/{channel_name_chosen}/{video_id}.json')
     st.dataframe(df) 
+
+
+
+
+
+
+
+
+
+
+
+with st.sidebar:
+    #recommender = st.write("[Top Video Recommendations](C:\xampp\htdocs\aubrey_dissertation\src\webapp\recommender.ipynb)")
+    #analyzer = st.write("[Comments Analyses & Visualizations](C:\xampp\htdocs\aubrey_dissertation\src\webapp\analyzer.py)")
+    section = st.radio('Pick one', ('Recommendations', 'Visualizations'))
+
+    if section == 'Recommendations':
+        st.write("[Top Video Recommendations](C:\xampp\htdocs\aubrey_dissertation\src\webapp\recommender.py)")
+
+    if section == 'Visualizations':
+        st.write("[Comments Analyses & Visualizations](C:\xampp\htdocs\aubrey_dissertation\src\webapp\analyzer.py)")
+
+
+
+
+
+
+
 
 
 
