@@ -23,9 +23,10 @@ def main():
 
     st.session_state['channelkey'] = choice
 
-    for channel_name in channels:
-        if choice == channel_name: 
-            st.subheader(f"You have selected {choice}")
+    # for channel_name in channels:
+    #     if choice == channel_name: 
+    if choice:
+        st.subheader(f"You have selected {choice}")
     #         channel = choice.replace(' ', '_').lower()
     #         st.session_state.channelkey = channel
 
