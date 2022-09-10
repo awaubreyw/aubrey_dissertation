@@ -9,7 +9,7 @@
 5. `.venv\Scripts\pip.exe install pandas (or another)`
 6. powershell command to find number of files = `(ls src/results/crashcourse | Measure-Object -line).Lines`
 7. shortcut to comment out multiple lines = ctrl + /
-8. `streamlit run c:/xampp/htdocs/aubrey_dissertation/src/webapp/app.py`
+8. `streamlit run c:/xampp/htdocs/aubrey_dissertation/src/webapp/app.py` (http://localhost:8501/)
 
 ## YOUTUBE DATA API v3 api key credential (confidential)
 - stored in creds.py file then imported api_key variable to other files that call the api and request data 
