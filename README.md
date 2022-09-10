@@ -9,6 +9,7 @@
 5. `.venv\Scripts\pip.exe install pandas (or another)`
 6. powershell command to find number of files = `(ls src/results/crashcourse | Measure-Object -line).Lines`
 7. shortcut to comment out multiple lines = ctrl + /
+8. `streamlit run c:/xampp/htdocs/aubrey_dissertation/src/webapp/app.py`
 
 ## YOUTUBE DATA API v3 api key credential (confidential)
 - stored in creds.py file then imported api_key variable to other files that call the api and request data 
@@ -52,7 +53,7 @@
 - visualizations and recommendations of the best videos of the same tags/genres/categories on Streamlit web app 
 
 **Limitations/out of scope**
-- web app does not automatically update with records of future educational channels that reach/surpass 1M subs nor future video uploads including their comments
+- web app does not automatically update with records of future educational channels that reach/surpass 1M subs nor future video uploads including their comments. "hosting" the web-app that self updates is out of scope for this project. "future work" would be to improve it so it auto updates and fetches new videos once a day
 - web app does not have video genre/category options for users yet (videos are only organized by channels)
 - no coding channels in data input because the youtube channels' subscriberCount < 1M. This acts as a control used as a standard of comparison for checking results
 - web app does not have access to QUB student credentials database so unable to authenticate log ins (require integration of backends for a professional/sophisticated student learning site)
