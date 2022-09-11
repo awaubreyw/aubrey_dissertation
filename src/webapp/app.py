@@ -11,6 +11,7 @@ def main():
 
     with st.container():
         st.title("Project CAV²R⛏️")
+        
         st.header("Welcome!")
         st.subheader("This web page presents to you 17 educational YouTube channels and their data.")
         st.info("For more info: check out other pages on the sidebar")
@@ -45,6 +46,7 @@ def main():
                 st.write("""
                     The chart above shows the (currently static) total number of videos uploaded by each educational YouTube channel but the numbers can change if creators choose to private, delete or upload more videos. Data was collected in August of 2022.
                 """)
+        
 
 
 

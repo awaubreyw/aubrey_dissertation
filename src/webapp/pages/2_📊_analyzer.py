@@ -5,22 +5,29 @@ import emoji
 import matplotlib.pyplot as plt
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
+
 analyzer = SentimentIntensityAnalyzer()
+
+st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") 
 
 st.title("Comment Analyzer & Visualizer")
 
-channel = st.session_state.channelkey
-channel = channel.replace(' ', '_').lower()
-st.write(channel)
+choice = st.session_state.channelkey
+channel = choice.replace(' ', '_').lower()
+    #st.write(channel)
 
 
+    
 
 file = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json' 
+# channel_data = pd.read_json(file)
+# st.write(channel_data.head(10))
+
 data = None
 
 with open(file, 'r') as f:
     data = json.load(f)
-    st.json(data)
+    #st.json(data)
 
 channel_id, stats = data.popitem()
 
@@ -28,35 +35,95 @@ channel_stats = stats['channel_statistics']
 
 video_stats = stats['video_data']
 
-opt = st.radio('Analyses of top 10 videos based on: ', ['viewCount', 'likeCount'])
+#opt = st.radio('Analyses of top 10 videos based on: ', ['viewCount', 'likeCount'])
 
-if opt == 'viewCount':
+col1, col2 = st.columns(2)
+
+with col1:
+# if opt == 'viewCount':
+    st.subheader("ordered by viewCount")
     sorted_vids = sorted(video_stats.items(), key=lambda item: int(item[1]['viewCount']), reverse=True)
-else:
-    sorted_vids = sorted(video_stats.items(), key=lambda item: int(item[1]['likeCount']), reverse=True)
+    stats = []
 
-stats = []
+    for vid in sorted_vids:
+        video_id = vid[0]
+        title = vid[1]['title']
+        views = int(vid[1]['viewCount'])
+        likes = int(vid[1]['likeCount'])
+        
+        key = "commentCount"
+        if key in vid[1].keys():
+            comments = int(vid[1]["commentCount"]) 
+        else:
+            comments = 0
 
-for vid in sorted_vids:
-    video_id = vid[0]
-    title = vid[1]['title']
-    views = int(vid[1]['viewCount'])
-    likes = int(vid[1]['likeCount'])
+        duration = vid[1]['duration']
+        stats.append([video_id, title, views, likes, comments, duration])
+
+    df = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
+
+
+    top10 = df.head(10)
+    #st.dataframe(top10)
+    st.dataframe(top10.style.highlight_max(axis='rows', subset=['views']))
     
-    key = "commentCount"
-    if key in vid[1].keys():
-        comments = int(vid[1]["commentCount"]) 
-    else:
-        comments = 0
+    
 
-    duration = vid[1]['duration']
-    stats.append([video_id, title, views, likes, comments, duration])
+with col2:
+# if opt == 'likeCount':
+    st.subheader("ordered by likeCount")
+    sorted_vids = []
+    sorted_vids = sorted(video_stats.items(), key=lambda item: int(item[1]['likeCount']), reverse=True)
+    stats = []
 
-df = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
+    for vid in sorted_vids:
+        video_id = vid[0]
+        title = vid[1]['title']
+        views = int(vid[1]['viewCount'])
+        likes = int(vid[1]['likeCount'])
+        
+        key = "commentCount"
+        if key in vid[1].keys():
+            comments = int(vid[1]["commentCount"]) 
+        else:
+            comments = 0
+
+        duration = vid[1]['duration']
+        stats.append([video_id, title, views, likes, comments, duration])
+
+    df = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
 
 
-top10 = df.head(10)
-st.dataframe(top10)
+    top10 = df.head(10)
+    
+    #st.dataframe(top10)
+    st.dataframe(top10.style.highlight_max(axis='rows', subset=['likes']))
+
+
+
+
+# stats = []
+
+# for vid in sorted_vids:
+#     video_id = vid[0]
+#     title = vid[1]['title']
+#     views = int(vid[1]['viewCount'])
+#     likes = int(vid[1]['likeCount'])
+    
+#     key = "commentCount"
+#     if key in vid[1].keys():
+#         comments = int(vid[1]["commentCount"]) 
+#     else:
+#         comments = 0
+
+#     duration = vid[1]['duration']
+#     stats.append([video_id, title, views, likes, comments, duration])
+
+# df = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
+
+
+# top10 = df.head(10)
+# st.dataframe(top10)
 
 # with st.container():
 #     if opt == 'viewCount':
