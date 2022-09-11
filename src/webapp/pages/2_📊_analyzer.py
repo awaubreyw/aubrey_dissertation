@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
 import json
-import emoji
-import matplotlib.pyplot as plt
+import altair as alt
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
@@ -76,6 +75,7 @@ with cola:
     
     #top10a = top10a.drop(index=df[filter].index)
     #st.dataframe(top10a.style.highlight_max(axis='rows', subset=['views']))
+
     top10a = top10a.sort_values(by=['views'], ascending=False)
     st.dataframe(top10a.style.highlight_max(axis='rows', subset=['views']))
    
@@ -230,16 +230,23 @@ with cola:
     top10a["overallneutralpercentage"] = overallneutralpercentage
     top10a["overallnegativepercentage"] = overallnegativepercentage
 
-    
+    st.write(alt.Chart(top10a).mark_bar().encode(
+    x=alt.X('title', sort=None),
+    y='views'))
 
     top10a = top10a.sort_values(by=['overallpositivepercentage'], ascending=False)
     st.subheader(f"{choice} videos sorted by highest positive sentiment score")
     st.dataframe(top10a)
     st.caption('videos that have comments disabled (comments == 0) were filtered out')
-    st.bar_chart(top10a, x='title', y='overallpositivepercentage')
-    st.bar_chart(top10a, x='title', y='views')
+    
+    st.write(alt.Chart(top10a).mark_bar().encode(
+    x=alt.X('title', sort=None),
+    y='overallpositivepercentage'))
+    # st.bar_chart(top10a, x='title', y='overallpositivepercentage')
+    # st.bar_chart(top10a, y='views', x='title')
     #st.line_chart(top10a, x='views', y='overallpositivepercentage')
-    st.line_chart(top10a, x='title', y=['views', 'likes', 'comments'])
+    #st.line_chart(top10a, x='title', y=['views', 'likes', 'comments'])
+    st.line_chart(top10a, x='title', y=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'])
     st.subheader("Data Correlations")
     st.write(top10a.corr())
 
@@ -321,7 +328,9 @@ with colb:
     top10b["overallneutralpercentage"] = overallneutralpercentage
     top10b["overallnegativepercentage"] = overallnegativepercentage
 
-    
+    st.write(alt.Chart(top10b).mark_bar().encode(
+    x=alt.X('title', sort=None),
+    y='likes'))
 
     top10b = top10b.sort_values(by=['overallpositivepercentage'], ascending=False)
     st.subheader(f"{choice} videos sorted by highest positive sentiment score")
@@ -329,10 +338,16 @@ with colb:
 
     st.caption('videos that have comments disabled (comments == 0) were filtered out')
 
-    st.bar_chart(top10b, x='title', y='overallpositivepercentage')
-    st.bar_chart(top10b, x='title', y='likes')
+    
+    st.write(alt.Chart(top10b).mark_bar().encode(
+    x=alt.X('title', sort=None),
+    y='overallpositivepercentage'))
+
+    # st.bar_chart(top10b, x='title', y='overallpositivepercentage')
+    # st.bar_chart(top10b, x='title', y='likes')
     #st.line_chart(top10b, x='likes', y='overallpositivepercentage')
-    st.line_chart(top10b, x='title', y=['views', 'likes', 'comments'])
+    #st.line_chart(top10b, x='title', y=['views', 'likes', 'comments'])
+    st.line_chart(top10b, x='title', y=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'])
     st.subheader("Data Correlations")
     st.write(top10b.corr())
 
