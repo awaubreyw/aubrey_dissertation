@@ -19,9 +19,10 @@ def main():
     with st.container():
         data = pd.read_json('C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json')
         df = pd.DataFrame(data)
+        filtereddf = df.filter(items=['channel_title', 'joined', 'total_videos', 'subs'])
         
         #st.write(data)
-        st.dataframe(df.style.highlight_max(axis='rows', subset=['subs', 'total_videos']))
+        st.dataframe(filtereddf.style.highlight_max(axis='rows', subset=['subs', 'total_videos']))
         with st.expander("Details"):
             st.write("""
                 The dataframe above contains the (currently static) channel stats as an overview. The maximum number of subscribers and total video uploads are highlighted in yellow :yellow_heart:
@@ -31,7 +32,7 @@ def main():
     
     with st.container():
         st.write("---")
-        st.subheader("Visualizations of numbers of subscribers and videos of every channel (numerical columns) in the dataframe above.")
+        st.subheader("Visualizations of numbers of subscribers and videos of every channel (numeric columns) in the dataframe above.")
         col1, col2 = st.columns(2)
 
         with col1:

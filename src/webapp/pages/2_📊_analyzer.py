@@ -37,9 +37,15 @@ video_stats = stats['video_data']
 
 #opt = st.radio('Analyses of top 10 videos based on: ', ['viewCount', 'likeCount'])
 
-col1, col2 = st.columns(2)
+cola, colb = st.columns(2)
 
-with col1:
+
+
+
+
+
+
+with cola:
 # if opt == 'viewCount':
     st.subheader(f"{choice} videos ordered by viewCount")
     sorted_vids = sorted(video_stats.items(), key=lambda item: int(item[1]['viewCount']), reverse=True)
@@ -63,13 +69,45 @@ with col1:
     df = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
 
 
-    top10 = df.head(10)
-    #st.dataframe(top10)
-    st.dataframe(top10.style.highlight_max(axis='rows', subset=['views']))
+    top10a = df.head(10)
+  
+    
+    #st.dataframe(top10a)
+    
+    #top10a = top10a.drop(index=df[filter].index)
+    #st.dataframe(top10a.style.highlight_max(axis='rows', subset=['views']))
+    top10a = top10a.sort_values(by=['views'], ascending=False)
+    st.dataframe(top10a.style.highlight_max(axis='rows', subset=['views']))
+   
+    
+
+    likes_avg = top10a['likes'].mean()
+    comments_avg = top10a['comments'].mean()
+    views_avg = top10a['views'].mean()
+    st.markdown(f""" 
+    Average number of views under a {choice} top 10 video : **{int(views_avg)} views**\n
+    Average number of likes under a {choice} top 10 video : **{int(likes_avg)} likes**\n
+    Average number of comments under a {choice} top 10 video : **{int(comments_avg)} comments**""")
+
+    st.subheader("Data Correlations")
+    st.write(top10a.corr())
+    
+    # filter = top10a['comments'] == 0
+    # st.write(filter, "these selected indexes are videos that have disabled comments")
+    #top10a = top10a[top10a.comments != 0]
+
+
+        
+
+
+
+
+
+    
     
     
 
-with col2:
+with colb:
 # if opt == 'likeCount':
     st.subheader(f"{choice} videos ordered by likeCount")
     sorted_vids = []
@@ -94,10 +132,214 @@ with col2:
     df = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
 
 
-    top10 = df.head(10)
+    top10b = df.head(10)
     
-    #st.dataframe(top10)
-    st.dataframe(top10.style.highlight_max(axis='rows', subset=['likes']))
+    
+    #top10a = top10a.drop(index=df[filter].index)
+    #st.dataframe(top10a)
+    #st.dataframe(top10b.style.highlight_max(axis='rows', subset=['likes']))
+    top10b = top10b.sort_values(by=['likes'], ascending=False)
+    st.dataframe(top10b.style.highlight_max(axis='rows', subset=['likes']))
+    
+
+    likes_avg = top10b['likes'].mean()
+    comments_avg = top10b['comments'].mean()
+    views_avg = top10b['views'].mean()
+    st.markdown(f""" 
+    Average number of views under a {choice} top 10 video : **{int(views_avg)} views**\n
+    Average number of likes under a {choice} top 10 video : **{int(likes_avg)} likes**\n
+    Average number of comments under a {choice} top 10 video : **{int(comments_avg)} comments**""")
+
+    st.subheader("Data Correlations")
+    st.write(top10b.corr())
+
+
+
+
+
+
+
+
+
+with cola:
+    top10a.drop(top10a.loc[top10a['comments']==0].index, inplace=True)
+
+    overallpositivepercentage = []
+    overallneutralpercentage = []
+    overallnegativepercentage = []
+
+    for index, row in top10a.iterrows():
+        videoID = row['video_id']
+        video_title = row['title']
+        #st.write(videoID, video_title)
+        dataframe = pd.read_json(f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json')
+        #st.dataframe(dataframe)
+        positive = []
+        negative = []
+        neutral = []
+        compound = []
+        sentiment = []
+
+        for line in range(dataframe.shape[0]): 
+
+            comments = dataframe.iloc[line, 1] 
+            comments_analyzed = analyzer.polarity_scores(comments)
+
+        
+            if comments_analyzed["compound"] >= 0.05:
+                eachsentiment = 'positive'
+            elif comments_analyzed["compound"] <= -0.05:
+                eachsentiment = 'negative'
+            else:
+                eachsentiment = 'neutral'
+            
+            negative.append(comments_analyzed["neg"])
+
+            positive.append(comments_analyzed["pos"])
+        
+
+            neutral.append(comments_analyzed["neu"])
+        
+
+            compound.append(comments_analyzed["compound"])
+    
+
+            sentiment.append(eachsentiment)
+
+        dataframe["negative"] = negative 
+        dataframe["neutral"] = neutral
+        dataframe["positive"] = positive
+        dataframe["compound"] = compound
+        dataframe["sentiment"] = sentiment
+
+        totalrows = len(dataframe['sentiment'])
+
+        totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
+        
+        totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
+
+        totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
+
+        #averagedsentiments = pd.Series({"positive%": totalpositivesentiment, "neutral%": totalneutralsentiment, "negative%": totalnegativesentiment})
+        overallpositivepercentage.append(totalpositivesentiment)
+        overallneutralpercentage.append(totalneutralsentiment)
+        overallnegativepercentage.append(totalnegativesentiment)
+
+
+    top10a["overallpositivepercentage"] = overallpositivepercentage
+    top10a["overallneutralpercentage"] = overallneutralpercentage
+    top10a["overallnegativepercentage"] = overallnegativepercentage
+
+    
+
+    top10a = top10a.sort_values(by=['overallpositivepercentage'], ascending=False)
+    st.subheader(f"{choice} videos sorted by highest positive sentiment score")
+    st.dataframe(top10a)
+    st.caption('videos that have comments disabled (comments == 0) were filtered out')
+    st.bar_chart(top10a, x='title', y='overallpositivepercentage')
+    st.bar_chart(top10a, x='title', y='views')
+    #st.line_chart(top10a, x='views', y='overallpositivepercentage')
+    st.line_chart(top10a, x='title', y=['views', 'overallpositivepercentage'])
+
+
+
+
+
+
+
+
+with colb:
+    top10b = top10b[top10b.comments != 0]
+
+    overallpositivepercentage = []
+    overallneutralpercentage = []
+    overallnegativepercentage = []
+
+    for index, row in top10b.iterrows():
+        videoID = row['video_id']
+        video_title = row['title']
+        #st.write(videoID, video_title)
+        dataframe = pd.read_json(f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json')
+        positive = []
+        negative = []
+        neutral = []
+        compound = []
+        sentiment = []
+
+        for line in range(dataframe.shape[0]): 
+
+            comments = dataframe.iloc[line, 1] 
+            comments_analyzed = analyzer.polarity_scores(comments)
+
+        
+            if comments_analyzed["compound"] >= 0.05:
+                eachsentiment = 'positive'
+            elif comments_analyzed["compound"] <= -0.05:
+                eachsentiment = 'negative'
+            else:
+                eachsentiment = 'neutral'
+
+            negative.append(comments_analyzed["neg"])
+
+            positive.append(comments_analyzed["pos"])
+        
+
+            neutral.append(comments_analyzed["neu"])
+        
+
+            compound.append(comments_analyzed["compound"])
+    
+
+            sentiment.append(eachsentiment)
+
+
+        dataframe["negative"] = negative 
+        dataframe["neutral"] = neutral
+        dataframe["positive"] = positive
+        dataframe["compound"] = compound
+        dataframe["sentiment"] = sentiment
+
+        totalrows = len(dataframe['sentiment'])
+
+        totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
+        
+        totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
+
+        totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
+
+        #averagedsentiments = pd.Series({"positive%": totalpositivesentiment, "neutral%": totalneutralsentiment, "negative%": totalnegativesentiment})
+        
+
+        overallpositivepercentage.append(totalpositivesentiment)
+        overallneutralpercentage.append(totalneutralsentiment)
+        overallnegativepercentage.append(totalnegativesentiment)
+
+
+    top10b["overallpositivepercentage"] = overallpositivepercentage
+    top10b["overallneutralpercentage"] = overallneutralpercentage
+    top10b["overallnegativepercentage"] = overallnegativepercentage
+
+    
+
+    top10b = top10b.sort_values(by=['overallpositivepercentage'], ascending=False)
+    st.subheader(f"{choice} videos sorted by highest positive sentiment score")
+    st.dataframe(top10b)
+
+    st.caption('videos that have comments disabled (comments == 0) were filtered out')
+
+    st.bar_chart(top10b, x='title', y='overallpositivepercentage')
+    st.bar_chart(top10b, x='title', y='likes')
+    #st.line_chart(top10b, x='likes', y='overallpositivepercentage')
+    st.line_chart(top10b, x='title', y=['likes', 'overallpositivepercentage'])
+
+
+
+
+
+
+
+
+
 
 
 
@@ -122,32 +364,34 @@ with col2:
 # df = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
 
 
-# top10 = df.head(10)
-# st.dataframe(top10)
+# top10a = df.head(10)
+# st.dataframe(top10a)
 
 # with st.container():
 #     if opt == 'viewCount':
-#         ax = top10.plot.bar(x='title', y='views', figsize=(12,8), fontsize=14)
+#         ax = top10a.plot.bar(x='title', y='views', figsize=(12,8), fontsize=14)
 #     else:
-#         ax = top10.plot.bar(x='title', y='likes', figsize=(12,8), fontsize=14)
+#         ax = top10a.plot.bar(x='title', y='likes', figsize=(12,8), fontsize=14)
 
-likes_avg = top10['likes'].mean()
-comments_avg = top10['comments'].mean()
-views_avg = top10['views'].mean()
-st.markdown(f""" 
-{choice} top 10 videos average views: **{views_avg} views**\n
-{choice} top 10 videos average likes: **{likes_avg} likes**\n
-{choice} top 10 videos average comments: **{comments_avg} comments**""")
+
+
+
+
+
+
+
+
+
+# filter dataframe from 0 comments 
 
 # overallpositivepercentage = []
 # overallneutralpercentage = []
 # overallnegativepercentage = []
 
-# filter = top10['comments'] == 0
-# top10 = top10.drop(index=df[filter].index)
 
-# for index, row in top10.iterrows():
-# #for videoID in top10['video_id']:
+
+# for index, row in top10a.iterrows():
+# #for videoID in top10a['video_id']:
 #     videoID = row['video_id']
 #     video_title = row['title']
 
@@ -277,21 +521,21 @@ st.markdown(f"""
 #     overallnegativepercentage.append(totalnegativesentiment)
 
 
-# top10["overallpositivepercentage"] = overallpositivepercentage
-# top10["overallneutralpercentage"] = overallneutralpercentage
-# top10["overallnegativepercentage"] = overallnegativepercentage
+# top10a["overallpositivepercentage"] = overallpositivepercentage
+# top10a["overallneutralpercentage"] = overallneutralpercentage
+# top10a["overallnegativepercentage"] = overallnegativepercentage
 
-# top10 = top10.sort_values(by=['overallpositivepercentage'], ascending=False)
+# top10a = top10a.sort_values(by=['overallpositivepercentage'], ascending=False)
 
 # with st.container():
 #     st.write('---')
-#     barr = top10.plot.bar(x='title', y='overallpositivepercentage')
+#     barr = top10a.plot.bar(x='title', y='overallpositivepercentage')
 
 # #df1.nlargest(5, ['positive'])
 # #df1.nlargest(5, ['compound'])
 
 # with st.container():
-#     st.dataframe(top10)
+#     st.dataframe(top10a)
 
 
 

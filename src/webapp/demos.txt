@@ -1,3 +1,9 @@
+To save your changes, copy your custom theme into the clipboard and paste it into the [theme] section of your .streamlit/config.toml file.
+[theme]
+base="light"
+font="serif"
+
+
 import streamlit as st
 import pandas as pd
 from datetime import time
