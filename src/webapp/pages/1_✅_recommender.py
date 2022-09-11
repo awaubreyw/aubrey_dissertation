@@ -3,7 +3,7 @@ st.title("Video Recommender")
 
 channel = st.session_state.channelkey
 channel = channel.replace(' ', '_').lower()
-#implement logic from C:\xampp\htdocs\aubrey_dissertation\src\webapp\recommender.ipynb
+#implement logic from C:/xampp/htdocs/aubrey_dissertation/src/webapp/recommender.ipynb
 
 #for loop:
 #   st.markdown(f"[Recommend...](https://www.youtube.com/watch?v={id})")
@@ -17,13 +17,11 @@ analyzer = SentimentIntensityAnalyzer()
 
 channel = st.session_state.channelkey
 channel = channel.replace(' ', '_').lower()
+st.write(channel)
 
-import json
 
-# with st.container():
-#     st.dataframe()
-#     analyses of top 10 videos based on views
-file = f'../results/{channel}.json' 
+file = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json' 
+
 data = None
 
 with open(file, 'r') as f:
@@ -64,7 +62,7 @@ df = df.drop(index=df[filter].index)
 
 for videoID in df['video_id']:
 
-    dataframe = pd.read_json(f'../results/crashcourse/{videoID}.json')
+    dataframe = pd.read_json(f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json')
     
     positive = []
     negative = []
@@ -126,3 +124,7 @@ for key, value in df.iterrows():
         print(f"Score: {value['overallpositivepercentage']}, URL: https://www.youtube.com/watch?v={value['video_id']}")
 #for loop:
     st.markdown(f"[{value['title']}](https://www.youtube.com/watch?v={id})")
+    #or
+    video_file = open(f'https://www.youtube.com/watch?v={id}', 'rb')
+    video_bytes = video_file.read()
+    st.video(video_bytes)

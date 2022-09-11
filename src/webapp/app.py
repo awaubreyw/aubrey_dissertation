@@ -1,13 +1,28 @@
 import streamlit as st
 # import json
-# import pandas as pd
+import pandas as pd
 from streamlit_option_menu import option_menu
 
-st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon=":female-detective:") #page_icon="🕵️‍♀️"
+st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") #page_icon=":female-detective:"
 
 def main():
     st.title("Project CAV²R")
     st.subheader("Welcome!")
+    st.text("Search: search through data by clicking a table, using hotkeys (⌘ Cmd + F or Ctrl + F) to bring up the search bar, and using the search bar to filter data. \nCopy to clipboard: select one or multiple cells, copy them to clipboard, and paste them into your favorite spreadsheet software.")
+
+    data = pd.read_json('C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json')
+    df = pd.DataFrame(data)
+    
+    #st.write(data)
+    st.dataframe(df.style.highlight_max(axis='rows', subset=['subs', 'total_videos']))
+
+    st.bar_chart(df, y='subs', x='channel_title')
+    st.bar_chart(df, y='total_videos', x='channel_title')
+
+
+
+
+
 
     st.sidebar.info("Select an educational channel or a category for recommendations of videos with the most positive sentiment.")
     
@@ -15,18 +30,19 @@ def main():
     
     channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
 
-    choice = st.sidebar.selectbox(channels, key='channelkey')
+    choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
     #or choice = st.sidebar.radio(channels, key='channelkey')
 
     if 'channelkey' not in st.session_state:
-        st.session_state['channelkey'] = channels[0]
+        st.session_state['channelkey'] = choice
+    st.write('session state: ', st.session_state.channelkey)
 
-    st.session_state['channelkey'] = choice
+    # st.session_state['channelkey'] = choice
 
     # for channel_name in channels:
     #     if choice == channel_name: 
-    if choice:
-        st.subheader(f"You have selected {choice}")
+    # if choice:
+    #     st.subheader(f"You have selected {choice}")
     #         channel = choice.replace(' ', '_').lower()
     #         st.session_state.channelkey = channel
 
