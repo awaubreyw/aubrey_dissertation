@@ -9,8 +9,8 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 analyzer = SentimentIntensityAnalyzer()
 
 st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") 
-
-st.title("Comment Analyzer & Visualizer")
+st.title("Project CAV²R⛏️")
+st.header("Comment Analyzer & Visualizer")
 
 choice = st.session_state.channelkey
 channel = choice.replace(' ', '_').lower()
@@ -41,7 +41,7 @@ col1, col2 = st.columns(2)
 
 with col1:
 # if opt == 'viewCount':
-    st.subheader("ordered by viewCount")
+    st.subheader(f"{choice} videos ordered by viewCount")
     sorted_vids = sorted(video_stats.items(), key=lambda item: int(item[1]['viewCount']), reverse=True)
     stats = []
 
@@ -71,7 +71,7 @@ with col1:
 
 with col2:
 # if opt == 'likeCount':
-    st.subheader("ordered by likeCount")
+    st.subheader(f"{choice} videos ordered by likeCount")
     sorted_vids = []
     sorted_vids = sorted(video_stats.items(), key=lambda item: int(item[1]['likeCount']), reverse=True)
     stats = []
@@ -131,9 +131,13 @@ with col2:
 #     else:
 #         ax = top10.plot.bar(x='title', y='likes', figsize=(12,8), fontsize=14)
 
-# likes_avg = top10['likes'].mean()
-# comments_avg = top10['comments'].mean()
-# views_avg = top10['views'].mean()
+likes_avg = top10['likes'].mean()
+comments_avg = top10['comments'].mean()
+views_avg = top10['views'].mean()
+st.markdown(f""" 
+{choice} top 10 videos average views: **{views_avg} views**\n
+{choice} top 10 videos average likes: **{likes_avg} likes**\n
+{choice} top 10 videos average comments: **{comments_avg} comments**""")
 
 # overallpositivepercentage = []
 # overallneutralpercentage = []
