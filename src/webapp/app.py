@@ -5,37 +5,67 @@ from streamlit_option_menu import option_menu
 
 st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") #page_icon=":female-detective:"
 
+
+
 def main():
-    st.title("Project CAV²R")
-    st.subheader("Welcome!")
-    st.text("Search: search through data by clicking a table, using hotkeys (⌘ Cmd + F or Ctrl + F) to bring up the search bar, and using the search bar to filter data. \nCopy to clipboard: select one or multiple cells, copy them to clipboard, and paste them into your favorite spreadsheet software.")
 
-    data = pd.read_json('C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json')
-    df = pd.DataFrame(data)
+    with st.container():
+        st.title("Project CAV²R⛏️")
+        st.header("Welcome!")
+        st.subheader("This web page presents to you 17 educational YouTube channels and their data.")
+        st.info("For more info: check out other pages on the sidebar")
     
-    #st.write(data)
-    st.dataframe(df.style.highlight_max(axis='rows', subset=['subs', 'total_videos']))
-
-    st.bar_chart(df, y='subs', x='channel_title')
-    st.bar_chart(df, y='total_videos', x='channel_title')
-
-
-
-
-
-
-    st.sidebar.info("Select an educational channel or a category for recommendations of videos with the most positive sentiment.")
+    with st.container():
+        data = pd.read_json('C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json')
+        df = pd.DataFrame(data)
+        
+        #st.write(data)
+        st.dataframe(df.style.highlight_max(axis='rows', subset=['subs', 'total_videos']))
+        with st.expander("Details"):
+            st.write("""
+                The dataframe above contains the (currently static) channel stats as an overview. The maximum number of subscribers and total video uploads are highlighted in yellow :yellow_heart:
+            """)
+            st.caption("Search: search through data by clicking a table, using hotkeys (⌘ Cmd + F or Ctrl + F) to bring up the search bar, and using the search bar to filter data.")
+            st.caption("Copy to clipboard: select one or multiple cells, copy them to clipboard, and paste them into your favorite spreadsheet software.")
     
-    st.sidebar.success("Select a page above.")
+    with st.container():
+        st.write("---")
+        st.subheader("Visualizations of numbers of subscribers and videos of every channel (numerical columns) in the dataframe above.")
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.bar_chart(df, y='subs', x='channel_title')
+            with st.expander("Details"):
+                st.write("""
+                    The chart above shows the (currently static) total number of people that are subscribed to each educational YouTube channel but the subscriptions can increase and people can unsubcribe anytime. Data was extracted in August of 2022.
+                """)
+        with col2:
+            st.bar_chart(df, y='total_videos', x='channel_title')
+            with st.expander("Details"):
+                st.write("""
+                    The chart above shows the (currently static) total number of videos uploaded by each educational YouTube channel but the numbers can change if creators choose to private, delete or upload more videos. Data was collected in August of 2022.
+                """)
+
+
+
+
+
+
+    
+    st.sidebar.info("Select a page above after choosing one channel.")
     
     channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
 
     choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
     #or choice = st.sidebar.radio(channels, key='channelkey')
 
+
     if 'channelkey' not in st.session_state:
         st.session_state['channelkey'] = choice
-    st.write('session state: ', st.session_state.channelkey)
+    
+    with st.sidebar:
+        st.success(f"You have chosen {choice}!")
+        st.write('session state: ', st.session_state.channelkey)
 
     # st.session_state['channelkey'] = choice
 
