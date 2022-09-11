@@ -239,7 +239,7 @@ with cola:
     st.bar_chart(top10a, x='title', y='overallpositivepercentage')
     st.bar_chart(top10a, x='title', y='views')
     #st.line_chart(top10a, x='views', y='overallpositivepercentage')
-    st.line_chart(top10a, x='title', y=['views', 'overallpositivepercentage', 'likes', 'comments'])
+    st.line_chart(top10a, x='title', y=['views', 'likes', 'comments'])
     st.subheader("Data Correlations")
     st.write(top10a.corr())
 
@@ -332,7 +332,7 @@ with colb:
     st.bar_chart(top10b, x='title', y='overallpositivepercentage')
     st.bar_chart(top10b, x='title', y='likes')
     #st.line_chart(top10b, x='likes', y='overallpositivepercentage')
-    st.line_chart(top10b, x='title', y=['likes', 'overallpositivepercentage', 'views', 'comments'])
+    st.line_chart(top10b, x='title', y=['views', 'likes', 'comments'])
     st.subheader("Data Correlations")
     st.write(top10b.corr())
 
