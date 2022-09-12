@@ -121,6 +121,8 @@ df["overallpositivepercentage"] = overallpositivepercentage
 
 df = df.sort_values(by=['overallpositivepercentage'], ascending=False)
 
+top10 = df.head(10)
+
 
 allvids = []
 
@@ -128,11 +130,12 @@ allvids = []
 n_cols = 3
 n_rows = int(1 + len(df[df.overallpositivepercentage >= 70]) // n_cols)
 
+
+
 for key, value in df.iterrows():
     if value['overallpositivepercentage'] >= 70:
         vid = f"https://www.youtube.com/watch?v={value['video_id']}"
         allvids.append(vid)
-
 # range(len(value['overallpositivepercentage']))
 rows = [st.columns(n_cols) for _ in range(n_rows)]
 
@@ -152,6 +155,21 @@ for col, thumbnail in zip(cols, allvids):
         #st.video(f"https://www.youtube.com/watch?v={value['video_id']}")
         
         # Embed a youtube video
+
+
+if len(df[df.overallpositivepercentage >= 70]) == 0:
+    n_rows = int(1 + len(top10['overallpositivepercentage']) // n_cols)
+    for id in top10['video_id']:
+        vid = f"https://www.youtube.com/watch?v={id}"
+        allvids.append(vid)
+    rows = [st.columns(n_cols) for _ in range(n_rows)]
+
+    cols = [column for row in rows for column in row]
+
+    for col, thumbnail in zip(cols, allvids):
+        with col:
+            st_player(f"https://www.youtube.com/watch?v={thumbnail}")
+
 
 
         
