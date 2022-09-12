@@ -1,23 +1,24 @@
 import streamlit as st
-st.title("Video Recommender")
+import pandas as pd
+import json
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from streamlit_player import st_player
 
-channel = st.session_state.channelkey
-channel = channel.replace(' ', '_').lower()
+analyzer = SentimentIntensityAnalyzer()
+
+st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") 
+st.title("Project CAV²R⛏️")
+st.header("Video Recommender")
+
+choice = st.session_state.channelkey
+channel = choice.replace(' ', '_').lower()
 #implement logic from C:/xampp/htdocs/aubrey_dissertation/src/webapp/recommender.ipynb
 
 #for loop:
 #   st.markdown(f"[Recommend...](https://www.youtube.com/watch?v={id})")
 
-import pandas as pd
-import json
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-
-analyzer = SentimentIntensityAnalyzer()
 
 
-channel = st.session_state.channelkey
-channel = channel.replace(' ', '_').lower()
-st.write(channel)
 
 
 file = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json' 
@@ -33,8 +34,9 @@ channel_stats = stats['channel_statistics']
 
 video_stats = stats['video_data']
 
-sorted_vids = sorted(video_stats.items(), key=lambda item: int(item[1]['viewCount']), reverse=True)
+st.subheader(f"Most positively acclaimed {choice} videos")
 
+sorted_vids = sorted(video_stats.items(), key=lambda item: int(item[1]['viewCount']), reverse=True)
 stats = []
 
 for vid in sorted_vids:
@@ -53,12 +55,12 @@ for vid in sorted_vids:
     stats.append([video_id, title, views, likes, comments, duration])
 
 df = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
-
+df.drop(df.loc[df['comments']==0].index, inplace=True)
 
 overallpositivepercentage = []
 
-filter = df['comments'] == 0
-df = df.drop(index=df[filter].index)
+# filter = df['comments'] == 0
+# df = df.drop(index=df[filter].index)
 
 for videoID in df['video_id']:
 
@@ -120,11 +122,18 @@ df["overallpositivepercentage"] = overallpositivepercentage
 df = df.sort_values(by=['overallpositivepercentage'], ascending=False)
 
 for key, value in df.iterrows():
-    if value['overallpositivepercentage'] >= 70: #60 is rather low in terms of positive probability/scale and 50% indicates half positive and half negative. Has to be more positive than negative
-        print(f"Score: {value['overallpositivepercentage']}, URL: https://www.youtube.com/watch?v={value['video_id']}")
-#for loop:
-    st.markdown(f"[{value['title']}](https://www.youtube.com/watch?v={id})")
-    #or
-    video_file = open(f'https://www.youtube.com/watch?v={id}', 'rb')
-    video_bytes = video_file.read()
-    st.video(video_bytes)
+    if value['overallpositivepercentage'] >= 70: 
+        #60 is rather low in terms of positive probability/scale and 50% indicates half positive and half negative. Has to be more positive than negative
+        
+
+        #st.video(f"https://www.youtube.com/watch?v={value['video_id']}")
+        
+        # Embed a youtube video
+        st_player(f"https://www.youtube.com/watch?v={value['video_id']}")
+
+    # if value['overallpositivepercentage'] >= 70 not in value['overallpositivepercentage']:
+    #     top10 = df.head(10)
+    #     for index, row in top10.iterrows():
+    #         video_file = open(f"https://www.youtube.com/watch?v={row['video_id']}", 'rb')
+    #         video_bytes = video_file.read()
+    #         st.video(video_bytes)
