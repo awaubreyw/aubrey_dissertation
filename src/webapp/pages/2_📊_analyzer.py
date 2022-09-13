@@ -1,9 +1,13 @@
+from unittest import skip
 import streamlit as st
 import pandas as pd
+import numpy as np
 import json
 import altair as alt
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import time
+import os.path
+
 
 analyzer = SentimentIntensityAnalyzer()
 
@@ -11,9 +15,22 @@ st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵�
 st.title("Project CAV²R⛏️")
 st.header("Comment Analyzer & Visualizer")
 
-choice = st.session_state.channelkey
+channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
+choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
+if 'channelkey' not in st.session_state:
+    choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
+    st.session_state['channelkey'] = choice
+with st.sidebar:
+    st.success(f"You have chosen {choice}!")
+    st.write('session state: ', st.session_state.channelkey)
+# choice = st.session_state.channelkey
 channel = choice.replace(' ', '_').lower()
     #st.write(channel)
+
+
+
+
+
 
 
     
@@ -52,27 +69,55 @@ video_stats = stats['video_data']
 #order=viewCount | col=views
 def visualize_before_sentiment(order: str, col:str):
     st.subheader(f"{choice} videos ordered by {order}")
-    sorted_vids = sorted(video_stats.items(), key=lambda item: int(item[1][order]), reverse=True)
+    
+    
+    # if order in
+    #     sorted_vids = sorted(video_stats.items(), key=lambda item: int(item[1][order]), reverse=True)
+    sorted_vids = video_stats.items()
+    # pd.DataFrame(sorted_vids)
+
     stats = []
 
     for vid in sorted_vids:
         video_id = vid[0]
         title = vid[1]['title']
-        views = int(vid[1]['viewCount'])
-        likes = int(vid[1]['likeCount'])
+        #views = int(vid[1]['viewCount'])
+        #likes = int(vid[1]['likeCount'])
+
+
         
         key = "commentCount"
         if key in vid[1].keys():
             comments = int(vid[1]["commentCount"]) 
         else:
             comments = 0
+
+        key = "viewCount"
+        if key in vid[1].keys():
+            views = int(vid[1]["viewCount"]) 
+        else:
+            views = 0
+
+        key = "likeCount"
+        if key in vid[1].keys():
+            likes = int(vid[1]["likeCount"]) 
+        else:
+            likes = 0
         
 
         duration = vid[1]['duration']
         stats.append([video_id, title, views, likes, comments, duration])
+    
+        
+
 
     df = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
+    # df.drop(df.loc[df['comments']==0].index, inplace=True)
+    # df.drop(df.loc[df['views']==0].index, inplace=True)
+    # df.drop(df.loc[df['likes']==0].index, inplace=True)
+    df = df.sort_values(by=[col], ascending=False)
     df.drop(df.loc[df['comments']==0].index, inplace=True)
+    df = df.reset_index(drop=True)
 
     topten = df.head(10)
   
@@ -120,17 +165,23 @@ def visualize_after_sentiment(top10, by: str):
     with st.spinner('Please wait... analyzing'):
         time.sleep(20)
 
-    top10.drop(top10.loc[top10['comments']==0].index, inplace=True)
+    #top10.drop(top10.loc[top10['comments']==0].index, inplace=True)
 
     overallpositivepercentage = []
     overallneutralpercentage = []
     overallnegativepercentage = []
 
-    for index, row in top10.iterrows():
-        videoID = row['video_id']
-        video_title = row['title']
+    for videoID in top10['video_id']:
+        # videoID = row['video_id']
+        # video_title = row['title']
         #st.write(videoID, video_title)
-        dataframe = pd.read_json(f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json')
+        filepath = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json'
+        if os.path.exists(filepath):
+            dataframe = pd.read_json(filepath)
+        else:
+            continue
+
+        #dataframe = pd.read_json(f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json')
         #st.dataframe(dataframe)
         positive = []
         negative = []
@@ -182,11 +233,16 @@ def visualize_after_sentiment(top10, by: str):
         overallpositivepercentage.append(totalpositivesentiment)
         overallneutralpercentage.append(totalneutralsentiment)
         overallnegativepercentage.append(totalnegativesentiment)
+      
+        
+    
 
 
-    top10["overallpositivepercentage"] = overallpositivepercentage
-    top10["overallneutralpercentage"] = overallneutralpercentage
-    top10["overallnegativepercentage"] = overallnegativepercentage
+    top10["overallpositivepercentage"] = pd.Series(overallpositivepercentage)
+    top10["overallneutralpercentage"] = pd.Series(overallneutralpercentage)
+    top10["overallnegativepercentage"] = pd.Series(overallnegativepercentage)
+    top10 = top10.fillna(0)
+    #top10 = top10.replace(np.nan, 0)
 
     st.write(alt.Chart(top10).mark_bar().encode(
     x=alt.X('title', sort=None),
@@ -196,13 +252,15 @@ def visualize_after_sentiment(top10, by: str):
     st.write(alt.Chart(top10).mark_bar().encode(
     x=alt.X('title', sort=None),
     y='overallpositivepercentage'))
-    st.caption("Fig. 4")
+    st.caption("Fig 4")
+    # if top10[top10.overallpositivepercentage == 'NaN']:
+    #     st.caption("sentiment scores are NaN because their video comment files do not exist/were not extracted (API quota exceeded)")
 
     top10 = top10.sort_values(by=['overallpositivepercentage'], ascending=False)
     st.subheader(f"{choice} videos sorted by highest positive sentiment score")
     #st.dataframe(topten)
     st.dataframe(top10.style.highlight_max(axis='columns', subset=['overallpositivepercentage']))
-    st.caption("Fig. 5: videos that have comments disabled (comments == 0) were filtered out")
+    st.caption("Fig. 5")
     
 
     
@@ -232,7 +290,7 @@ def visualize_after_sentiment(top10, by: str):
     st.subheader("Data Correlations")
     st.write(top10.corr())
     st.caption("Fig. 8")
-
+        
 
 
 

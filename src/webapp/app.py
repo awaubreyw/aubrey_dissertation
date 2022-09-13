@@ -18,11 +18,11 @@ def main():
     
     with st.container():
         data = pd.read_json('C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json')
-        df = pd.DataFrame(data)
-        filtereddf = df.filter(items=['channel_title', 'joined', 'total_videos', 'subs'])
-        
         #st.write(data)
-        st.dataframe(filtereddf.style.highlight_max(axis='rows', subset=['subs', 'total_videos']))
+        df = pd.DataFrame(data)
+        st.dataframe(df.style.highlight_max(axis='rows', subset=['subs', 'total_videos']))
+        # filtereddf = df.filter(items=['channel_title', 'joined', 'total_videos', 'subs'])
+        # st.dataframe(filtereddf.style.highlight_max(axis='rows', subset=['subs', 'total_videos']))
         with st.expander("Details"):
             st.write("""
                 The dataframe above contains the (currently static) channel stats as an overview. The maximum number of subscribers and total video uploads are highlighted in yellow :yellow_heart:
@@ -57,9 +57,9 @@ def main():
     
     st.sidebar.info("Select a page above after choosing one channel.")
     
-    channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
+    channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
 
-    choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
+    choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
     #or choice = st.sidebar.radio(channels, key='channelkey')
 
 
