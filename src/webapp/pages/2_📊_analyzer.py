@@ -32,7 +32,7 @@ channel = choice.replace(' ', '_').lower()
 data = None
 
 # file = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json' 
-file = f'../../results/{channel}.json' 
+file = f'../../../results/{channel}.json' 
 
 with open(file, 'r') as f:
     data = json.load(f)
@@ -116,7 +116,7 @@ def read_video_data_loop(top10):
     overallnegativepercentage = []
 
     for videoID in top10['video_id']:
-        filepath = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json'
+        filepath = f'../../../results/{channel}/{videoID}.json'
         if os.path.exists(filepath):
             dataframe = pd.read_json(filepath)   
         else:
