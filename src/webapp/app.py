@@ -4,6 +4,7 @@ import pandas as pd
 from streamlit_option_menu import option_menu
 import os.path
 import json
+import urllib.request
 
 st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") 
 
@@ -20,14 +21,25 @@ def main():
         # data = pd.read_json('C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json')
         # data = os.path.relpath("C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json", "C:/xampp\htdocs/aubrey_dissertation/src/webapp/app.py")
         # data = pd.read_json("../constants/channel_info.json")
-        data = pd.read_json("https://github.com/awaubreyw/aubrey_dissertation/blob/main/src/constants/channel_info.json")
+
+        with open("src/webapp/../constants/channel_info.json", "r") as f:
+            data = json.loads(f.read())
+        df = pd.DataFrame(data)
+        
+        
+
+        # req = urllib.request.Request("https://github.com/awaubreyw/aubrey_dissertation/blob/main/src/constants/channel_info.json")
+        # opener = urllib.request.build_opener()
+        # f = opener.open(req)
+        # jsonn = json.loads(f.read())
+        
         
         # filename = "../constants/channel_info.json"
         # with open(filename) as f:
         #     df = pd.DataFrame([json.loads(l) for l in f.readlines()])
         # Shows data frame as expected
 
-        df = pd.DataFrame(data)
+        # df = pd.DataFrame(data)
         st.dataframe(df.style.highlight_max(axis='rows', subset=['subs', 'total_videos']))
         
         with st.expander("Details"):
