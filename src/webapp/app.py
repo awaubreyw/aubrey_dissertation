@@ -16,7 +16,7 @@ def main():
     
     with st.container():
         # data = pd.read_json('C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json')
-        data = pd.read_json('./constants/channel_info.json')
+        data = pd.read_json('../../constants/channel_info.json')
 
         df = pd.DataFrame(data)
         st.dataframe(df.style.highlight_max(axis='rows', subset=['subs', 'total_videos']))
