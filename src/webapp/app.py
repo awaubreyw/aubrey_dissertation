@@ -14,7 +14,7 @@ def main():
         
         st.header("Welcome!")
         st.subheader("This web page presents to you 17 educational YouTube channels and their data.")
-        st.info("For more info: check out other pages on the sidebar")
+        st.info("For more info: check out other pages on the sidebar", icon="ℹ️")
     
     with st.container():
         data = pd.read_json('C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json')
@@ -55,7 +55,7 @@ def main():
 
 
     
-    st.sidebar.info("Select a page above after choosing one channel.")
+    st.sidebar.info("Select a page above after choosing one channel.", icon="ℹ️")
     
     channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
 

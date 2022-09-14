@@ -30,26 +30,37 @@ channel = choice.replace(' ', '_').lower()
 
 
 
-
-
-
-    
-
-file = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json' 
-# channel_data = pd.read_json(file)
-# st.write(channel_data.head(10))
-
+# @st.cache(allow_output_mutation=True)
+# def read_channel_data(channelfile):
 data = None
-
+file = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json' 
+# with open(channelfile, 'r') as f:
 with open(file, 'r') as f:
     data = json.load(f)
-    #st.json(data)
-
 channel_id, stats = data.popitem()
 
 channel_stats = stats['channel_statistics']
 
 video_stats = stats['video_data']
+# return (video_stats)
+
+#video_stats = read_channel_data(file)
+
+# channel_data = pd.read_json(file)
+# st.write(channel_data.head(10))
+
+
+# data = None
+
+# with open(file, 'r') as f:
+#     data = json.load(f)
+#     #st.json(data)
+
+# channel_id, stats = data.popitem()
+
+# channel_stats = stats['channel_statistics']
+
+# video_stats = stats['video_data']
 
 #opt = st.radio('Analyses of top 10 videos based on: ', ['viewCount', 'likeCount'])
 
@@ -153,24 +164,11 @@ def visualize_before_sentiment(order: str, col:str):
 
 
 
-
-
-
-
-
-
-
-#second set of cola and colb
-def visualize_after_sentiment(top10, by: str):
-    with st.spinner('Please wait... analyzing'):
-        time.sleep(20)
-
-    #top10.drop(top10.loc[top10['comments']==0].index, inplace=True)
-
+@st.cache(allow_output_mutation=True)
+def read_video_data_loop(top10):
     overallpositivepercentage = []
     overallneutralpercentage = []
     overallnegativepercentage = []
-
     for videoID in top10['video_id']:
         # videoID = row['video_id']
         # video_title = row['title']
@@ -178,6 +176,7 @@ def visualize_after_sentiment(top10, by: str):
         filepath = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json'
         if os.path.exists(filepath):
             dataframe = pd.read_json(filepath)
+            
         else:
             continue
 
@@ -223,20 +222,117 @@ def visualize_after_sentiment(top10, by: str):
 
         totalrows = len(dataframe['sentiment'])
 
-        totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
+        # totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
         
-        totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
+        # totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
 
-        totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
+        # totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
+
+        if dataframe['sentiment'].str.contains('positive').any():
+            totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
+            overallpositivepercentage.append(totalpositivesentiment)
+        if dataframe['sentiment'].str.contains('negative').any():
+            totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
+            overallnegativepercentage.append(totalnegativesentiment)
+        if dataframe['sentiment'].str.contains('neutral').any():        
+            totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
+            overallneutralpercentage.append(totalneutralsentiment)
+
+
+
+
+
 
         #averagedsentiments = pd.Series({"positive%": topten, "neutral%": totalneutralsentiment, "negative%": totalnegativesentiment})
-        overallpositivepercentage.append(totalpositivesentiment)
-        overallneutralpercentage.append(totalneutralsentiment)
-        overallnegativepercentage.append(totalnegativesentiment)
+        # overallpositivepercentage.append(totalpositivesentiment)
+        # overallneutralpercentage.append(totalneutralsentiment)
+        # overallnegativepercentage.append(totalnegativesentiment)
+    
+    return overallpositivepercentage, overallneutralpercentage, overallnegativepercentage
+
+
+
+
+
+
+#second set of cola and colb
+def visualize_after_sentiment(top10, by: str):
+    with st.spinner('Please wait... analyzing'):
+        time.sleep(20)
+
+
+
+    # overallpositivepercentage = []
+    # overallneutralpercentage = []
+    # overallnegativepercentage = []
+
+
+
+    # for videoID in top10['video_id']:
+
+    #     filepath = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json'
+    #     if os.path.exists(filepath):
+    #         dataframe = pd.read_json(filepath)
+            
+    #     else:
+    #         continue
+
+    #     #dataframe = pd.read_json(f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json')
+    #     #st.dataframe(dataframe)
+    #     positive = []
+    #     negative = []
+    #     neutral = []
+    #     compound = []
+    #     sentiment = []
+
+    #     for line in range(dataframe.shape[0]): 
+
+    #         comments = dataframe.iloc[line, 1] 
+    #         comments_analyzed = analyzer.polarity_scores(comments)
+
+        
+    #         if comments_analyzed["compound"] >= 0.05:
+    #             eachsentiment = 'positive'
+    #         elif comments_analyzed["compound"] <= -0.05:
+    #             eachsentiment = 'negative'
+    #         else:
+    #             eachsentiment = 'neutral'
+            
+    #         negative.append(comments_analyzed["neg"])
+
+    #         positive.append(comments_analyzed["pos"])
+        
+
+    #         neutral.append(comments_analyzed["neu"])
+        
+
+    #         compound.append(comments_analyzed["compound"])
+    
+
+    #         sentiment.append(eachsentiment)
+
+    #     dataframe["negative"] = negative 
+    #     dataframe["neutral"] = neutral
+    #     dataframe["positive"] = positive
+    #     dataframe["compound"] = compound
+    #     dataframe["sentiment"] = sentiment
+
+    #     totalrows = len(dataframe['sentiment'])
+
+    #     totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
+        
+    #     totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
+
+    #     totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
+
+    #     #averagedsentiments = pd.Series({"positive%": topten, "neutral%": totalneutralsentiment, "negative%": totalnegativesentiment})
+    #     overallpositivepercentage.append(totalpositivesentiment)
+    #     overallneutralpercentage.append(totalneutralsentiment)
+    #     overallnegativepercentage.append(totalnegativesentiment)
       
         
     
-
+    overallpositivepercentage, overallneutralpercentage, overallnegativepercentage = read_video_data_loop(top10)
 
     top10["overallpositivepercentage"] = pd.Series(overallpositivepercentage)
     top10["overallneutralpercentage"] = pd.Series(overallneutralpercentage)
