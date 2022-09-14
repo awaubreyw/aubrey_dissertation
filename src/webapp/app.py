@@ -22,8 +22,9 @@ def main():
         # data = os.path.relpath("C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json", "C:/xampp\htdocs/aubrey_dissertation/src/webapp/app.py")
         # data = pd.read_json("../constants/channel_info.json")
 
-        with open("src/webapp/../constants/channel_info.json", "r") as f:
-            data = json.loads(f.read())
+        # with open("src/webapp/../constants/channel_info.json", "r") as f:
+        #     data = json.loads(f.read())
+        data = pd.read_json("src/webapp/../constants/channel_info.json")
         df = pd.DataFrame(data)
         
         
