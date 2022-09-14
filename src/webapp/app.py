@@ -19,7 +19,7 @@ def main():
     with st.container():
         # data = pd.read_json('C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json')
         # data = os.path.relpath("C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json", "C:/xampp\htdocs/aubrey_dissertation/src/webapp/app.py")
-        filename = '..\..\constants\channel_info.json'
+        filename = '../../constants/channel_info.json'
         with open(filename) as f:
             df = pd.DataFrame([json.loads(l) for l in f.readlines()])
 # Shows data frame as expected
