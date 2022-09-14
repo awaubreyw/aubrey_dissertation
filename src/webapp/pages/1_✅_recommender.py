@@ -45,7 +45,7 @@ channel = choice.replace(' ', '_').lower()
 
 
 # file = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json' 
-file = f'../../results/{channel}.json' 
+file = os.path.relpath(f"C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json", "C:\xampp\htdocs\aubrey_dissertation\src\webapp\pages\_recommender.py")
 
 data = None
 
@@ -101,7 +101,8 @@ def recommend_videos(df_arg):
     overallnegativepercentage = []
 
     for videoID in df_arg['video_id']:
-        filepath = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json'
+        # filepath = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json'
+        filepath = os.path.relpath(f"C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json", "C:\xampp\htdocs\aubrey_dissertation\src\webapp\pages\_recommender.py")
         if os.path.exists(filepath):
             dataframe = pd.read_json(filepath)
         else:
