@@ -44,7 +44,8 @@ channel = choice.replace(' ', '_').lower()
 
 
 
-file = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json' 
+# file = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json' 
+file = f'../../results/{channel}.json' 
 
 data = None
 

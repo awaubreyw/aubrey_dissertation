@@ -31,7 +31,8 @@ channel = choice.replace(' ', '_').lower()
 
 data = None
 
-file = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json' 
+# file = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json' 
+file = f'../../results/{channel}.json' 
 
 with open(file, 'r') as f:
     data = json.load(f)
