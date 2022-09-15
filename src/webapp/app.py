@@ -97,8 +97,8 @@ def main():
     if 'channelkey' not in st.session_state:
         st.session_state['channelkey'] = choice
     
-    # if choice != st.session_state['channelkey']:
-    #     st.session_state['channelkey'] = choice
+    if choice != st.session_state['channelkey']:
+        st.session_state['channelkey'] = choice
     
     with st.sidebar:
         st.success(f"You have chosen {choice}!")
