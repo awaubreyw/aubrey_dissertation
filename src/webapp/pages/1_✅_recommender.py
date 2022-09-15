@@ -288,12 +288,15 @@ if userinput:
     top10val, df_val = recommend_videos_part_1(df)
     allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
     searchedresult = search(userinput, st.session_state['title_inverted_index'])
-
     for result, col in zip(searchedresult, cols):
-        for vidid in allvids:
-            if result == vidid:
-                with col:
-                    st_player(f"https://www.youtube.com/watch?v={result}")
+        with col:
+            st_player(f"https://www.youtube.com/watch?v={result}")
+            
+    # for result, col in zip(searchedresult, cols):
+    #     for vidid in allvids:
+    #         if result == vidid:
+    #             with col:
+    #                 st_player(f"https://www.youtube.com/watch?v={result}")
 
     
     # for vidid in allvids:
