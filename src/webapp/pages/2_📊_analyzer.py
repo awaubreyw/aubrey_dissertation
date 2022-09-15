@@ -212,6 +212,7 @@ def visualize_after_sentiment(top10, by: str):
 
     ax.axis('equal')
     st.pyplot(fig)
+    st.caption("Normalized sentiment scoring of the above YouTube video comments")
     # plt.tight_layout()
     # plt.show()
 
