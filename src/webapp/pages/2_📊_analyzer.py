@@ -47,7 +47,7 @@ video_stats = stats['video_data']
 
 #function for first set of cola and colb
 def visualize_before_sentiment(order: str, col:str):
-    st.subheader(f"{choice} videos ordered by {order}")
+    st.subheader(f"{choice} top 10 videos ordered by {order}")
 
     sorted_vids = video_stats.items()
 
@@ -116,7 +116,9 @@ def read_video_data_loop(top10):
     overallneutralpercentage = []
     overallnegativepercentage = []
 
+    
     for videoID in top10['video_id']:
+        
         filepath = f'src/webapp/pages/../../results/{channel}/{videoID}.json'
         if os.path.exists(filepath):
             dataframe = pd.read_json(filepath)   
@@ -173,8 +175,8 @@ def read_video_data_loop(top10):
             totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
             overallneutralpercentage.append(totalneutralsentiment)
     
-    return dataframe, overallpositivepercentage, overallneutralpercentage, overallnegativepercentage
-
+    # return dataframe, overallpositivepercentage, overallneutralpercentage, overallnegativepercentage
+    return overallpositivepercentage, overallneutralpercentage, overallnegativepercentage
 
 
 
@@ -185,7 +187,54 @@ def visualize_after_sentiment(top10, by: str):
     with st.spinner('Please wait... analyzing'):
         time.sleep(20)      
     
-    dataframe, overallpositivepercentage, overallneutralpercentage, overallnegativepercentage = read_video_data_loop(top10)
+    overallpositivepercentage, overallneutralpercentage, overallnegativepercentage = read_video_data_loop(top10)
+    
+    onevidopt = st.selectbox(f'Choose one {choice} video for sentiment analysis results: ', top10['video_id'])
+    
+    filepath = f'src/webapp/pages/../../results/{channel}/{onevidopt}.json'
+    if os.path.exists(filepath):
+        dataframe = pd.read_json(filepath)   
+    else:
+        st.warning("Choose another one. The comment file for that video was not extracted/is not in directory")
+        pass
+
+    positive = []
+    negative = []
+    neutral = []
+    compound = []
+    sentiment = []
+
+    for line in range(dataframe.shape[0]): 
+
+        comments = dataframe.iloc[line, 1] 
+        comments_analyzed = analyzer.polarity_scores(comments)
+
+    
+        if comments_analyzed["compound"] >= 0.05:
+            eachsentiment = 'positive'
+        elif comments_analyzed["compound"] <= -0.05:
+            eachsentiment = 'negative'
+        else:
+            eachsentiment = 'neutral'
+        
+        negative.append(comments_analyzed["neg"])
+
+        positive.append(comments_analyzed["pos"])
+    
+
+        neutral.append(comments_analyzed["neu"])
+    
+
+        compound.append(comments_analyzed["compound"])
+
+
+        sentiment.append(eachsentiment)
+
+    dataframe["negative"] = negative 
+    dataframe["neutral"] = neutral
+    dataframe["positive"] = positive
+    dataframe["compound"] = compound
+    dataframe["sentiment"] = sentiment
 
     totalrows = len(dataframe['sentiment'])
 
@@ -202,7 +251,7 @@ def visualize_after_sentiment(top10, by: str):
     st.dataframe(dataframe)
     # st.dataframe(dataframe.style.highlight_max(axis='rows', subset='positive'))
 
-    st.caption("An example of what one YouTube video's comments dataframe after vaderSentiment looks like")
+    # st.caption("An example of what one YouTube video's comments dataframe after vaderSentiment looks like")
     
     labels = ['😃', '☹️', "😐"]
     sizes = [totalpositivesentiment, totalnegativesentiment, totalneutralsentiment]
