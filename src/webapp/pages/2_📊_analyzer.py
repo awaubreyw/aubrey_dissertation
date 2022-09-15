@@ -10,20 +10,27 @@ import os.path
 import matplotlib.pyplot as plt
 
 
-analyzer = SentimentIntensityAnalyzer()
 
+analyzer = SentimentIntensityAnalyzer()
 st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") 
+
+# back = st.button('Go back', on_click=st.experimental_rerun)
+# st.markdown(f"[{back}](https://github.com/awaubreyw/aubrey_dissertation/blob/main/src/webapp/app.py)", unsafe_allow_html=True)
 st.title("Project CAV²R⛏️")
 st.header("Comment Analyzer & Visualizer")
 
 channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
 
-choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
+# choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
 
-if 'channelkey' not in st.session_state:
-    choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
-    
+# if 'channelkey' not in st.session_state:
+#     choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
+
 # choice = st.session_state['channelkey']
+st.session_state.update(st.session_state)
+# if 'channelkey' not in st.session_state:
+#     st.session_state['channelkey'] = choice
+choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
 
 
 with st.sidebar:
@@ -48,6 +55,7 @@ video_stats = stats['video_data']
 
 
 #function for first set of cola and colb
+# @st.cache(allow_output_mutation=True)
 def visualize_before_sentiment(order: str, col:str):
     st.subheader(f"{choice} top 10 videos ordered by {order}")
 
@@ -111,7 +119,8 @@ def visualize_before_sentiment(order: str, col:str):
 
 
 
-@st.cache(allow_output_mutation=True)
+# @st.cache(allow_output_mutation=True)
+@st.cache
 def read_video_data_loop(top10):
 
     overallpositivepercentage = []
@@ -182,20 +191,12 @@ def read_video_data_loop(top10):
 
 
 
-
-
-#second set of cola and colb
-def visualize_after_sentiment(top10, by: str):
-    with st.spinner('Please wait... analyzing'):
-        time.sleep(20)      
-    
-    overallpositivepercentage, overallneutralpercentage, overallnegativepercentage = read_video_data_loop(top10)
-    
-    onevidopt = st.selectbox(f'Choose one {choice} video for sentiment analysis results: ', top10['video_id'])
-    
-    filepath = f'src/webapp/pages/../../results/{channel}/{onevidopt}.json'
+# @st.cache(allow_output_mutation=True)
+@st.cache(suppress_st_warning=True)
+def individual_vid_pie(onevidchoice):
+    filepath = f'src/webapp/pages/../../results/{channel}/{onevidchoice}.json'
     if os.path.exists(filepath):
-        dataframe = pd.read_json(filepath)   
+        onedataframe = pd.read_json(filepath)   
 
         positive = []
         negative = []
@@ -203,9 +204,9 @@ def visualize_after_sentiment(top10, by: str):
         compound = []
         sentiment = []
 
-        for line in range(dataframe.shape[0]): 
+        for line in range(onedataframe.shape[0]): 
 
-            comments = dataframe.iloc[line, 1] 
+            comments = onedataframe.iloc[line, 1] 
             comments_analyzed = analyzer.polarity_scores(comments)
 
         
@@ -229,44 +230,60 @@ def visualize_after_sentiment(top10, by: str):
 
             sentiment.append(eachsentiment)
 
-        dataframe["negative"] = negative 
-        dataframe["neutral"] = neutral
-        dataframe["positive"] = positive
-        dataframe["compound"] = compound
-        dataframe["sentiment"] = sentiment
+        onedataframe["negative"] = negative 
+        onedataframe["neutral"] = neutral
+        onedataframe["positive"] = positive
+        onedataframe["compound"] = compound
+        onedataframe["sentiment"] = sentiment
 
-        totalrows = len(dataframe['sentiment'])
+        totalrows = len(onedataframe['sentiment'])
 
-        if dataframe['sentiment'].str.contains('positive').any():
-            totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
+        if onedataframe['sentiment'].str.contains('positive').any():
+            totalpositivesentiment = ((onedataframe['sentiment'].value_counts()['positive'])/totalrows)*100
             
-        if dataframe['sentiment'].str.contains('negative').any():
-            totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
+        if onedataframe['sentiment'].str.contains('negative').any():
+            totalnegativesentiment = ((onedataframe['sentiment'].value_counts()['negative'])/totalrows)*100
             
-        if dataframe['sentiment'].str.contains('neutral').any():        
-            totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
-            
-        
-        st.dataframe(dataframe)
-        # st.dataframe(dataframe.style.highlight_max(axis='rows', subset='positive'))
-
-        # st.caption("An example of what one YouTube video's comments dataframe after vaderSentiment looks like")
-        
-        labels = ['😃', '☹️', "😐"]
-        sizes = [totalpositivesentiment, totalnegativesentiment, totalneutralsentiment]
-        # colors = ['blue', 'red', 'purple']
-        #patches, texts = plt.pie(sizes, colors=colors, startangle=90)
-        #plt.legend(patches,labels,loc="best")
-        fig = plt.figure(figsize=(10, 4))
-        plt.pie(sizes, labels=labels, autopct='%1.1f%%')
-        # ax.axis('equal')
-        st.pyplot(fig)
-        st.caption("Normalized sentiment scoring of the above YouTube video comments")
-        # plt.tight_layout()
-        # plt.show()
+        if onedataframe['sentiment'].str.contains('neutral').any():        
+            totalneutralsentiment = ((onedataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
     else:
         st.warning("Choose another one. The comment file for that video was not extracted/is not in directory")
         pass
+    return onedataframe, totalpositivesentiment, totalnegativesentiment, totalneutralsentiment
+
+#second set of cola and colb
+
+
+def visualize_after_sentiment(top10, by: str):
+    with st.spinner('Please wait... analyzing'):
+        time.sleep(5)      
+    
+    overallpositivepercentage, overallneutralpercentage, overallnegativepercentage = read_video_data_loop(top10)
+    
+    onevidopt = st.selectbox(f'Choose one {choice} video for sentiment analysis results: ', top10['video_id'])
+    dataframe, totalpositivesentiment, totalnegativesentiment, totalneutralsentiment = individual_vid_pie(onevidopt)
+    
+    
+            
+        
+    st.dataframe(dataframe)
+    # st.dataframe(dataframe.style.highlight_max(axis='rows', subset='positive'))
+
+    # st.caption("An example of what one YouTube video's comments dataframe after vaderSentiment looks like")
+    
+    labels = ['😃', '☹️', "😐"]
+    sizes = [totalpositivesentiment, totalnegativesentiment, totalneutralsentiment]
+    # colors = ['blue', 'red', 'purple']
+    #patches, texts = plt.pie(sizes, colors=colors, startangle=90)
+    #plt.legend(patches,labels,loc="best")
+    fig = plt.figure(figsize=(10, 4))
+    plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+    # ax.axis('equal')
+    st.pyplot(fig)
+    st.caption("Normalized sentiment scoring of the above YouTube video comments")
+    # plt.tight_layout()
+    # plt.show()
+
 
 
 
@@ -328,23 +345,5 @@ with cola:
 with colb:
     visualize_after_sentiment(top10b, 'likes')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# if __name__ == '__visualize_before_sentiment__':
 

@@ -7,6 +7,9 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from streamlit_player import st_player
 import os.path
 
+
+
+@st.cache
 def search(search_string, inverted_index):
     """
     This function takes a string as the first parameter and an inverted index as the second parameter.
@@ -30,28 +33,39 @@ def search(search_string, inverted_index):
 
 
 
-
+st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") 
 analyzer = SentimentIntensityAnalyzer()
 
-st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") 
+# back = st.button('Go back', on_click=st.experimental_rerun)
+# st.markdown(f"[{back}](https://github.com/awaubreyw/aubrey_dissertation/blob/main/src/webapp/app.py)", unsafe_allow_html=True)
 st.title("Project CAV²R⛏️")
 st.header("Video Recommender")
 
 userinput = st.text_input("Search here")
-
+# with open("src/webapp/title_inverted_index.json", "r") as f:
+#     loaded_index = json.load(f)
+#     TITLE_INVERTED_INDEX = {k : set(v) for k, v in loaded_index.items()}
+# if 'title_inverted_index' not in st.session_state:
+#     st.session_state['title_inverted_index'] = TITLE_INVERTED_INDEX
 st.warning(f'Tip: If there are no results with that title. Please search for another', icon="⚠️")
 
 
 channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
 
-choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
 
-if 'channelkey' not in st.session_state:
-    choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
+# choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
+
+# if 'channelkey' not in st.session_state:
+    # choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
 
 # choice = st.session_state['channelkey'] 
 
+# choice = st.session_state['channelkey']
 
+st.session_state.update(st.session_state)
+# if 'channelkey' not in st.session_state:
+#     st.session_state['channelkey'] = choice
+choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
 
 with st.sidebar:
     st.success(f"You have chosen {choice}!")
@@ -120,8 +134,9 @@ df.drop(df.loc[df['comments']==0].index, inplace=True)
 df = df.reset_index(drop=True)
 
 
-@st.cache(allow_output_mutation=True)
-def recommend_videos(df_arg):
+# @st.cache(allow_output_mutation=True)
+@st.cache(suppress_st_warning=True)
+def recommend_videos_part_1(df_arg):
     overallpositivepercentage = []
     overallneutralpercentage = []
     overallnegativepercentage = []
@@ -196,11 +211,16 @@ def recommend_videos(df_arg):
     df_arg = df_arg.sort_values(by=['overallpositivepercentage'], ascending=False)
 
 
-
-
     top10 = df_arg.head(10)
 
+    return top10, df_arg
 
+
+
+
+
+def recommend_videos_part_2(top10, df_arg):
+    
     allvids = []
     alltitles=[]
 
@@ -234,7 +254,9 @@ def recommend_videos(df_arg):
     if len(df_arg[df_arg.overallpositivepercentage > 50]) <= 5:
         allvids = []
         alltitles = []
-        sub = st.subheader(f"{choice} Top 10 videos based on positive sentiment score")
+
+        # sub = st.subheader(f"{choice} Top 10 videos based on positive sentiment score")
+
         n_rows = int(1 + len(top10['overallpositivepercentage']) // n_cols)
         for k, v in top10.iterrows():
             vid = f"https://www.youtube.com/watch?v={v['video_id']}"
@@ -255,58 +277,66 @@ def recommend_videos(df_arg):
             recvidthumbnails.append(url)
             recvidtitles.append(title)
 
-    return recvidthumbnails, recvidtitles, cols
-               
+    return allvids, recvidthumbnails, recvidtitles, cols
+            
 
 
 
 
 
 if userinput:
-    recvidthumbnails, recvidtitles, cols = recommend_videos(df)
-    searchedresult = search(userinput, st.session_state['title_inverted_index'])
-    for result, resultid in searchedresult:
-        if f"https://www.youtube.com/watch?v={resultid}" in recvidthumbnails:
-            for col in cols:
-                st_player(f"https://www.youtube.com/watch?v={resultid}")
-                # st.write(result)
-
-
-    # userinput = userinput.casefold()
-    # df_result_search = pd.DataFrame()
+    # top10val, df_val = recommend_videos_part_1(df)
+    # allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
+    # searchedresult = search(userinput, st.session_state['title_inverted_index'])
+ 
     
-    # inputdict = {}
-    # idlist = []
-    # titlelist = []
+    # for vidid in allvids:
+    #     for result in searchedresult:
+    #         if result in vidid:
+    #             for col in cols:
+    #                 st.markdown(f"[{result}](https://www.youtube.com/watch?v={result})")
+                    # st_player(f"https://www.youtube.com/watch?v={result}")
+                    # st.write(result)
+                
 
-    # if userinput in df['title'].str.casefold().str.contains(userinput).any():
-    #     for index, row in df.iterrows():
-    #         if userinput.casefold() in str(row['title']).casefold():
-    #             idlist.append(row['video_id'])
-    #             titlelist.append(row['title'])
-    #             inputdict = {
-    #                 "video_id": idlist, 
-    #                 "title": titlelist
-    #             }
-    #             df_result_search = pd.DataFrame(inputdict)
+
+    userinput = userinput.casefold()
+    df_result_search = pd.DataFrame()
+    
+    inputdict = {}
+    idlist = []
+    titlelist = []
+
+    if userinput in df['title'].str.casefold().str.contains(userinput).any():
+        for index, row in df.iterrows():
+            if userinput.casefold() in str(row['title']).casefold():
+                idlist.append(row['video_id'])
+                titlelist.append(row['title'])
+                inputdict = {
+                    "video_id": idlist, 
+                    "title": titlelist
+                }
+                df_result_search = pd.DataFrame(inputdict)
 
     # else:
     #     st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
     #     e = KeyError('Please try again')
     #     st.exception(e)
-
+    top10val, df_val = recommend_videos_part_1(df)
+    allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
     # recvidthumbnails, recvidtitles, cols = recommend_videos(df_result_search)
-    # for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
-    #     with col:
-    #         st_player(a)
+    for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
+        with col:
+            st_player(a)
             
-    #         #   st.markdown(f"[Recommend...](https://www.youtube.com/watch?v={id})")
+            #   st.markdown(f"[Recommend...](https://www.youtube.com/watch?v={id})")
 
-    #         st.write(b)
+            st.write(b)
 
 elif userinput == '':
-
-    recvidthumbnails, recvidtitles, cols = recommend_videos(df)
+    top10val, df_val = recommend_videos_part_1(df)
+    allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
+    # allvids, recvidthumbnails, recvidtitles, cols = recommend_videos(df)
     for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
         with col:
             st_player(a)
@@ -316,8 +346,9 @@ elif userinput == '':
             st.write(b)
 
 else:
-
-    recvidthumbnails, recvidtitles, cols = recommend_videos(df)
+    top10val, df_val = recommend_videos_part_1(df)
+    allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
+    # allvids, recvidthumbnails, recvidtitles, cols = recommend_videos(df)
     for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
         with col:
             st_player(a) 
@@ -325,3 +356,7 @@ else:
             #   st.markdown(f"[Recommend...](https://www.youtube.com/watch?v={id})")
 
             st.write(b)
+
+
+
+# st.experimental_rerun()

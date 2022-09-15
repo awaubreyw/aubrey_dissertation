@@ -1,4 +1,3 @@
-#CREDIT Aufar Laksana https://gist.github.com/alaksana96/3bbec4503a3aec64517cd8e408075678
 
 import os
 import json

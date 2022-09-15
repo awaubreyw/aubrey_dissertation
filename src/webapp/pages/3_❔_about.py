@@ -1,5 +1,13 @@
 import streamlit as st
+
+
 st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") 
+
+# back = st.button('Go back', on_click=st.experimental_rerun)
+# # st.markdown(f"[{back}](https://github.com/awaubreyw/aubrey_dissertation/blob/main/src/webapp/app.py)", unsafe_allow_html=True)
+# if st.button():
+#     raise 
+
 st.title("Project CAV²R⛏️")
 st.text("The acronym stands for Comment Analyzer, Visualizer & Video Recommender. Analyzer and Recommender are this app's main features")
 # st.header("Want to know more?")

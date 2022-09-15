@@ -10,7 +10,7 @@ st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵�
 
 
 def main():
-
+    
     with st.container():
         st.title("Project CAV²R⛏️")
         
@@ -21,11 +21,11 @@ def main():
     
 # load the inverted indexes
 # We also convert the lists back to sets (for faster lookup and uniqueness)
-    with open("title_inverted_index.json", "r") as f:
+    with open("src/webapp/title_inverted_index.json", "r") as f:
         loaded_index = json.load(f)
         TITLE_INVERTED_INDEX = {k : set(v) for k, v in loaded_index.items()}
 
-    with open("description_inverted_index.json", "r") as f:
+    with open("src/webapp/description_inverted_index.json", "r") as f:
         loaded_index = json.load(f)
         DESCRIPTION_INVERTED_INDEX = {k : set(v) for k, v in loaded_index.items()}
 
@@ -90,12 +90,13 @@ def main():
     st.sidebar.info("Select a page above after choosing one channel.", icon="ℹ️")
     
     channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
-
-    choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
-
-
+    
+    # choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
+    choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
+    
     if 'channelkey' not in st.session_state:
         st.session_state['channelkey'] = choice
+    
     
     # if choice != st.session_state['channelkey']:
     #     st.session_state['channelkey'] = choice
@@ -105,9 +106,15 @@ def main():
         st.write('session state: ', st.session_state.channelkey)
 
    
+    
+
+   
 
 if __name__ == '__main__':
     main()
+
+# if main():
+#     del st.session_state['channelkey']
 
 #MAIN PAGE
 
