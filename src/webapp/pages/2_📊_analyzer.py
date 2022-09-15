@@ -7,6 +7,7 @@ import altair as alt
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import time
 import os.path
+import matplotlib.pyplot as plt
 
 
 analyzer = SentimentIntensityAnalyzer()
@@ -185,9 +186,39 @@ def visualize_after_sentiment(top10, by: str):
         time.sleep(20)      
     
     dataframe, overallpositivepercentage, overallneutralpercentage, overallnegativepercentage = read_video_data_loop(top10)
+
+    totalrows = len(dataframe['sentiment'])
+
+    if dataframe['sentiment'].str.contains('positive').any():
+        totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
+        
+    if dataframe['sentiment'].str.contains('negative').any():
+        totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
+        
+    if dataframe['sentiment'].str.contains('neutral').any():        
+        totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
+        
     
-    st.dataframe(dataframe.style.highlight_max(axis='rows', subset='positive'))
+    st.dataframe(dataframe)
+    # st.dataframe(dataframe.style.highlight_max(axis='rows', subset='positive'))
+
     st.caption("An example of what one YouTube video's comments dataframe after vaderSentiment looks like")
+    labels = ['😃', '☹️', "😐"]
+    sizes = [totalpositivesentiment, totalnegativesentiment, totalneutralsentiment]
+    # colors = ['blue', 'red', 'purple']
+    #patches, texts = plt.pie(sizes, colors=colors, startangle=90)
+    #plt.legend(patches,labels,loc="best")
+    fig, ax = plt.subplot(sizes, labels, shadow=True, startangle=90)
+
+    ax.axis('equal')
+    st.pyplot(fig)
+    # plt.tight_layout()
+    # plt.show()
+
+
+
+
+
 
     top10["overallpositivepercentage"] = pd.Series(overallpositivepercentage)
     top10["overallneutralpercentage"] = pd.Series(overallneutralpercentage)
