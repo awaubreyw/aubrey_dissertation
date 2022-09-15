@@ -285,13 +285,15 @@ def recommend_videos_part_2(top10, df_arg):
 
 
 if userinput:
-    top10val, df_val = recommend_videos_part_1(df)
-    allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
-    searchedresult = search(userinput, st.session_state['title_inverted_index'])
-    for result, col in zip(searchedresult, cols):
-        with col:
-            st_player(f"https://www.youtube.com/watch?v={result}")
-            
+    # top10val, df_val = recommend_videos_part_1(df)
+    # allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
+    # searchedresult = search(userinput, st.session_state['title_inverted_index'])
+    # urls = []
+    # for result, col in zip(searchedresult, cols):
+    #     with col:
+    #         url=f"https://www.youtube.com/watch?v={result}"
+    #         st_player(url)
+
     # for result, col in zip(searchedresult, cols):
     #     for vidid in allvids:
     #         if result == vidid:
@@ -310,35 +312,35 @@ if userinput:
 
 
     # userinput = userinput.casefold()
-    # df_result_search = pd.DataFrame()
+    df_result_search = pd.DataFrame()
     
-    # inputdict = {}
-    # idlist = []
-    # titlelist = []
+    inputdict = {}
+    idlist = []
+    titlelist = []
 
     # if userinput in df['title'].str.casefold().str.contains(userinput).any():
-    #     for index, row in df.iterrows():
-    #         if userinput.casefold() in str(row['title']).casefold():
-    #             idlist.append(row['video_id'])
-    #             titlelist.append(row['title'])
-    #             inputdict = {
-    #                 "video_id": idlist, 
-    #                 "title": titlelist
-    #             }
-    #             df_result_search = pd.DataFrame(inputdict)
+    for index, row in df.iterrows():
+        if userinput.casefold() in str(row['title']).casefold():
+            idlist.append(row['video_id'])
+            titlelist.append(row['title'])
+            inputdict = {
+                "video_id": idlist, 
+                "title": titlelist
+            }
+            df_result_search = pd.DataFrame(inputdict)
 
-    # # else:
-    # #     st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
-    # #     e = KeyError('Please try again')
-    # #     st.exception(e)
+    # else:
+    #     st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
+    #     e = KeyError('Please try again')
+    #     st.exception(e)
 
-    # top10val, df_val = recommend_videos_part_1(df)
-    # allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
+    top10val, df_val = recommend_videos_part_1(df_result_search)
+    allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
     
-    # for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
-    #     with col:
-    #         st_player(a)
-    #         st.write(b)
+    for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
+        with col:
+            st_player(a)
+            st.write(b)
 
 elif userinput == '':
     top10val, df_val = recommend_videos_part_1(df)
