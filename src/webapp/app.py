@@ -6,13 +6,13 @@ import os.path
 import json
 import urllib.request
 
-st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") 
+st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🎓") 
 
 
 def main():
     
     with st.container():
-        st.title("Project CAV²R⛏️")
+        st.title("🌄Project CAV²R⛏️")
         
         st.header("Welcome!")
         st.subheader("This web page presents to you 17 educational YouTube channels and their data.")

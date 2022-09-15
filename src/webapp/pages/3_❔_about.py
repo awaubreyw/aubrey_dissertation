@@ -1,14 +1,14 @@
 import streamlit as st
 
 
-st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") 
+st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🎓") 
 
 # back = st.button('Go back', on_click=st.experimental_rerun)
 # # st.markdown(f"[{back}](https://github.com/awaubreyw/aubrey_dissertation/blob/main/src/webapp/app.py)", unsafe_allow_html=True)
 # if st.button():
 #     raise 
 
-st.title("Project CAV²R⛏️")
+st.title("🌄Project CAV²R⛏️")
 st.text("The acronym stands for Comment Analyzer, Visualizer & Video Recommender. Analyzer and Recommender are this app's main features")
 # st.header("Want to know more?")
 # st.subheader("This web page explains the purpose and functions of the website and what all of the sections in the navigation are for")
@@ -30,5 +30,5 @@ with st.expander("Analyzer"):
     In the analyzer section, there are loads of data from comment json files being normalized and run through vader behind the scenes. For a cleaner look, users only see the sentiment analyses results and visualizations. CAV²R goes for the numeric approach which is why there are no emphasis on wordclouds or frequency of positive or negative words. Added drop down menu to give users the option to choose on which individual videos to analyze and plot into a pie chart.
     """)
 
-st.markdown(f"[Github repo for code details](https://github.com/awaubreyw/aubrey_dissertation)")
-st.caption("Aubrey Widjaya's Dissertation 2022")
+st.markdown(f"[👨‍💻️Github repo for code details👾](https://github.com/awaubreyw/aubrey_dissertation)")
+st.caption("Aubrey Widjaya - 2021/2022 QUB MSc Software Development - YouTube Sentiment Analysis Dissertation Individual Project")

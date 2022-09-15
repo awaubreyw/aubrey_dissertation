@@ -33,12 +33,12 @@ def search(search_string, inverted_index):
 
 
 
-st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") 
+st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🎓") 
 analyzer = SentimentIntensityAnalyzer()
 
 # back = st.button('Go back', on_click=st.experimental_rerun)
 # st.markdown(f"[{back}](https://github.com/awaubreyw/aubrey_dissertation/blob/main/src/webapp/app.py)", unsafe_allow_html=True)
-st.title("Project CAV²R⛏️")
+st.title("🌄Project CAV²R⛏️")
 st.header("Video Recommender")
 
 userinput = st.text_input("Search here")
