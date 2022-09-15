@@ -15,7 +15,7 @@ def main():
         st.title("🌄Project CAV²R⛏️")
         
         st.header("Welcome!")
-        st.subheader("An introduction to 17 educational YouTube channels and their information.")
+        st.subheader("An introduction to a set of english-speaking educational YouTube channels and their statistics.")
         st.info("For more info: check out other pages on the sidebar", icon="ℹ️")
     
     
@@ -70,7 +70,7 @@ def main():
     
     with st.container():
         st.write("---")
-        st.subheader("Bar charts of 17 channels' stats.")
+        st.subheader("Bar charts of the channels' numerical data.")
         col1, col2 = st.columns(2)
 
         with col1:
