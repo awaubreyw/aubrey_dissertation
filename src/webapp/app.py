@@ -8,6 +8,7 @@ import urllib.request
 
 st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵️‍♀️") 
 
+
 def main():
 
     with st.container():
@@ -17,6 +18,23 @@ def main():
         st.subheader("This web page presents to you 17 educational YouTube channels and their data.")
         st.info("For more info: check out other pages on the sidebar", icon="ℹ️")
     
+    
+# load the inverted indexes
+# We also convert the lists back to sets (for faster lookup and uniqueness)
+    with open("title_inverted_index.json", "r") as f:
+        loaded_index = json.load(f)
+        TITLE_INVERTED_INDEX = {k : set(v) for k, v in loaded_index.items()}
+
+    with open("description_inverted_index.json", "r") as f:
+        loaded_index = json.load(f)
+        DESCRIPTION_INVERTED_INDEX = {k : set(v) for k, v in loaded_index.items()}
+
+    if 'title_inverted_index' not in st.session_state:
+        st.session_state['title_inverted_index'] = TITLE_INVERTED_INDEX
+
+    if 'description_inverted_index' not in st.session_state:
+        st.session_state['description_inverted_index'] = DESCRIPTION_INVERTED_INDEX
+        
     with st.container():
         # data = pd.read_json('C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json')
         # data = os.path.relpath("C:/xampp/htdocs/aubrey_dissertation/src/constants/channel_info.json", "C:/xampp\htdocs/aubrey_dissertation/src/webapp/app.py")
@@ -77,6 +95,9 @@ def main():
 
 
     if 'channelkey' not in st.session_state:
+        st.session_state['channelkey'] = choice
+    
+    if choice != st.session_state['channelkey']:
         st.session_state['channelkey'] = choice
     
     with st.sidebar:

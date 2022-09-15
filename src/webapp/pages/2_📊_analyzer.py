@@ -16,13 +16,7 @@ st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵�
 st.title("Project CAV²R⛏️")
 st.header("Comment Analyzer & Visualizer")
 
-channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
-
-choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
-
-if 'channelkey' not in st.session_state:
-    choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
-    st.session_state['channelkey'] = choice
+choice = st.session_state['channelkey']
 
 with st.sidebar:
     st.success(f"You have chosen {choice}!")

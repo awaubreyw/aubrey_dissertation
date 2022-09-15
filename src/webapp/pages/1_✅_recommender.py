@@ -7,6 +7,27 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from streamlit_player import st_player
 import os.path
 
+def search(search_string, inverted_index):
+    """
+    This function takes a string as the first parameter and an inverted index as the second parameter.
+    It then searches the string in the inverted index
+    It will always try to return at least one result
+    This is an example of a very simple search algorithm
+    """
+    # Its important to lowercase so that we can match things like "Visual" and "visual"
+    tokens = search_string.lower().split() # Split on spaces e.g. ['How', 'to', 'lie', 'using', 'visual', 'proofs']
+
+    document_set = {}
+    for token in tokens:
+        if token in inverted_index.keys():
+            if document_set == {}:
+                document_set = inverted_index[token]
+            else:
+                intersect = set.intersection(document_set, inverted_index[token])
+                document_set = intersect if len(intersect) > 0 else document_set
+            
+    return document_set
+
 
 
 
@@ -17,16 +38,17 @@ st.title("Project CAV²R⛏️")
 st.header("Video Recommender")
 
 userinput = st.text_input("Search here")
+
 st.warning(f'Tip: If there are no results with that title. Please search for another', icon="⚠️")
 
 
-channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
+# channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
 
-choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
+# choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
 
-if 'channelkey' not in st.session_state:
-    choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
-    st.session_state['channelkey'] = choice
+# if 'channelkey' not in st.session_state:
+#     choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
+choice = st.session_state['channelkey'] 
 
 with st.sidebar:
     st.success(f"You have chosen {choice}!")
@@ -238,38 +260,46 @@ def recommend_videos(df_arg):
 
 
 if userinput:
+    recvidthumbnails, recvidtitles, cols = recommend_videos(df)
+    searchedresult = search(userinput, st.session_state['title_inverted_index'])
+    for result, resultid in searchedresult:
+        if f"https://www.youtube.com/watch?v={resultid}" in recvidthumbnails:
+            for col in cols:
+                st_player(f"https://www.youtube.com/watch?v={resultid}")
+                # st.write(result)
 
-    userinput = userinput.casefold()
-    df_result_search = pd.DataFrame()
+
+    # userinput = userinput.casefold()
+    # df_result_search = pd.DataFrame()
     
-    inputdict = {}
-    idlist = []
-    titlelist = []
+    # inputdict = {}
+    # idlist = []
+    # titlelist = []
 
-    if userinput in df['title'].str.casefold().str.contains(userinput).any():
-        for index, row in df.iterrows():
-            if userinput.casefold() in str(row['title']).casefold():
-                idlist.append(row['video_id'])
-                titlelist.append(row['title'])
-                inputdict = {
-                    "video_id": idlist, 
-                    "title": titlelist
-                }
-                df_result_search = pd.DataFrame(inputdict)
+    # if userinput in df['title'].str.casefold().str.contains(userinput).any():
+    #     for index, row in df.iterrows():
+    #         if userinput.casefold() in str(row['title']).casefold():
+    #             idlist.append(row['video_id'])
+    #             titlelist.append(row['title'])
+    #             inputdict = {
+    #                 "video_id": idlist, 
+    #                 "title": titlelist
+    #             }
+    #             df_result_search = pd.DataFrame(inputdict)
 
-    else:
-        st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
-        e = KeyError('Please try again')
-        st.exception(e)
+    # else:
+    #     st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
+    #     e = KeyError('Please try again')
+    #     st.exception(e)
 
-    recvidthumbnails, recvidtitles, cols = recommend_videos(df_result_search)
-    for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
-        with col:
-            st_player(a)
+    # recvidthumbnails, recvidtitles, cols = recommend_videos(df_result_search)
+    # for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
+    #     with col:
+    #         st_player(a)
             
-            #   st.markdown(f"[Recommend...](https://www.youtube.com/watch?v={id})")
+    #         #   st.markdown(f"[Recommend...](https://www.youtube.com/watch?v={id})")
 
-            st.write(b)
+    #         st.write(b)
 
 elif userinput == '':
 
