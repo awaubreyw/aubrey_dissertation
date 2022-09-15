@@ -16,7 +16,8 @@ st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🕵�
 st.title("Project CAV²R⛏️")
 st.header("Comment Analyzer & Visualizer")
 
-choice = st.session_state['channelkey']
+if 'channelkey' not in st.session_state:
+    choice = st.session_state['channelkey']
 
 with st.sidebar:
     st.success(f"You have chosen {choice}!")
