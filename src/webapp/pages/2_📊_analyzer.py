@@ -204,7 +204,7 @@ def visualize_after_sentiment(top10, by: str):
 
     st.caption("An example of what one YouTube video's comments dataframe after vaderSentiment looks like")
     
-    labels = ['😃', '☹️', "😐"]
+    labels = [f'😃{totalpositivesentiment}', f'☹️{totalnegativesentiment}', f"😐{totalneutralsentiment}"]
     sizes = [totalpositivesentiment, totalnegativesentiment, totalneutralsentiment]
     # colors = ['blue', 'red', 'purple']
     #patches, texts = plt.pie(sizes, colors=colors, startangle=90)
