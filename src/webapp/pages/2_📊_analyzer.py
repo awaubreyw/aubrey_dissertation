@@ -18,6 +18,8 @@ st.header("Comment Analyzer & Visualizer")
 
 if 'channelkey' not in st.session_state:
     choice = st.session_state['channelkey']
+    
+st.session_state['channelkey'] = choice
 
 with st.sidebar:
     st.success(f"You have chosen {choice}!")

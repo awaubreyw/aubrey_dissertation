@@ -51,6 +51,8 @@ st.warning(f'Tip: If there are no results with that title. Please search for ano
 if 'channelkey' not in st.session_state:
     choice = st.session_state['channelkey'] 
 
+st.session_state['channelkey'] = choice
+
 with st.sidebar:
     st.success(f"You have chosen {choice}!")
     st.write('session state: ', st.session_state.channelkey)
