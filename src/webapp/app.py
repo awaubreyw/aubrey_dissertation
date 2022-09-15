@@ -15,7 +15,7 @@ def main():
         st.title("🌄Project CAV²R⛏️")
         
         st.header("Welcome!")
-        st.subheader("This web page presents to you 17 educational YouTube channels and their data.")
+        st.subheader("This web page presents to you 17 educational YouTube channels and their stats.")
         st.info("For more info: check out other pages on the sidebar", icon="ℹ️")
     
     

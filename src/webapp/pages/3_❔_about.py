@@ -15,7 +15,7 @@ st.text("The acronym stands for Comment Analyzer, Visualizer & Video Recommender
 
 with st.expander("Purpose"):
     st.write("""
-    Project CAV²R is a Python-based web app that analyzes and visualizes previously extracted YouTube channel data and video data (focused on comments). Another purpose of building this software is to find and recommend the best videos of each and every channel based on what their viewers had to say in the comments section. The belief here is that sentiment should be a significant influencing factor in recommendation algorithms. High numbers of likes, and especially views of YouTube videos, do not always mean high positive sentiments on the quality of those videos' content.\n\n
+    Project CAV²R is a Python-based and visualization-heavy web app that analyzes previously extracted YouTube channel data and video data (focused on comments) with simple, suitable visual graphs. Another purpose of building this software is to find and recommend the best videos of each and every channel based on what their viewers had to say in the comments section. The belief here is that sentiment should be a significant influencing factor in recommendation algorithms. High numbers of likes, and especially views of YouTube videos, do not always mean high positive sentiments on the quality of those videos' content.\n\n
     """)
 with st.expander("App"):
     st.write("""
@@ -27,8 +27,14 @@ with st.expander("Recommender"):
     """)
 with st.expander("Analyzer"):
     st.write("""
-    In the analyzer section, there are loads of data from comment json files being normalized and run through vader behind the scenes. For a cleaner look, users only see the sentiment analyses results and visualizations. CAV²R goes for the numeric approach which is why there are no emphasis on wordclouds or frequency of positive or negative words. Added drop down menu to give users the option to choose on which individual videos to analyze and plot into a pie chart.
+    In the analyzer section, there are loads of data from comment json files being normalized and run through vader behind the scenes. For a cleaner look, users only see the sentiment analyses results and visualizations. CAV²R goes for the numeric approach which is why there are no emphasis on wordclouds or frequency of positive or negative words. Added a drop down menu to give users the option to choose on which individual videos to analyze and plot into a pie chart. There is no genre/category filter because channel keywords and video tags contained too many uncategorizeable terms.
     """)
 
+st.subheader('Contact')
 st.markdown(f"[👨‍💻️Github repo for code details👾](https://github.com/awaubreyw/aubrey_dissertation)")
 st.caption("Aubrey Widjaya - 2021/2022 QUB MSc Software Development - YouTube Sentiment Analysis Dissertation Individual Project")
+
+st.subheader('Citations')
+with st.expander("More"):
+    st.text("""
+    """)
