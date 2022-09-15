@@ -6,7 +6,7 @@ import json
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from streamlit_player import st_player
 import os.path
-
+import time
 
 
 @st.cache
@@ -98,7 +98,9 @@ channel_stats = stats['channel_statistics']
 
 video_stats = stats['video_data']
 
-sub = st.subheader(f"{choice} videos that are considered to be more than 50% positive according to commenters")
+# sub = st.subheader(f"{choice} most enjoyed videos")
+with st.spinner('Please wait... processing'):
+    time.sleep(5) 
 
 sorted_vids = video_stats.items()
 
