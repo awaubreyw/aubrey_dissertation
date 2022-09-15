@@ -42,14 +42,14 @@ userinput = st.text_input("Search here")
 st.warning(f'Tip: If there are no results with that title. Please search for another', icon="⚠️")
 
 
-channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
+# channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
 
-choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
+# choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
 
-if 'channelkey' not in st.session_state:
-    choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
+# if 'channelkey' not in st.session_state:
+#     choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
 
-# choice = st.session_state['channelkey'] 
+choice = st.session_state['channelkey'] 
 
 
 
