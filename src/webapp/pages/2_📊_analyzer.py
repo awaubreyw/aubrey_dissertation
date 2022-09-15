@@ -194,77 +194,77 @@ def visualize_after_sentiment(top10, by: str):
     filepath = f'src/webapp/pages/../../results/{channel}/{onevidopt}.json'
     if os.path.exists(filepath):
         dataframe = pd.read_json(filepath)   
+
+        positive = []
+        negative = []
+        neutral = []
+        compound = []
+        sentiment = []
+
+        for line in range(dataframe.shape[0]): 
+
+            comments = dataframe.iloc[line, 1] 
+            comments_analyzed = analyzer.polarity_scores(comments)
+
+        
+            if comments_analyzed["compound"] >= 0.05:
+                eachsentiment = 'positive'
+            elif comments_analyzed["compound"] <= -0.05:
+                eachsentiment = 'negative'
+            else:
+                eachsentiment = 'neutral'
+            
+            negative.append(comments_analyzed["neg"])
+
+            positive.append(comments_analyzed["pos"])
+        
+
+            neutral.append(comments_analyzed["neu"])
+        
+
+            compound.append(comments_analyzed["compound"])
+
+
+            sentiment.append(eachsentiment)
+
+        dataframe["negative"] = negative 
+        dataframe["neutral"] = neutral
+        dataframe["positive"] = positive
+        dataframe["compound"] = compound
+        dataframe["sentiment"] = sentiment
+
+        totalrows = len(dataframe['sentiment'])
+
+        if dataframe['sentiment'].str.contains('positive').any():
+            totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
+            
+        if dataframe['sentiment'].str.contains('negative').any():
+            totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
+            
+        if dataframe['sentiment'].str.contains('neutral').any():        
+            totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
+            
+        
+        st.dataframe(dataframe)
+        # st.dataframe(dataframe.style.highlight_max(axis='rows', subset='positive'))
+
+        # st.caption("An example of what one YouTube video's comments dataframe after vaderSentiment looks like")
+        
+        labels = ['😃', '☹️', "😐"]
+        sizes = [totalpositivesentiment, totalnegativesentiment, totalneutralsentiment]
+        # colors = ['blue', 'red', 'purple']
+        #patches, texts = plt.pie(sizes, colors=colors, startangle=90)
+        #plt.legend(patches,labels,loc="best")
+        fig = plt.figure(figsize=(10, 4))
+        plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+        # ax.axis('equal')
+        st.pyplot(fig)
+        st.caption("Normalized sentiment scoring of the above YouTube video comments")
+        # plt.tight_layout()
+        # plt.show()
     else:
         st.warning("Choose another one. The comment file for that video was not extracted/is not in directory")
         pass
-
-    positive = []
-    negative = []
-    neutral = []
-    compound = []
-    sentiment = []
-
-    for line in range(dataframe.shape[0]): 
-
-        comments = dataframe.iloc[line, 1] 
-        comments_analyzed = analyzer.polarity_scores(comments)
-
-    
-        if comments_analyzed["compound"] >= 0.05:
-            eachsentiment = 'positive'
-        elif comments_analyzed["compound"] <= -0.05:
-            eachsentiment = 'negative'
-        else:
-            eachsentiment = 'neutral'
-        
-        negative.append(comments_analyzed["neg"])
-
-        positive.append(comments_analyzed["pos"])
-    
-
-        neutral.append(comments_analyzed["neu"])
-    
-
-        compound.append(comments_analyzed["compound"])
-
-
-        sentiment.append(eachsentiment)
-
-    dataframe["negative"] = negative 
-    dataframe["neutral"] = neutral
-    dataframe["positive"] = positive
-    dataframe["compound"] = compound
-    dataframe["sentiment"] = sentiment
-
-    totalrows = len(dataframe['sentiment'])
-
-    if dataframe['sentiment'].str.contains('positive').any():
-        totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
-        
-    if dataframe['sentiment'].str.contains('negative').any():
-        totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
-        
-    if dataframe['sentiment'].str.contains('neutral').any():        
-        totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
-        
-    
-    st.dataframe(dataframe)
-    # st.dataframe(dataframe.style.highlight_max(axis='rows', subset='positive'))
-
-    # st.caption("An example of what one YouTube video's comments dataframe after vaderSentiment looks like")
-    
-    labels = ['😃', '☹️', "😐"]
-    sizes = [totalpositivesentiment, totalnegativesentiment, totalneutralsentiment]
-    # colors = ['blue', 'red', 'purple']
-    #patches, texts = plt.pie(sizes, colors=colors, startangle=90)
-    #plt.legend(patches,labels,loc="best")
-    fig = plt.figure(figsize=(10, 4))
-    plt.pie(sizes, labels=labels, autopct='%1.1f%%')
-    # ax.axis('equal')
-    st.pyplot(fig)
-    st.caption("Normalized sentiment scoring of the above YouTube video comments")
-    # plt.tight_layout()
-    # plt.show()
 
 
 
