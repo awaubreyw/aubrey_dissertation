@@ -203,20 +203,19 @@ def visualize_after_sentiment(top10, by: str):
     # st.dataframe(dataframe.style.highlight_max(axis='rows', subset='positive'))
 
     st.caption("An example of what one YouTube video's comments dataframe after vaderSentiment looks like")
+    
     labels = ['😃', '☹️', "😐"]
     sizes = [totalpositivesentiment, totalnegativesentiment, totalneutralsentiment]
     # colors = ['blue', 'red', 'purple']
     #patches, texts = plt.pie(sizes, colors=colors, startangle=90)
     #plt.legend(patches,labels,loc="best")
-    fig, ax = plt.subplot(sizes, labels, shadow=True, startangle=90)
-
-    ax.axis('equal')
+    fig = plt.figure(figsize=(10, 4))
+    plt.pie(sizes, labels=labels)
+    # ax.axis('equal')
     st.pyplot(fig)
     st.caption("Normalized sentiment scoring of the above YouTube video comments")
     # plt.tight_layout()
     # plt.show()
-
-
 
 
 
