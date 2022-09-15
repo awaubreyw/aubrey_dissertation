@@ -128,8 +128,8 @@ def visualize_before_sentiment(order: str, col:str):
 
 
 
-# @st.cache(allow_output_mutation=True)
-@st.cache
+
+@st.cache(allow_output_mutation=True)
 def read_video_data_loop(top10):
 
     overallpositivepercentage = []

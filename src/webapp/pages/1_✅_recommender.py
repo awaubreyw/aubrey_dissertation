@@ -220,7 +220,7 @@ def recommend_videos_part_1(df_arg):
 
 
 
-
+@st.cache(allow_output_mutation=True)
 def recommend_videos_part_2(top10, df_arg):
     
     allvids = []
