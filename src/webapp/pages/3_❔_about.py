@@ -23,11 +23,12 @@ with st.expander("App"):
     """)
 with st.expander("Recommender"):
     st.write("""
-    In the recommender section, videos of all subjects/genres with the most positive sentiment scores are embedded first. The underlying structure implements code from analyzer. Recommendations are decided on the strengths of videos' normalized positive sentiment scoring which is a result of summing up the frequency of mainly positive comments then comparing the averages on a fair scale.\n\n
+    In the recommender section, videos of all subjects/genres with the most positive sentiment scores are embedded first. The underlying structure implements code from analyzer. Recommendations are decided on the strengths of videos' normalized positive sentiment scoring which is a result of summing up the frequency of mainly positive comments then comparing the averages on a fair scale. Added search bar functionality for users to be able to filter the recommendations of the chosen channel.\n\n
     """)
 with st.expander("Analyzer"):
     st.write("""
-    In the analyzer section, there are loads of data from comment json files being normalized and run through vader behind the scenes. For a cleaner look, users only see the sentiment analyses results and visualizations. CAV²R goes for the numeric approach which is why there are no emphasis on wordclouds or frequency of positive or negative words.
+    In the analyzer section, there are loads of data from comment json files being normalized and run through vader behind the scenes. For a cleaner look, users only see the sentiment analyses results and visualizations. CAV²R goes for the numeric approach which is why there are no emphasis on wordclouds or frequency of positive or negative words. Added drop down menu to give users the option to choose on which individual videos to analyze and plot into a pie chart.
     """)
 
+st.markdown(f"[Github repo for code details](https://github.com/awaubreyw/aubrey_dissertation)")
 st.caption("Aubrey Widjaya's Dissertation 2022")
