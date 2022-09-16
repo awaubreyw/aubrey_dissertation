@@ -318,7 +318,7 @@ def visualize_after_sentiment(top10, by: str):
         # st.caption("Fig. 3")
 
         st.sidebar.write('Filters for comparisons with bar charts📊')
-        sentimentpercentageopt = st.sidebar.radio('Pick one overall video sentiment', ['positive', 'neutral', 'negative'], key={by})
+        sentimentpercentageopt = st.sidebar.radio('Pick one overall video sentiment', ['positive', 'neutral', 'negative'], key={by+by})
         if sentimentpercentageopt == 'positive':
             st.write(alt.Chart(top10).mark_bar().encode(
             x=alt.X('title', sort=None),
@@ -343,7 +343,7 @@ def visualize_after_sentiment(top10, by: str):
     with st.expander('Correlation using scatter plot🔵'):
     # making the scatter plot on latitude and longitude 
         st.sidebar.write('Filters for correlation using scatter plot🔵')
-        scattersentimentpercentageopt = st.sidebar.radio('Pick one overall video sentiment', ['positive', 'neutral', 'negative'], key={by})
+        scattersentimentpercentageopt = st.sidebar.radio('Pick one overall video sentiment', ['positive', 'neutral', 'negative'], key={by+by+by})
         if scattersentimentpercentageopt == 'positive':
             fig = alt.Chart(top10).mark_point().encode(x='overallpositivepercentage',y=by)
         elif scattersentimentpercentageopt == 'neutral':
