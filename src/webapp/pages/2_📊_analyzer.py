@@ -318,8 +318,8 @@ def visualize_after_sentiment(top10, by: str):
         y=by))
         # st.caption("Fig. 3")
 
-        st.sidebar.write('Filters for comparisons with bar charts📊')
-        sentimentpercentageopt = st.sidebar.radio('Pick one overall video sentiment', ['positive', 'neutral', 'negative'], key={by+by})
+        st.write('Filters for comparisons with bar charts📊')
+        sentimentpercentageopt = st.radio('Pick one overall video sentiment', ['positive', 'neutral', 'negative'], key={by+by})
         if sentimentpercentageopt == 'positive':
             st.write(alt.Chart(top10).mark_bar().encode(
             x=alt.X('title', sort=None),
@@ -335,9 +335,9 @@ def visualize_after_sentiment(top10, by: str):
             y='overallnegativepercentage'))
 
     with st.expander('Comparisons with line chart📈'):
-        st.sidebar.write('Filters for comparisons with line chart📈')
-        multisentimentpercentageopt = st.sidebar.multiselect('Pick any video sentiment(s)',
-        options=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'], key={by+'key'})
+        st.write('Filters for comparisons with line chart📈')
+        multisentimentpercentageopt = st.multiselect('Pick any video sentiment(s)',
+        options=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'], key={by+'key'}, default=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'])
         # multiselecttop10 = top10.query("top10.columns==@multisentimentpercentageopt")
         st.line_chart(top10, x='title', y=list(multisentimentpercentageopt))
         
@@ -347,8 +347,8 @@ def visualize_after_sentiment(top10, by: str):
 
     with st.expander('Correlation using scatter plot🔵'):
     # making the scatter plot on latitude and longitude 
-        st.sidebar.write('Filters for correlation using scatter plot🔵')
-        scattersentimentpercentageopt = st.sidebar.radio('Pick one overall video sentiment', ['positive', 'neutral', 'negative'], key={by+by+by})
+        st.write('Filters for correlation using scatter plot🔵')
+        scattersentimentpercentageopt = st.radio('Pick one overall video sentiment', ['positive', 'neutral', 'negative'], key={by+by+by})
         if scattersentimentpercentageopt == 'positive':
             fig = alt.Chart(top10).mark_point().encode(x='overallpositivepercentage',y=by)
         elif scattersentimentpercentageopt == 'neutral':
