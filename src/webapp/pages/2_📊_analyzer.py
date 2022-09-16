@@ -279,7 +279,13 @@ def visualize_after_sentiment(top10, by: str):
     
     picker = st.radio('Pick one visual', ['dataframe', 'pie chart'], key={by})
     if picker == 'dataframe':
-        st.dataframe(dataframe)
+        with st.expander:
+            secondpicker = st.multiselect('Pick any comment sentiment(s)',
+            options=dataframe['sentiment'].unique(), key={by+'firstkey'}, default=dataframe['sentiment'].unique())
+            modifieddataframe = dataframe.query('sentiment == @secondpicker')
+            modifieddataframe = modifieddataframe.sort_values(by=['sentiment'], ascending=False)
+            st.dataframe(modifieddataframe)
+
     # st.dataframe(dataframe.style.highlight_max(axis='rows', subset='positive'))
 
     # st.caption("An example of what one YouTube video's comments dataframe after vaderSentiment looks like")
@@ -352,7 +358,7 @@ def visualize_after_sentiment(top10, by: str):
     with st.expander('Comparisons with line chart📈'):
         st.write('Filters for comparisons with line chart📈')
         multisentimentpercentageopt = st.multiselect('Pick any video sentiment(s)',
-        options=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'], key={by+'key'}, default=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'])
+        options=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'], key={by+'secondkey'}, default=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'])
         # multiselecttop10 = top10.query("top10.columns==@multisentimentpercentageopt")
         st.line_chart(top10, x='title', y=list(multisentimentpercentageopt), use_container_width=True)
         
