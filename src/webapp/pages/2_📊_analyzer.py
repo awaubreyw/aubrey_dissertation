@@ -283,7 +283,7 @@ def visualize_after_sentiment(top10, by: str):
             secondpicker = st.multiselect('Pick any comment sentiment(s)',
             options=dataframe['sentiment'].unique(), key={by+'firstkey'}, default=dataframe['sentiment'].unique())
             modifieddataframe = dataframe.query('sentiment == @secondpicker')
-            modifieddataframe = modifieddataframe.sort_values(by=['sentiment'], ascending=False)
+            modifieddataframe = modifieddataframe.sort_values(by=['compound'], ascending=False)
             st.dataframe(modifieddataframe)
 
     # st.dataframe(dataframe.style.highlight_max(axis='rows', subset='positive'))
