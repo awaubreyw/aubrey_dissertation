@@ -1,4 +1,5 @@
 
+from audioop import mul
 from email.policy import default
 import streamlit as st
 import pandas as pd
@@ -336,8 +337,12 @@ def visualize_after_sentiment(top10, by: str):
     with st.expander('Comparisons with line chart📈'):
         st.sidebar.write('Filters for comparisons with line chart📈')
         multisentimentpercentageopt = st.sidebar.multiselect('Pick any video sentiment(s)',
-        options=['positive', 'neutral', 'negative'], default=['positive', 'neutral', 'negative'], key={by+'key'})
-        st.line_chart(top10, x='title', y=multisentimentpercentageopt)
+        options=['overallpositivesentiment', 'overallneutralsentiment', 'overallnegativesentiment'], key={by+'key'})
+        multiselecttop10 = top10.query(f"{top10.columns}==@multisentimentpercentageopt")
+        st.line_chart(multiselecttop10, x='title', y=list(multisentimentpercentageopt))
+        
+
+        
         # st.caption("Fig. 6")
 
     with st.expander('Correlation using scatter plot🔵'):
