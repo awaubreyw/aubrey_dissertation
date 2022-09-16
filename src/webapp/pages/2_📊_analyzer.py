@@ -308,38 +308,53 @@ def visualize_after_sentiment(top10, by: str):
     
     top10 = top10.sort_values(by=['overallpositivepercentage'], ascending=False)
     
-    st.subheader(f"Overall Sentiments of {choice} Videos\n\n from most positive to least")
+    st.subheader(f"Overall Sentiments of {choice} Videos\n\n from most positive to least (similar logic used in recommender)")
     
     st.dataframe(top10.style.highlight_max(axis='columns', subset=['overallpositivepercentage']))
     # st.caption("Fig. 5")
     with st.expander('Comparisons with bar charts📊'):
-        st.write(alt.Chart(top10).mark_bar().encode(
-        x=alt.X('title', sort=None),
-        y=by))
+        # st.write(alt.Chart(top10).mark_bar().encode(x=alt.X('title', sort=None),y=by))
         # st.caption("Fig. 3")
+        # st.altair_chart(alt.Chart(top10).mark_bar().encode(
+        # x=alt.X('title', sort=None),
+        # y=by), use_container_width=True)
 
         st.write('Filters for comparisons with bar charts📊')
         sentimentpercentageopt = st.radio('Pick one overall video sentiment', ['positive', 'neutral', 'negative'], key={by+by})
         if sentimentpercentageopt == 'positive':
-            st.write(alt.Chart(top10).mark_bar().encode(
-            x=alt.X('title', sort=None),
-            y='overallpositivepercentage'))
+            # st.write(alt.Chart(top10).mark_bar().encode(
+            # x=alt.X('title', sort=None),
+            # y='overallpositivepercentage'))
             # st.caption("Fig 4")
+            st.altair_chart(alt.Chart(top10).mark_bar().encode(
+            x=alt.X('title', sort=None),
+            y='overallpositivepercentage'), use_container_width=True)
         elif sentimentpercentageopt == 'neutral':
-            st.write(alt.Chart(top10).mark_bar().encode(
+            # st.write(alt.Chart(top10).mark_bar().encode(
+            # x=alt.X('title', sort=None),
+            # y='overallneutralpercentage'))
+            st.altair_chart(alt.Chart(top10).mark_bar().encode(
             x=alt.X('title', sort=None),
-            y='overallneutralpercentage'))
+            y='overallneutralpercentage'), use_container_width=True)
         else:
-            st.write(alt.Chart(top10).mark_bar().encode(
+            # st.write(alt.Chart(top10).mark_bar().encode(
+            # x=alt.X('title', sort=None),
+            # y='overallnegativepercentage'))
+            st.altair_chart(alt.Chart(top10).mark_bar().encode(
             x=alt.X('title', sort=None),
-            y='overallnegativepercentage'))
+            y='overallnegativepercentage'), use_container_width=True)
+        # st.write(alt.Chart(top10).mark_bar().encode(x=alt.X('title', sort=None),y=by))
+        # st.caption("Fig. 3")
+        st.altair_chart(alt.Chart(top10).mark_bar().encode(
+        x=alt.X('title', sort=None),
+        y=by), use_container_width=True)
 
     with st.expander('Comparisons with line chart📈'):
         st.write('Filters for comparisons with line chart📈')
         multisentimentpercentageopt = st.multiselect('Pick any video sentiment(s)',
         options=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'], key={by+'key'}, default=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'])
         # multiselecttop10 = top10.query("top10.columns==@multisentimentpercentageopt")
-        st.line_chart(top10, x='title', y=list(multisentimentpercentageopt))
+        st.line_chart(top10, x='title', y=list(multisentimentpercentageopt), use_container_width=True)
         
 
         
@@ -355,7 +370,7 @@ def visualize_after_sentiment(top10, by: str):
             fig = alt.Chart(top10).mark_point().encode(x='overallneutralpercentage',y=by)
         else:
             fig = alt.Chart(top10).mark_point().encode(x='overallnegativepercentage',y=by)
-        st.altair_chart(fig)
+        st.altair_chart(fig, use_container_width=True)
     # st.caption("Fig. 7")
 # making the regression line using transform_regression  
 # function and add with the scatter plot 
