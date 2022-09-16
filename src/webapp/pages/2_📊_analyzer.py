@@ -1,4 +1,5 @@
 
+from email.policy import default
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -316,18 +317,39 @@ def visualize_after_sentiment(top10, by: str):
         y=by))
         # st.caption("Fig. 3")
 
-        st.write(alt.Chart(top10).mark_bar().encode(
-        x=alt.X('title', sort=None),
-        y='overallpositivepercentage'))
-        # st.caption("Fig 4")
+        st.sidebar.write('Filters for comparisons with bar charts📊')
+        sentimentpercentageopt = st.sidebar.radio('Pick one overall video sentiment', ['positive', 'neutral', 'negative'], key={by})
+        if sentimentpercentageopt == 'positive':
+            st.write(alt.Chart(top10).mark_bar().encode(
+            x=alt.X('title', sort=None),
+            y='overallpositivepercentage'))
+            # st.caption("Fig 4")
+        elif sentimentpercentageopt == 'neutral':
+            st.write(alt.Chart(top10).mark_bar().encode(
+            x=alt.X('title', sort=None),
+            y='overallneutralpercentage'))
+        else:
+            st.write(alt.Chart(top10).mark_bar().encode(
+            x=alt.X('title', sort=None),
+            y='overallnegativepercentage'))
 
     with st.expander('Comparisons with line chart📈'):
-        st.line_chart(top10, x='title', y=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'])
+        st.sidebar.write('Filters for comparisons with line chart📈')
+        multisentimentpercentageopt = st.sidebar.multiselect('Pick any video sentiment(s)',
+        options=['positive', 'neutral', 'negative'], default=['positive', 'neutral', 'negative'], key={by})
+        st.line_chart(top10, x='title', y=multisentimentpercentageopt)
         # st.caption("Fig. 6")
 
     with st.expander('Correlation using scatter plot🔵'):
     # making the scatter plot on latitude and longitude 
-        fig = alt.Chart(top10).mark_point().encode(x='overallpositivepercentage',y=by) 
+        st.sidebar.write('Filters for correlation using scatter plot🔵')
+        scattersentimentpercentageopt = st.sidebar.radio('Pick one overall video sentiment', ['positive', 'neutral', 'negative'], key={by})
+        if scattersentimentpercentageopt == 'positive':
+            fig = alt.Chart(top10).mark_point().encode(x='overallpositivepercentage',y=by)
+        elif scattersentimentpercentageopt == 'neutral':
+            fig = alt.Chart(top10).mark_point().encode(x='overallneutralpercentage',y=by)
+        else:
+            fig = alt.Chart(top10).mark_point().encode(x='overallnegativepercentage',y=by)
         st.altair_chart(fig)
     # st.caption("Fig. 7")
 # making the regression line using transform_regression  
