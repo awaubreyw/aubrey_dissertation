@@ -279,7 +279,7 @@ def visualize_after_sentiment(top10, by: str):
     
     picker = st.radio('Pick one visual', ['dataframe', 'pie chart'], key={by})
     if picker == 'dataframe':
-        with st.expander:
+        with st.expander("Dataframe of chosen video's comments"):
             secondpicker = st.multiselect('Pick any comment sentiment(s)',
             options=dataframe['sentiment'].unique(), key={by+'firstkey'}, default=dataframe['sentiment'].unique())
             modifieddataframe = dataframe.query('sentiment == @secondpicker')
