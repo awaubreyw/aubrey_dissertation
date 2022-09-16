@@ -336,7 +336,7 @@ def visualize_after_sentiment(top10, by: str):
     with st.expander('Comparisons with line chart📈'):
         st.sidebar.write('Filters for comparisons with line chart📈')
         multisentimentpercentageopt = st.sidebar.multiselect('Pick any video sentiment(s)',
-        options=['positive', 'neutral', 'negative'], default=['positive', 'neutral', 'negative'], key={by})
+        options=['positive', 'neutral', 'negative'], default=['positive', 'neutral', 'negative'], key={by+'key'})
         st.line_chart(top10, x='title', y=multisentimentpercentageopt)
         # st.caption("Fig. 6")
 
