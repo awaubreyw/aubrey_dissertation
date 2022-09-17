@@ -143,8 +143,8 @@ for identifier in df['video_id']:
 df = df.reset_index(drop=True)
 
 
-# @st.cache(allow_output_mutation=True)
-@st.cache(suppress_st_warning=True)
+@st.cache(allow_output_mutation=True)
+# @st.cache(suppress_st_warning=True)
 def recommend_videos_part_1(df_arg):
     overallpositivepercentage = []
     overallneutralpercentage = []
@@ -255,10 +255,9 @@ def recommend_videos_part_2(top10, df_arg):
 
 
     for thumbnail, title in zip(allvids, alltitles):
-        url = f"https://www.youtube.com/watch?v={thumbnail}"
-        recvidthumbnails.append(url)
+    #     url = f"https://www.youtube.com/watch?v={thumbnail}"
+        recvidthumbnails.append(thumbnail)
         recvidtitles.append(title)
-
 
     if len(df_arg[df_arg.overallpositivepercentage > 50]) <= 5:
         allvids = []
@@ -280,10 +279,10 @@ def recommend_videos_part_2(top10, df_arg):
         # for col, thumbnail, title in zip(cols, allvids, alltitles):
         #     with col:
         for thumbnail, title in zip(allvids, alltitles):
-            # st_player(f"https://www.youtube.com/watch?v={thumbnail}")
-            # st.write(title)
-            url = f"https://www.youtube.com/watch?v={thumbnail}"
-            recvidthumbnails.append(url)
+        #     # st_player(f"https://www.youtube.com/watch?v={thumbnail}")
+        #     # st.write(title)
+        #     url = f"https://www.youtube.com/watch?v={thumbnail}"
+            recvidthumbnails.append(thumbnail)
             recvidtitles.append(title)
 
     return allvids, recvidthumbnails, recvidtitles, cols
