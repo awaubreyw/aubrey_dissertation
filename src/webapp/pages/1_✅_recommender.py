@@ -320,7 +320,7 @@ if userinput:
     idlist = []
     titlelist = []
 
-    if userinput in df['title'].str.casefold().str.contains(userinput).any():
+    if userinput.casefold() in df['title'].str.casefold().str.contains(userinput):
         st.success('found match(es)', icon="✅")
     else:
         st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
