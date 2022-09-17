@@ -107,7 +107,7 @@ def main():
     
     with st.sidebar:
         st.success(f"You have chosen {choice}!")
-        st.write('session state: ', st.session_state.channelkey)
+        # st.write('session state: ', st.session_state.channelkey)
 
    
     
