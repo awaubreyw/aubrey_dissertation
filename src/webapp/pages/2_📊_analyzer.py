@@ -261,7 +261,7 @@ def individual_vid_pie(onevidchoice):
             totalneutralsentiment = ((onedataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
     else:
         st.warning("Choose another one. The comment file for that video was not extracted/is not in directory")
-        pass
+        
     return onedataframe, totalpositivesentiment, totalnegativesentiment, totalneutralsentiment
 
 #second set of cola and colb
