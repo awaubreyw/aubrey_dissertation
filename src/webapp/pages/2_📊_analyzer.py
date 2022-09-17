@@ -38,6 +38,7 @@ choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels
 with st.sidebar:
     st.success(f"You have chosen {choice}!")
     st.write('session state: ', st.session_state.channelkey)
+    st.write(st.session_state)
 
 channel = choice.replace(' ', '_').lower()
 
@@ -422,5 +423,6 @@ with colb:
 
 # st.session_state.clear
 # del st.session_state['channelkey']
+
 # for state in st.session_state:
 #     del st.session_state[state]
