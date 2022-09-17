@@ -47,7 +47,7 @@ userinput = st.text_input("Search here")
 #     TITLE_INVERTED_INDEX = {k : set(v) for k, v in loaded_index.items()}
 # if 'title_inverted_index' not in st.session_state:
 #     st.session_state['title_inverted_index'] = TITLE_INVERTED_INDEX
-st.warning(f'Tip: If there are no results with that title. Please search for another', icon="⚠️")
+st.info(f'Tip: If there are no results with that title. Please search for another', icon="ℹ️")
 
 
 channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
