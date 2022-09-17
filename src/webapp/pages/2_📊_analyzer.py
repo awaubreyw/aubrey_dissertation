@@ -267,8 +267,8 @@ def individual_vid_pie(onevidchoice):
 
 
 def visualize_after_sentiment(top10, by: str):
-    with st.spinner('Please wait... analyzing'):
-        time.sleep(5)      
+    # with st.spinner('Please wait... analyzing'):
+    #     time.sleep(5)      
     
     overallpositivepercentage, overallneutralpercentage, overallnegativepercentage = read_video_data_loop(top10)
     

@@ -100,8 +100,8 @@ channel_stats = stats['channel_statistics']
 video_stats = stats['video_data']
 
 # sub = st.subheader(f"{choice} most enjoyed videos")
-with st.spinner('Please wait... processing'):
-    time.sleep(5) 
+# with st.spinner('Please wait... processing'):
+#     time.sleep(5) 
 
 sorted_vids = video_stats.items()
 
