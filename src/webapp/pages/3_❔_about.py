@@ -46,3 +46,5 @@ with st.expander("More"):
 
 # if st.cache:
 #     st.experimental_rerun()
+
+st.session_state.clear
