@@ -381,5 +381,5 @@ else:
 # st.experimental_rerun()
 # st.session_state.clear
 
-# for state in st.session_state:
-#     del st.session_state[state]
+for state in st.session_state:
+    del st.session_state[state]
