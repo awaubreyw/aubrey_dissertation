@@ -1,3 +1,4 @@
+from curses import use_default_colors
 import streamlit as st
 # import json
 import pandas as pd
@@ -74,13 +75,13 @@ def main():
         col1, col2 = st.columns(2)
 
         with col1:
-            st.bar_chart(df, y='subs', x='channel_title')
+            st.bar_chart(df, y='subs', x='channel_title', use_container_width=True)
             with st.expander("Details"):
                 st.write("""
                     The chart above shows the (currently static) total number of people that are subscribed to each educational YouTube channel but the subscriptions can increase and people can unsubcribe anytime. Data was extracted in August of 2022.
                 """)
         with col2:
-            st.bar_chart(df, y='total_videos', x='channel_title')
+            st.bar_chart(df, y='total_videos', x='channel_title', use_container_width=True)
             with st.expander("Details"):
                 st.write("""
                     The chart above shows the (currently static) total number of videos uploaded by each educational YouTube channel but the numbers can change if creators choose to private, delete or upload more videos. Data was collected in August of 2022.
