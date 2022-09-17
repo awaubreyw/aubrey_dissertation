@@ -103,6 +103,7 @@ def visualize_before_sentiment(order: str, col:str):
   
     topten = topten.sort_values(by=[col], ascending=False)
     st.dataframe(topten.style.highlight_max(axis='columns', subset=[col]))
+    st.caption("videos that have comments disabled were filtered out for sentiment analysis purposes")
     # st.caption("Fig. 1: videos that have comments disabled (comments == 0) were filtered out")
  
     likes_avg = topten['likes'].mean()
@@ -273,7 +274,13 @@ def visualize_after_sentiment(top10, by: str):
     overallpositivepercentage, overallneutralpercentage, overallnegativepercentage = read_video_data_loop(top10)
     
     st.subheader(f'Normalized Sentiment Scoring\n\nof each {choice} video')
-    onevidopt = st.selectbox(f'Pick one {choice} video id to see its sentiment analysis results', top10['video_id'])
+    vididlist = []
+    for onevidid in top10['video_id']:
+        if os.path.exists(f'src/webapp/pages/../../results/{channel}/{onevidid}.json'):
+            vididlist.append(onevidid)
+    # onevidopt = st.selectbox(f'Pick one {choice} video id to see its sentiment analysis results', top10['video_id'])
+    onevidopt = st.selectbox(f'Pick one {choice} video id to see its sentiment analysis results', vididlist)
+    st.caption("if options do not include all of top 10 video ids, some video comment json files were not extracted due to API quota")
     dataframe, totalpositivesentiment, totalnegativesentiment, totalneutralsentiment = individual_vid_pie(onevidopt)
     
     
