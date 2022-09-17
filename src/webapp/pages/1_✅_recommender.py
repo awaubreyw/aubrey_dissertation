@@ -322,9 +322,7 @@ if userinput:
 
     if userinput.casefold() in df['title'].str.casefold().str.contains(userinput):
         st.success('found match(es)', icon="✅")
-    else:
-        st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
-        pass
+    
 
     for index, row in df.iterrows():
         if userinput.casefold() in str(row['title']).casefold():
@@ -349,6 +347,9 @@ if userinput:
         with col:
             st_player(a)
             st.write(b)
+    else:
+        st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
+        pass
 
 elif userinput == '':
     top10val, df_val = recommend_videos_part_1(df)
