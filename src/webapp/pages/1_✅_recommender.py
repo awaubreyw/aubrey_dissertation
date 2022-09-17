@@ -324,29 +324,29 @@ if userinput:
         st.success('found match(es)', icon="✅")
     
 
-    for index, row in df.iterrows():
-        if userinput.casefold() in str(row['title']).casefold():
-            idlist.append(row['video_id'])
-            titlelist.append(row['title'])
-            inputdict = {
-                "video_id": idlist, 
-                "title": titlelist
-            }
-            df_result_search = pd.DataFrame(inputdict)
+        for index, row in df.iterrows():
+            if userinput.casefold() in str(row['title']).casefold():
+                idlist.append(row['video_id'])
+                titlelist.append(row['title'])
+                inputdict = {
+                    "video_id": idlist, 
+                    "title": titlelist
+                }
+                df_result_search = pd.DataFrame(inputdict)
+            
+
+        # else:
+        #     st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
+        #     e = KeyError('Please try again')
+        #     st.exception(e)
+
+        top10val, df_val = recommend_videos_part_1(df_result_search)
+        allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
         
-
-    # else:
-    #     st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
-    #     e = KeyError('Please try again')
-    #     st.exception(e)
-
-    top10val, df_val = recommend_videos_part_1(df_result_search)
-    allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
-    
-    for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
-        with col:
-            st_player(a)
-            st.write(b)
+        for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
+            with col:
+                st_player(a)
+                st.write(b)
     else:
         st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
         pass

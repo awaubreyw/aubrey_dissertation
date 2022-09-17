@@ -92,7 +92,10 @@ def main():
     channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
     
     # choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey', index=0)
+
     choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
+
+
     
     if 'channelkey' not in st.session_state:
         st.session_state['channelkey'] = choice
@@ -112,6 +115,8 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+st.experimental_rerun()
 
 # if main():
 #     del st.session_state['channelkey']
