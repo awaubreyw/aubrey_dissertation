@@ -378,3 +378,5 @@ else:
 
 
 # st.experimental_rerun()
+# st.session_state.clear
+del st.session_state['channelkey']

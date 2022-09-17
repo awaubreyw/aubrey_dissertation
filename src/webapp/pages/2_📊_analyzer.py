@@ -419,5 +419,6 @@ with colb:
     st.write('---')
     visualize_after_sentiment(top10b, 'likes')
 
-# if __name__ == '__visualize_before_sentiment__':
 
+# st.session_state.clear
+del st.session_state['channelkey']

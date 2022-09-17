@@ -38,9 +38,9 @@ st.subheader('Citations')
 with st.expander("More"):
     st.text("""
     """)
-if st.session_state:
-    st.experimental_rerun()
-    
+# if st.session_state:
+#     st.experimental_rerun()
+
 # if st.cache():
 #     st.experimental_rerun()
 
