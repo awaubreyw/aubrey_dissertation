@@ -422,5 +422,5 @@ with colb:
 
 # st.session_state.clear
 # del st.session_state['channelkey']
-for state in st.session_state:
-    del st.session_state[state]
+# for state in st.session_state:
+#     del st.session_state[state]
