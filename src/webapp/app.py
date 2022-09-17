@@ -116,11 +116,14 @@ def main():
 if __name__ == '__main__':
     main()
 
-if st.cache():
+if st.session_state:
     st.experimental_rerun()
 
-if st.cache:
-    st.experimental_rerun()
+# if st.cache():
+#     st.experimental_rerun()
+
+# if st.cache:
+#     st.experimental_rerun()
 
 
 # if main():
