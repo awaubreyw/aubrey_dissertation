@@ -134,6 +134,12 @@ for vid in sorted_vids:
 
 df = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
 df.drop(df.loc[df['comments']==0].index, inplace=True)
+for identifier in df['video_id']:
+    filename = f"src/webapp/pages/../../results/{channel}/{identifier}.json"
+    if os.path.exists(filename):
+        pass
+    else:
+        df.drop(df.index[df['video_id'] == identifier], inplace = True)
 df = df.reset_index(drop=True)
 
 
@@ -148,11 +154,11 @@ def recommend_videos_part_1(df_arg):
         # filepath = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json'
         #filepath = os.path.relpath(f"C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json", "C:/xampp/htdocs/aubrey_dissertation/src/webapp/pages/_recommender.py")
         filepath = f'src/webapp/pages/../../results/{channel}/{videoID}.json'
-        if os.path.exists(filepath):
-            dataframe = pd.read_json(filepath)
-        else:
-            continue
-        
+        # if os.path.exists(filepath):
+        #     dataframe = pd.read_json(filepath)
+        # else:
+        #     continue
+        dataframe = pd.read_json(filepath)
         
         positive = []
         negative = []
