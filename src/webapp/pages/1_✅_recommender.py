@@ -41,7 +41,7 @@ analyzer = SentimentIntensityAnalyzer()
 st.title("🌄Project CAV²R⛏️")
 st.header("Video Recommender")
 
-userinput = st.text_input("Search here")
+userinput = st.text_input("Search here", )
 # with open("src/webapp/title_inverted_index.json", "r") as f:
 #     loaded_index = json.load(f)
 #     TITLE_INVERTED_INDEX = {k : set(v) for k, v in loaded_index.items()}
@@ -381,5 +381,5 @@ else:
 # st.experimental_rerun()
 # st.session_state.clear
 
-for state in st.session_state:
-    del st.session_state[state]
+# for state in st.session_state:
+#     del st.session_state[state]
