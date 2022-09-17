@@ -108,7 +108,7 @@ def visualize_before_sentiment(order: str, col:str):
   
     topten = topten.sort_values(by=[col], ascending=False)
     st.dataframe(topten.style.highlight_max(axis='columns', subset=[col]))
-    st.caption("videos that have comments disabled were filtered out for sentiment analysis purposes and video comment json files that were not successfully extracted, due to API quota limitations, were filtered out")
+    st.caption("videos that have comments disabled were filtered out for sentiment analysis purposes and video whose comment json files were not successfully extracted, due to API quota limitations, were filtered out")
     # st.caption("Fig. 1: videos that have comments disabled (comments == 0) were filtered out")
  
     likes_avg = topten['likes'].mean()
