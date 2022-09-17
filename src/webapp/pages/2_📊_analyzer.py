@@ -131,15 +131,197 @@ def visualize_before_sentiment(order: str, col:str):
 
 
 
-@st.cache(allow_output_mutation=True)
-def read_video_data_loop(top10):
+# @st.cache(allow_output_mutation=True)
+# def read_video_data_loop(top10):
 
+#     overallpositivepercentage = []
+#     overallneutralpercentage = []
+#     overallnegativepercentage = []
+
+    
+#     for videoID in top10['video_id']:
+        
+#         filepath = f'src/webapp/pages/../../results/{channel}/{videoID}.json'
+#         if os.path.exists(filepath):
+#             dataframe = pd.read_json(filepath)   
+#         else:
+#             continue
+
+#         positive = []
+#         negative = []
+#         neutral = []
+#         compound = []
+#         sentiment = []
+
+#         for line in range(dataframe.shape[0]): 
+
+#             comments = dataframe.iloc[line, 1] 
+#             comments_analyzed = analyzer.polarity_scores(comments)
+
+        
+#             if comments_analyzed["compound"] >= 0.05:
+#                 eachsentiment = 'positive'
+#             elif comments_analyzed["compound"] <= -0.05:
+#                 eachsentiment = 'negative'
+#             else:
+#                 eachsentiment = 'neutral'
+            
+#             negative.append(comments_analyzed["neg"])
+
+#             positive.append(comments_analyzed["pos"])
+        
+
+#             neutral.append(comments_analyzed["neu"])
+        
+
+#             compound.append(comments_analyzed["compound"])
+    
+
+#             sentiment.append(eachsentiment)
+
+#         dataframe["negative"] = negative 
+#         dataframe["neutral"] = neutral
+#         dataframe["positive"] = positive
+#         dataframe["compound"] = compound
+#         dataframe["sentiment"] = sentiment
+
+#         totalrows = len(dataframe['sentiment'])
+
+#         if dataframe['sentiment'].str.contains('positive').any():
+#             totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
+#             overallpositivepercentage.append(totalpositivesentiment)
+#         if dataframe['sentiment'].str.contains('negative').any():
+#             totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
+#             overallnegativepercentage.append(totalnegativesentiment)
+#         if dataframe['sentiment'].str.contains('neutral').any():        
+#             totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
+#             overallneutralpercentage.append(totalneutralsentiment)
+    
+#     # return dataframe, overallpositivepercentage, overallneutralpercentage, overallnegativepercentage
+#     return overallpositivepercentage, overallneutralpercentage, overallnegativepercentage
+
+
+
+# @st.cache(allow_output_mutation=True)
+@st.cache(suppress_st_warning=True)
+def individual_vid_pie(onevidchoice):
+
+    filepath = f'src/webapp/pages/../../results/{channel}/{onevidchoice}.json'
+    # if os.path.exists(filepath):
+    onedataframe = pd.read_json(filepath)   
+
+    positive = []
+    negative = []
+    neutral = []
+    compound = []
+    sentiment = []
+
+    for line in range(onedataframe.shape[0]): 
+
+        comments = onedataframe.iloc[line, 1] 
+        comments_analyzed = analyzer.polarity_scores(comments)
+
+    
+        if comments_analyzed["compound"] >= 0.05:
+            eachsentiment = 'positive'
+        elif comments_analyzed["compound"] <= -0.05:
+            eachsentiment = 'negative'
+        else:
+            eachsentiment = 'neutral'
+        
+        negative.append(comments_analyzed["neg"])
+
+        positive.append(comments_analyzed["pos"])
+    
+
+        neutral.append(comments_analyzed["neu"])
+    
+
+        compound.append(comments_analyzed["compound"])
+
+
+        sentiment.append(eachsentiment)
+
+    onedataframe["negative"] = negative 
+    onedataframe["neutral"] = neutral
+    onedataframe["positive"] = positive
+    onedataframe["compound"] = compound
+    onedataframe["sentiment"] = sentiment
+
+    totalrows = len(onedataframe['sentiment'])
+
+    if onedataframe['sentiment'].str.contains('positive').any():
+        totalpositivesentiment = ((onedataframe['sentiment'].value_counts()['positive'])/totalrows)*100
+        
+    if onedataframe['sentiment'].str.contains('negative').any():
+        totalnegativesentiment = ((onedataframe['sentiment'].value_counts()['negative'])/totalrows)*100
+        
+    if onedataframe['sentiment'].str.contains('neutral').any():        
+        totalneutralsentiment = ((onedataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
+    # else:
+    #     st.warning("Choose another one. The comment file for that video was not extracted/is not in directory")
+        
+    return onedataframe, totalpositivesentiment, totalnegativesentiment, totalneutralsentiment
+
+#second set of cola and colb
+
+
+def visualize_after_sentiment(top10arg, by: str):
+    # with st.spinner('Please wait... analyzing'):
+    #     time.sleep(5)      
+    
+    
+    
+    st.subheader(f'Normalized Sentiment Scoring\n\nof each {choice} video')
+    vididlist = []
+    for onevidid in top10arg['video_id']:
+        if os.path.exists(f'src/webapp/pages/../../results/{channel}/{onevidid}.json'):
+            vididlist.append(onevidid)
+    # onevidopt = st.selectbox(f'Pick one {choice} video id to see its sentiment analysis results', top10['video_id'])
+    onevidopt = st.selectbox(f'Pick one {choice} video id to see its sentiment analysis results', vididlist)
+    st.caption("if options do not include all of top 10 video ids, some video comment json files were not extracted due to API quota")
+    dataframe, totalpositivesentiment, totalnegativesentiment, totalneutralsentiment = individual_vid_pie(onevidopt)
+    
+    
+    picker = st.radio('Pick one visual', ['dataframe', 'pie chart'], key={by})
+    if picker == 'dataframe':
+        with st.expander("Dataframe of chosen video's comments"):
+            secondpicker = st.multiselect('Pick any comment sentiment(s)',
+            options=dataframe['sentiment'].unique(), key={by+'firstkey'}, default=dataframe['sentiment'].unique())
+            modifieddataframe = dataframe.query('sentiment == @secondpicker')
+            modifieddataframe = modifieddataframe.sort_values(by=['compound'], ascending=False)
+            st.dataframe(modifieddataframe)
+
+    # st.dataframe(dataframe.style.highlight_max(axis='rows', subset='positive'))
+
+    # st.caption("An example of what one YouTube video's comments dataframe after vaderSentiment looks like")
+    else:
+        labels = ['😃', '☹️', "😐"]
+        sizes = [totalpositivesentiment, totalnegativesentiment, totalneutralsentiment]
+        # colors = ['blue', 'red', 'purple']
+        #patches, texts = plt.pie(sizes, colors=colors, startangle=90)
+        #plt.legend(patches,labels,loc="best")
+        fig = plt.figure(figsize=(10, 4))
+        plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+        # ax.axis('equal')
+        st.pyplot(fig)
+    # st.caption("Normalized sentiment scoring of the above YouTube video comments")
+    # plt.tight_layout()
+    # plt.show()
+
+    st.write('---')
+    
+
+
+
+    # overallpositivepercentage, overallneutralpercentage, overallnegativepercentage = read_video_data_loop(top10arg)
+    # read_video_data_loop(top10arg)
     overallpositivepercentage = []
     overallneutralpercentage = []
     overallnegativepercentage = []
 
     
-    for videoID in top10['video_id']:
+    for videoID in top10arg['video_id']:
         
         filepath = f'src/webapp/pages/../../results/{channel}/{videoID}.json'
         if os.path.exists(filepath):
@@ -197,132 +379,17 @@ def read_video_data_loop(top10):
             totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
             overallneutralpercentage.append(totalneutralsentiment)
     
-    # return dataframe, overallpositivepercentage, overallneutralpercentage, overallnegativepercentage
-    return overallpositivepercentage, overallneutralpercentage, overallnegativepercentage
 
-
-
-# @st.cache(allow_output_mutation=True)
-@st.cache(suppress_st_warning=True)
-def individual_vid_pie(onevidchoice):
-
-    filepath = f'src/webapp/pages/../../results/{channel}/{onevidchoice}.json'
-    if os.path.exists(filepath):
-        onedataframe = pd.read_json(filepath)   
-
-        positive = []
-        negative = []
-        neutral = []
-        compound = []
-        sentiment = []
-
-        for line in range(onedataframe.shape[0]): 
-
-            comments = onedataframe.iloc[line, 1] 
-            comments_analyzed = analyzer.polarity_scores(comments)
-
-        
-            if comments_analyzed["compound"] >= 0.05:
-                eachsentiment = 'positive'
-            elif comments_analyzed["compound"] <= -0.05:
-                eachsentiment = 'negative'
-            else:
-                eachsentiment = 'neutral'
-            
-            negative.append(comments_analyzed["neg"])
-
-            positive.append(comments_analyzed["pos"])
-        
-
-            neutral.append(comments_analyzed["neu"])
-        
-
-            compound.append(comments_analyzed["compound"])
-
-
-            sentiment.append(eachsentiment)
-
-        onedataframe["negative"] = negative 
-        onedataframe["neutral"] = neutral
-        onedataframe["positive"] = positive
-        onedataframe["compound"] = compound
-        onedataframe["sentiment"] = sentiment
-
-        totalrows = len(onedataframe['sentiment'])
-
-        if onedataframe['sentiment'].str.contains('positive').any():
-            totalpositivesentiment = ((onedataframe['sentiment'].value_counts()['positive'])/totalrows)*100
-            
-        if onedataframe['sentiment'].str.contains('negative').any():
-            totalnegativesentiment = ((onedataframe['sentiment'].value_counts()['negative'])/totalrows)*100
-            
-        if onedataframe['sentiment'].str.contains('neutral').any():        
-            totalneutralsentiment = ((onedataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
-    else:
-        st.warning("Choose another one. The comment file for that video was not extracted/is not in directory")
-        
-    return onedataframe, totalpositivesentiment, totalnegativesentiment, totalneutralsentiment
-
-#second set of cola and colb
-
-
-def visualize_after_sentiment(top10, by: str):
-    # with st.spinner('Please wait... analyzing'):
-    #     time.sleep(5)      
+    top10arg["overallpositivepercentage"] = pd.Series(overallpositivepercentage)
+    top10arg["overallneutralpercentage"] = pd.Series(overallneutralpercentage)
+    top10arg["overallnegativepercentage"] = pd.Series(overallnegativepercentage)
+    top10arg = top10arg.fillna(0)
     
-    overallpositivepercentage, overallneutralpercentage, overallnegativepercentage = read_video_data_loop(top10)
-    
-    st.subheader(f'Normalized Sentiment Scoring\n\nof each {choice} video')
-    vididlist = []
-    for onevidid in top10['video_id']:
-        if os.path.exists(f'src/webapp/pages/../../results/{channel}/{onevidid}.json'):
-            vididlist.append(onevidid)
-    # onevidopt = st.selectbox(f'Pick one {choice} video id to see its sentiment analysis results', top10['video_id'])
-    onevidopt = st.selectbox(f'Pick one {choice} video id to see its sentiment analysis results', vididlist)
-    st.caption("if options do not include all of top 10 video ids, some video comment json files were not extracted due to API quota")
-    dataframe, totalpositivesentiment, totalnegativesentiment, totalneutralsentiment = individual_vid_pie(onevidopt)
-    
-    
-    picker = st.radio('Pick one visual', ['dataframe', 'pie chart'], key={by})
-    if picker == 'dataframe':
-        with st.expander("Dataframe of chosen video's comments"):
-            secondpicker = st.multiselect('Pick any comment sentiment(s)',
-            options=dataframe['sentiment'].unique(), key={by+'firstkey'}, default=dataframe['sentiment'].unique())
-            modifieddataframe = dataframe.query('sentiment == @secondpicker')
-            modifieddataframe = modifieddataframe.sort_values(by=['compound'], ascending=False)
-            st.dataframe(modifieddataframe)
-
-    # st.dataframe(dataframe.style.highlight_max(axis='rows', subset='positive'))
-
-    # st.caption("An example of what one YouTube video's comments dataframe after vaderSentiment looks like")
-    else:
-        labels = ['😃', '☹️', "😐"]
-        sizes = [totalpositivesentiment, totalnegativesentiment, totalneutralsentiment]
-        # colors = ['blue', 'red', 'purple']
-        #patches, texts = plt.pie(sizes, colors=colors, startangle=90)
-        #plt.legend(patches,labels,loc="best")
-        fig = plt.figure(figsize=(10, 4))
-        plt.pie(sizes, labels=labels, autopct='%1.1f%%')
-        # ax.axis('equal')
-        st.pyplot(fig)
-    # st.caption("Normalized sentiment scoring of the above YouTube video comments")
-    # plt.tight_layout()
-    # plt.show()
-
-    st.write('---')
-    
-
-
-    top10["overallpositivepercentage"] = pd.Series(overallpositivepercentage)
-    top10["overallneutralpercentage"] = pd.Series(overallneutralpercentage)
-    top10["overallnegativepercentage"] = pd.Series(overallnegativepercentage)
-    top10 = top10.fillna(0)
-    
-    top10 = top10.sort_values(by=['overallpositivepercentage'], ascending=False)
+    top10arg = top10arg.sort_values(by=['overallpositivepercentage'], ascending=False)
     
     st.subheader(f"Overall Sentiments of {choice} Videos\n\n from most positive to least (similar logic used in recommender)")
     
-    st.dataframe(top10.style.highlight_max(axis='columns', subset=['overallpositivepercentage']))
+    st.dataframe(top10arg.style.highlight_max(axis='columns', subset=['overallpositivepercentage']))
     st.caption("if there are missing sentiment scores for some videos, some video comment json files were not extracted due to API quota")
     
     # st.caption("Fig. 5")
@@ -340,26 +407,26 @@ def visualize_after_sentiment(top10, by: str):
             # x=alt.X('title', sort=None),
             # y='overallpositivepercentage'))
             # st.caption("Fig 4")
-            st.altair_chart(alt.Chart(top10).mark_bar().encode(
+            st.altair_chart(alt.Chart(top10arg).mark_bar().encode(
             x=alt.X('title', sort=None),
             y='overallpositivepercentage'), use_container_width=True)
         elif sentimentpercentageopt == 'neutral':
             # st.write(alt.Chart(top10).mark_bar().encode(
             # x=alt.X('title', sort=None),
             # y='overallneutralpercentage'))
-            st.altair_chart(alt.Chart(top10).mark_bar().encode(
+            st.altair_chart(alt.Chart(top10arg).mark_bar().encode(
             x=alt.X('title', sort=None),
             y='overallneutralpercentage'), use_container_width=True)
         else:
             # st.write(alt.Chart(top10).mark_bar().encode(
             # x=alt.X('title', sort=None),
             # y='overallnegativepercentage'))
-            st.altair_chart(alt.Chart(top10).mark_bar().encode(
+            st.altair_chart(alt.Chart(top10arg).mark_bar().encode(
             x=alt.X('title', sort=None),
             y='overallnegativepercentage'), use_container_width=True)
         # st.write(alt.Chart(top10).mark_bar().encode(x=alt.X('title', sort=None),y=by))
         # st.caption("Fig. 3")
-        st.altair_chart(alt.Chart(top10).mark_bar().encode(
+        st.altair_chart(alt.Chart(top10arg).mark_bar().encode(
         x=alt.X('title', sort=None),
         y=by), use_container_width=True)
 
@@ -368,7 +435,7 @@ def visualize_after_sentiment(top10, by: str):
         multisentimentpercentageopt = st.multiselect('Pick any video sentiment(s)',
         options=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'], key={by+'secondkey'}, default=['overallpositivepercentage', 'overallneutralpercentage', 'overallnegativepercentage'])
         # multiselecttop10 = top10.query("top10.columns==@multisentimentpercentageopt")
-        st.line_chart(top10, x='title', y=list(multisentimentpercentageopt), use_container_width=True)
+        st.line_chart(top10arg, x='title', y=list(multisentimentpercentageopt), use_container_width=True)
         
 
         
@@ -379,11 +446,11 @@ def visualize_after_sentiment(top10, by: str):
         st.write('Filters for correlation using scatter plot🔵')
         scattersentimentpercentageopt = st.radio('Pick one overall video sentiment', ['positive', 'neutral', 'negative'], key={by+by+by})
         if scattersentimentpercentageopt == 'positive':
-            fig = alt.Chart(top10).mark_point().encode(x='overallpositivepercentage',y=by)
+            fig = alt.Chart(top10arg).mark_point().encode(x='overallpositivepercentage',y=by)
         elif scattersentimentpercentageopt == 'neutral':
-            fig = alt.Chart(top10).mark_point().encode(x='overallneutralpercentage',y=by)
+            fig = alt.Chart(top10arg).mark_point().encode(x='overallneutralpercentage',y=by)
         else:
-            fig = alt.Chart(top10).mark_point().encode(x='overallnegativepercentage',y=by)
+            fig = alt.Chart(top10arg).mark_point().encode(x='overallnegativepercentage',y=by)
         st.altair_chart(fig, use_container_width=True)
     # st.caption("Fig. 7")
 # making the regression line using transform_regression  
@@ -394,7 +461,7 @@ def visualize_after_sentiment(top10, by: str):
 
 
     st.subheader("Data Correlations")
-    st.write(top10.corr())
+    st.write(top10arg.corr())
     # st.caption("Fig. 8")
         
 
