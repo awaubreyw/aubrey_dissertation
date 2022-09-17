@@ -324,6 +324,8 @@ def visualize_after_sentiment(top10, by: str):
     st.subheader(f"Overall Sentiments of {choice} Videos\n\n from most positive to least (similar logic used in recommender)")
     
     st.dataframe(top10.style.highlight_max(axis='columns', subset=['overallpositivepercentage']))
+    st.caption("if there are missing sentiment scores for some videos, some video comment json files were not extracted due to API quota")
+    
     # st.caption("Fig. 5")
     with st.expander('Comparisons with bar charts📊'):
         # st.write(alt.Chart(top10).mark_bar().encode(x=alt.X('title', sort=None),y=by))
