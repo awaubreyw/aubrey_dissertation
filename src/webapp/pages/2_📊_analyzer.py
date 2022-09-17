@@ -420,5 +420,7 @@ with colb:
     visualize_after_sentiment(top10b, 'likes')
 
 
-st.session_state.clear
+# st.session_state.clear
 # del st.session_state['channelkey']
+for state in st.session_state:
+    del st.session_state[state]
