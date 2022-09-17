@@ -116,7 +116,12 @@ def main():
 if __name__ == '__main__':
     main()
 
-st.experimental_rerun()
+if st.cache():
+    st.experimental_rerun()
+
+if st.cache:
+    st.experimental_rerun()
+
 
 # if main():
 #     del st.session_state['channelkey']
