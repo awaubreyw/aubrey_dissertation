@@ -143,8 +143,8 @@ for identifier in df['video_id']:
 df = df.reset_index(drop=True)
 
 
-@st.cache(allow_output_mutation=True)
-# @st.cache(suppress_st_warning=True)
+# @st.cache(allow_output_mutation=True)
+@st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def recommend_videos_part_1(df_arg):
     overallpositivepercentage = []
     overallneutralpercentage = []
@@ -227,7 +227,7 @@ def recommend_videos_part_1(df_arg):
 
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def recommend_videos_part_2(top10, df_arg):
     
     allvids = []
