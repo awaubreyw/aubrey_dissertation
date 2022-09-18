@@ -15,7 +15,7 @@ st.text("The acronym stands for Comment Analyzer, Visualizer & Video Recommender
 
 with st.expander("Purpose"):
     st.write("""
-    Project CAV²R is a Python-based and visualization-heavy web app that analyzes previously extracted YouTube channel data and video data (focused on comments) with simple, suitable visual graphs. Another purpose of building this software is to find and recommend the best videos of each and every channel based on what their viewers had to say in the comments section. The belief here is that sentiment should be a significant influencing factor in recommendation algorithms. High numbers of likes, and especially views of YouTube videos, do not always mean high positive sentiments on the quality of those videos' content.\n\n
+    Project CAV²R is a Python-based and visualization-heavy web app, built on the open-source framework called Streamlit, that analyzes previously extracted YouTube channel data and video data (focused on comments) with simple, suitable visual graphs. Another purpose of building this software is to find and recommend the best videos of each and every channel based on what their viewers had to say in the comments section. The belief here is that sentiment should be a significant influencing factor in recommendation algorithms. High numbers of likes, and especially views of YouTube videos, do not always mean high positive sentiments on the quality of those videos' content.\n\n
     """)
 with st.expander("App"):
     st.write("""
