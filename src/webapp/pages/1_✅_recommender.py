@@ -40,7 +40,7 @@ channel = choice.replace(' ', '_').lower()
 
 
 #implement logic from C:/xampp/htdocs/aubrey_dissertation/src/webapp/recommender.ipynb
-# @st.cache(suppress_st_warning=True, allow_output_mutation=True)
+@st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def process(channelarg):
     file = f'src/webapp/pages/../../results/{channelarg}.json'
 
@@ -171,7 +171,7 @@ def process(channelarg):
     return dfplaceholder
 
 
-# @st.cache(suppress_st_warning=True, allow_output_mutation=True)
+@st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def recommend(df_arg):
     # allvids = []
     # alltitles=[]
