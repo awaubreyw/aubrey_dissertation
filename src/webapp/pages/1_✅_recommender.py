@@ -209,54 +209,65 @@ df = process(channel)
 if len(df[df['overallpositivepercentage'] > 50]) == 0:
     st.warning("There are no highly positive videos to recommend", icon="⚠️")
 else:
-    st.success(f"Here are the recommendations based on highly positive sentiments of {choice} videos")
+
     moddf = recommend(df)
-    # st.dataframe(moddf)
 
-    n_cols = 3
-    n_rows = int(1 + len(moddf[moddf.overallpositivepercentage > 50]) // n_cols)
-    rows = [st.columns(n_cols) for _ in range(n_rows)]
-    cols = [column for row in rows for column in row]
-
-    # for col, vid, title in zip(cols, recvids, rectitles):
-    #     with col:
-    #         st_player(vid)
-    #         st.write(title)
-    for col, vid, title, score in zip(cols, moddf['video_id'], moddf['title'], moddf['overallpositivepercentage']):
-        with col:
-            url = f"https://www.youtube.com/watch?v={vid}"
-            # st_player(url)
-            # st.write(title)
-    
-            st.markdown(f"[{title}]({url})")
-            score = round(score)
-            score = str(score)+'%'
-            st.success(score)
-
-if userinput:
-    if userinput.casefold() in moddf['title'].str.casefold().str.contains(userinput):
-    # if [any(userinput.lower() in s.lower()) for s in list(moddf['title'])]:
-    # if moddf['title'].str.contains(userinput, case=False):
-    # if userinput.casefold() in moddf['title'].str.casefold():
-        for index, row in moddf.iterrows():
-            if userinput.casefold() in str(row['title']).casefold():
-                st.success('Found match(es)', icon="✅")
-        matches = moddf.loc[moddf['title'].str.contains(userinput, case=False)]
-        n_cols = 3
-        n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
-        rows = [st.columns(n_cols) for _ in range(n_rows)]
-        columns = [column for row in rows for column in row]
-        for matchvid, matchtitle, matchscore, col in zip(matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
-            with col:
-                url = f"https://www.youtube.com/watch?v={matchvid}"
-                # st_player(url)
-                
-                st.markdown(f"[{matchtitle}]({url})")
-                matchscore = round(matchscore)
-                matchscore = str(matchscore)+'%'
-                st.success(matchscore)
+    if userinput:
+        # if userinput.casefold() in moddf['title'].str.casefold().str.contains(userinput):
+        # if [any(userinput.lower() in s.lower()) for s in list(moddf['title'])]:
+        # if moddf['title'].str.contains(userinput, case=False):
+        # if userinput.casefold() in moddf['title'].str.casefold():
+            # for index, row in moddf.iterrows():
+            #     if userinput.casefold() in str(row['title']).casefold():
+        if moddf['title'].str.contains(userinput, case=False).any() == False:
+            st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
+        else:
+            st.success('Found match(es)', icon="✅")
+            matches = moddf.loc[moddf['title'].str.contains(userinput, case=False)]
+            n_cols = 3
+            n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
+            rows = [st.columns(n_cols) for _ in range(n_rows)]
+            columns = [column for row in rows for column in row]
+            for matchvid, matchtitle, matchscore, col in zip(matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
+                with col:
+                    url = f"https://www.youtube.com/watch?v={matchvid}"
+                    # st_player(url)
+                    
+                    st.markdown(f"[{matchtitle}]({url})")
+                    matchscore = round(matchscore)
+                    matchscore = str(matchscore)+'%'
+                    st.success(matchscore)
+        
+            
+        
+        
+        
     else:
-        st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
+        st.success(f"Here are the recommendations based on highly positive sentiments of {choice} videos")
+        
+        # st.dataframe(moddf)
+
+        n_cols = 3
+        n_rows = int(1 + len(moddf[moddf.overallpositivepercentage > 50]) // n_cols)
+        rows = [st.columns(n_cols) for _ in range(n_rows)]
+        cols = [column for row in rows for column in row]
+
+        # for col, vid, title in zip(cols, recvids, rectitles):
+        #     with col:
+        #         st_player(vid)
+        #         st.write(title)
+        for col, vid, title, score in zip(cols, moddf['video_id'], moddf['title'], moddf['overallpositivepercentage']):
+            with col:
+                url = f"https://www.youtube.com/watch?v={vid}"
+                # st_player(url)
+                # st.write(title)
+        
+                st.markdown(f"[{title}]({url})")
+                score = round(score)
+                score = str(score)+'%'
+                st.success(score)
+
+
 
 
 
