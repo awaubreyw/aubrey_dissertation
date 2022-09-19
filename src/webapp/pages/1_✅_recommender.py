@@ -232,6 +232,7 @@ else:
                 with col:
                 # url = f"https://www.youtube.com/watch?v={matchvid}"
                     url = f"https://youtu.be/{matchvid}"
+                    st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
                     # st_player(url)
                     # st.write(matchtitle)
                     st.markdown(f"[{matchtitle}]({url})")
@@ -263,7 +264,7 @@ else:
                 url = f"https://youtu.be/{vid}"
                 # st_player(url)
                 # st.write(title)
-        
+                st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
                 st.markdown(f"[{title}]({url})")
                 score = round(score)
                 score = str(score)+'%'
