@@ -229,15 +229,15 @@ else:
             rows = [st.columns(n_cols) for _ in range(n_rows)]
             columns = [column for row in rows for column in row]
             for matchvid, matchtitle, matchscore, col in zip(matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
-                with col:
-                    # url = f"https://www.youtube.com/watch?v={matchvid}"
-                    url = f"https://youtu.be/{matchvid}"
-                    st_player(url)
-                    # st.write(matchtitle)
-                    st.markdown(f"[{matchtitle}]({url})")
-                    matchscore = round(matchscore)
-                    matchscore = str(matchscore)+'%'
-                    st.success(matchscore)
+                # with col:
+                # url = f"https://www.youtube.com/watch?v={matchvid}"
+                url = f"https://youtu.be/{matchvid}"
+                st_player(url)
+                # st.write(matchtitle)
+                st.markdown(f"[{matchtitle}]({url})")
+                matchscore = round(matchscore)
+                matchscore = str(matchscore)+'%'
+                st.success(matchscore)
         
             
         
@@ -258,16 +258,16 @@ else:
         #         st_player(vid)
         #         st.write(title)
         for col, vid, title, score in zip(cols, moddf['video_id'], moddf['title'], moddf['overallpositivepercentage']):
-            with col:
-                # url = f"https://www.youtube.com/watch?v={vid}"
-                url = f"https://youtu.be/{vid}"
-                st_player(url)
-                # st.write(title)
-        
-                st.markdown(f"[{title}]({url})")
-                score = round(score)
-                score = str(score)+'%'
-                st.success(score)
+            # with col:
+            # url = f"https://www.youtube.com/watch?v={vid}"
+            url = f"https://youtu.be/{vid}"
+            st_player(url)
+            # st.write(title)
+    
+            st.markdown(f"[{title}]({url})")
+            score = round(score)
+            score = str(score)+'%'
+            st.success(score)
 
 
 
