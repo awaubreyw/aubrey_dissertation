@@ -238,7 +238,9 @@ if userinput:
     # if [any(userinput.lower() in s.lower()) for s in list(moddf['title'])]:
     # if moddf['title'].str.contains(userinput, case=False):
     # if userinput.casefold() in moddf['title'].str.casefold():
-        st.success('Found match(es)', icon="✅")
+        for index, row in moddf.iterrows():
+            if userinput.casefold() in str(row['title']).casefold():
+                st.success('Found match(es)', icon="✅")
         matches = moddf.loc[moddf['title'].str.contains(userinput, case=False)]
         n_cols = 3
         n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
@@ -255,5 +257,6 @@ if userinput:
                 st.success(matchscore)
     else:
         st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
+
 
 
