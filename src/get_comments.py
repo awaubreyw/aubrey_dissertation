@@ -17,11 +17,11 @@ youtube = build("youtube", "v3", developerKey=api_key)
 
 import json
 
-
+channelname = 'vsauce'
 #with open("results/video_ids_crashcourse.json", "r") as f:
     #video_ids_list = json.load(f)
 # with open("results/veritasium.json", "r") as f: 
-with open("results/video_ids_asapscience.json", "r") as f: #⚠️ asapscience tkor  kurzgesagt_–_in_a_nutshell  smartereveryday  crashcourse veritasium
+with open(f"results/video_ids_{channelname}.json", "r") as f: #⚠️ tkor     kurzgesagt_–_in_a_nutshell  smartereveryday     crashcourse     veritasium[61:]    
     data = json.load(f)
 
 
@@ -37,7 +37,7 @@ with open("results/video_ids_asapscience.json", "r") as f: #⚠️ asapscience t
 
        
 # for index, video_id in enumerate(data):
-for video_id in data[214:]:
+for video_id in data[116:]:
     
     try:
         #request = youtube.commentThreads().list(
@@ -47,9 +47,9 @@ for video_id in data[214:]:
                 #order="time")
 
         request = youtube.commentThreads().list(
-                part="snippet",
-                videoId=video_id,
-                order="time")
+            part="snippet",
+            videoId=video_id,
+            order="time")
 
         # execute the request
         response = request.execute()
@@ -107,7 +107,7 @@ for video_id in data[214:]:
                 break
                 
 
-        with open(f"results/asapscience/{video_id}.json", 'w') as f: #⚠️ asapscience tkor  kurzgesagt_–_in_a_nutshell  smartereveryday  crashcourse    veritasium
+        with open(f"results/{channelname}/{video_id}.json", 'w') as f: 
             
             f.write(json.dumps(comments_contents))
             #f.write(df.to_json(orient='records', lines=True))
@@ -115,11 +115,11 @@ for video_id in data[214:]:
 
         # print('last video to have its comments extracted: ', video_id, ' of index: ', index) 
         #⚠️for index, video_id in data[index:] sliced 
-        print(video_id, data.index(video_id))
-
+        # print(video_id, data.index(video_id))
+        print('index of last video extracted', data.index(video_id))
     except Exception as e:
         print(f'failed to get comments with exception {e}')
-print('index of last video extracted', data.index(video_id))
+
     
 
 
