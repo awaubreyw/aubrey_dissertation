@@ -1,11 +1,11 @@
-from curses import use_default_colors
+
 import streamlit as st
 # import json
 import pandas as pd
-from streamlit_option_menu import option_menu
-import os.path
+# from streamlit_option_menu import option_menu
+# import os.path
 import json
-import urllib.request
+# import urllib.request
 
 st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🎓") 
 

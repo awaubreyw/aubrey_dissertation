@@ -6,42 +6,17 @@ import json
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from streamlit_player import st_player
 import os.path
-import time
-
-
-@st.cache
-def search(search_string, inverted_index):
-    """
-    This function takes a string as the first parameter and an inverted index as the second parameter.
-    It then searches the string in the inverted index
-    It will always try to return at least one result
-    This is an example of a very simple search algorithm
-    """
-    # Its important to lowercase so that we can match things like "Visual" and "visual"
-    tokens = search_string.lower().split() # Split on spaces e.g. ['How', 'to', 'lie', 'using', 'visual', 'proofs']
-
-    document_set = {}
-    for token in tokens:
-        if token in inverted_index.keys():
-            if document_set == {}:
-                document_set = inverted_index[token]
-            else:
-                intersect = set.intersection(document_set, inverted_index[token])
-                document_set = intersect if len(intersect) > 0 else document_set
-            
-    return document_set
-
+# import time
 
 
 st.set_page_config(layout="wide", page_title="Project CAV²R", page_icon="🎓") 
 analyzer = SentimentIntensityAnalyzer()
 
-# back = st.button('Go back', on_click=st.experimental_rerun)
-# st.markdown(f"[{back}](https://github.com/awaubreyw/aubrey_dissertation/blob/main/src/webapp/app.py)", unsafe_allow_html=True)
+
 st.title("🌄Project CAV²R⛏️")
 st.header("Video Recommender")
 
-userinput = st.text_input("Search here", )
+userinput = st.text_input("Search here")
 # with open("src/webapp/title_inverted_index.json", "r") as f:
 #     loaded_index = json.load(f)
 #     TITLE_INVERTED_INDEX = {k : set(v) for k, v in loaded_index.items()}
@@ -53,107 +28,81 @@ st.info(f'Tip: If there are no results with that title. Please search for anothe
 channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce', '3Blue1Brown', 'Everyday Astronaut', 'SciShow', 'Physics Girl', 'Primer', 'ASAPScience', 'TKOR', 'Kurzgesagt_–_in_a_nutshell', 'SmarterEveryday', 'Science Channel', 'Veritasium', 'NileRed']
 
 
-# choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
-
-# if 'channelkey' not in st.session_state:
-    # choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
-
-# choice = st.session_state['channelkey'] 
-
-# choice = st.session_state['channelkey']
-
 st.session_state.update(st.session_state)
-# if 'channelkey' not in st.session_state:
-#     st.session_state['channelkey'] = choice
-choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
+
+choice = st.sidebar.selectbox(label='Pick one YouTube channelarg', options=channels, key='channelkey')
 
 with st.sidebar:
     st.success(f"You have chosen {choice}!")
-    # st.write('session state: ', st.session_state.channelkey)
-    # st.write(st.session_state)
 
 channel = choice.replace(' ', '_').lower()    
 
 
 
-
 #implement logic from C:/xampp/htdocs/aubrey_dissertation/src/webapp/recommender.ipynb
+# @st.cache(suppress_st_warning=True, allow_output_mutation=True)
+def process(channelarg):
+    file = f'src/webapp/pages/../../results/{channelarg}.json'
+
+    data = None
+
+    with open(file, 'r') as f:
+        data = json.load(f)
+
+    channel_id, stats = data.popitem()
+
+    channel_stats = stats['channel_statistics']
+
+    video_stats = stats['video_data']
 
 
+    sorted_vids = video_stats.items()
 
+    stats = []
 
+    for vid in sorted_vids:
+        video_id = vid[0]
+        title = vid[1]['title']
+        
+        key = "commentCount"
+        if key in vid[1].keys():
+            comments = int(vid[1]["commentCount"]) 
+        else:
+            comments = 0
 
+        key = "viewCount"
+        if key in vid[1].keys():
+            views = int(vid[1]["viewCount"]) 
+        else:
+            views = 0
 
-# file = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json' 
-#file = os.path.relpath(f"C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}.json", "C:/xampp/htdocs/aubrey_dissertation/src/webapp/pages/_recommender.py")
-file = f'src/webapp/pages/../../results/{channel}.json'
+        key = "likeCount"
+        if key in vid[1].keys():
+            likes = int(vid[1]["likeCount"]) 
+        else:
+            likes = 0
 
-data = None
+        duration = vid[1]['duration']
+        stats.append([video_id, title, views, likes, comments, duration])
 
-with open(file, 'r') as f:
-    data = json.load(f)
+    dfplaceholder = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
+    dfplaceholder.drop(dfplaceholder.loc[dfplaceholder['comments']==0].index, inplace=True)
+    for identifier in dfplaceholder['video_id']:
+        filename = f"src/webapp/pages/../../results/{channelarg}/{identifier}.json"
+        if os.path.exists(filename):
+            pass
+        else:
+            dfplaceholder.drop(dfplaceholder.index[dfplaceholder['video_id'] == identifier], inplace = True)
+    dfplaceholder = dfplaceholder.reset_index(drop=True)
 
-channel_id, stats = data.popitem()
-
-channel_stats = stats['channel_statistics']
-
-video_stats = stats['video_data']
-
-# sub = st.subheader(f"{choice} most enjoyed videos")
-# with st.spinner('Please wait... processing'):
-#     time.sleep(5) 
-
-sorted_vids = video_stats.items()
-
-stats = []
-
-for vid in sorted_vids:
-    video_id = vid[0]
-    title = vid[1]['title']
-    
-    key = "commentCount"
-    if key in vid[1].keys():
-        comments = int(vid[1]["commentCount"]) 
-    else:
-        comments = 0
-
-    key = "viewCount"
-    if key in vid[1].keys():
-        views = int(vid[1]["viewCount"]) 
-    else:
-        views = 0
-
-    key = "likeCount"
-    if key in vid[1].keys():
-        likes = int(vid[1]["likeCount"]) 
-    else:
-        likes = 0
-
-    duration = vid[1]['duration']
-    stats.append([video_id, title, views, likes, comments, duration])
-
-df = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
-df.drop(df.loc[df['comments']==0].index, inplace=True)
-for identifier in df['video_id']:
-    filename = f"src/webapp/pages/../../results/{channel}/{identifier}.json"
-    if os.path.exists(filename):
-        pass
-    else:
-        df.drop(df.index[df['video_id'] == identifier], inplace = True)
-df = df.reset_index(drop=True)
-
-
-# @st.cache(allow_output_mutation=True)
-@st.cache(suppress_st_warning=True, allow_output_mutation=True)
-def recommend_videos_part_1(df_arg):
     overallpositivepercentage = []
     overallneutralpercentage = []
     overallnegativepercentage = []
 
-    for videoID in df_arg['video_id']:
-        # filepath = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json'
-        #filepath = os.path.relpath(f"C:/xampp/htdocs/aubrey_dissertation/src/results/{channel}/{videoID}.json", "C:/xampp/htdocs/aubrey_dissertation/src/webapp/pages/_recommender.py")
-        filepath = f'src/webapp/pages/../../results/{channel}/{videoID}.json'
+    for videoID in dfplaceholder['video_id']:
+        # filepath = f'C:/xampp/htdocs/aubrey_dissertation/src/results/{channelarg}/{videoID}.json'
+        #filepath = os.path.relpath(f"C:/xampp/htdocs/aubrey_dissertation/src/results/{channelarg}/{videoID}.json", "C:/xampp/htdocs/aubrey_dissertation/src/webapp/pages/_recommender.py")
+        filepath = f'src/webapp/pages/../../results/{channelarg}/{videoID}.json'
         # if os.path.exists(filepath):
         #     dataframe = pd.read_json(filepath)
         # else:
@@ -212,179 +161,89 @@ def recommend_videos_part_1(df_arg):
             overallneutralpercentage.append(totalneutralsentiment)
 
 
-    df_arg["overallpositivepercentage"] = pd.Series(overallpositivepercentage)
-    df_arg["overallneutralpercentage"] = pd.Series(overallneutralpercentage)
-    df_arg["overallnegativepercentage"] = pd.Series(overallnegativepercentage)
-    df_arg = df_arg.fillna(0)
+    dfplaceholder["overallpositivepercentage"] = pd.Series(overallpositivepercentage)
+    dfplaceholder["overallneutralpercentage"] = pd.Series(overallneutralpercentage)
+    dfplaceholder["overallnegativepercentage"] = pd.Series(overallnegativepercentage)
+    dfplaceholder = dfplaceholder.fillna(0)
 
-    df_arg = df_arg.sort_values(by=['overallpositivepercentage'], ascending=False)
+    dfplaceholder = dfplaceholder.sort_values(by=['overallpositivepercentage'], ascending=False)
 
-
-    top10 = df_arg.head(10)
-
-    return top10, df_arg
+    return dfplaceholder
 
 
-
-
-@st.cache(suppress_st_warning=True, allow_output_mutation=True)
-def recommend_videos_part_2(top10, df_arg):
+# @st.cache(suppress_st_warning=True, allow_output_mutation=True)
+def recommend(df_arg):
+    # allvids = []
+    # alltitles=[]
+    # notpositivelist = []
+    # if df_arg.index[df_arg.overallpositivepercentage > 50].any():
+    # if len(df_arg[df_arg['overallpositivepercentage'] > 50]) == 0:
+    #     st.warning("There are no highly positive videos to recommend", icon="⚠️")
+        
+    # else:
     
-    allvids = []
-    alltitles=[]
-
-    #CREDITS https://www.youtube.com/watch?v=clFrWjiwxL0 fake grid layout
-    n_cols = 3
-    n_rows = int(1 + len(df_arg[df_arg.overallpositivepercentage > 50]) // n_cols)
-
-
 
     for key, value in df_arg.iterrows():
-        if value['overallpositivepercentage'] > 50:
-            vid = f"https://www.youtube.com/watch?v={value['video_id']}"
-            allvids.append(vid)
-            alltitles.append(value['title'])
+        # if value['overallpositivepercentage'] > 50:
+        #     vid = f"https://www.youtube.com/watch?v={value['video_id']}"
+        #     allvids.append(vid)
+        #     alltitles.append(value['title'])
+        if value['overallpositivepercentage'] <= 50:
+            # notpositivelist.append(value['video_id'])
+            df_arg.drop(df_arg.index[df_arg['overallpositivepercentage'] == value['overallpositivepercentage']], inplace = True)
+
+    # for notpositivevid in notpositivelist:
+    #     df_arg.drop(df_arg.index[df['video_id'] == notpositivevid], inplace = True)
+        
+    return df_arg
 
 
+
+
+
+
+
+df = process(channel)
+# top10 = df.head(10)
+
+if len(df[df['overallpositivepercentage'] > 50]) == 0:
+    st.warning("There are no highly positive videos to recommend", icon="⚠️")
+else:
+    st.success(f"Here are the recommendations based on highly positive sentiments of {choice} videos")
+    moddf = recommend(df)
+    # st.dataframe(moddf)
+
+    n_cols = 3
+    n_rows = int(1 + len(moddf[moddf.overallpositivepercentage > 50]) // n_cols)
     rows = [st.columns(n_cols) for _ in range(n_rows)]
-
     cols = [column for row in rows for column in row]
 
-    recvidtitles = []
-    recvidthumbnails = []
-
-
-    for thumbnail, title in zip(allvids, alltitles):
-    #     url = f"https://www.youtube.com/watch?v={thumbnail}"
-        recvidthumbnails.append(thumbnail)
-        recvidtitles.append(title)
-
-    if len(df_arg[df_arg.overallpositivepercentage > 50]) <= 5:
-        allvids = []
-        alltitles = []
-
-        # sub = st.subheader(f"{choice} Top 10 videos based on positive sentiment score")
-
-        n_rows = int(1 + len(top10['overallpositivepercentage']) // n_cols)
-        for k, v in top10.iterrows():
-            vid = f"https://www.youtube.com/watch?v={v['video_id']}"
-            
-            allvids.append(vid)
-            alltitles.append(v['title'])
-        rows = [st.columns(n_cols) for _ in range(n_rows)]
-
-        cols = [column for row in rows for column in row]
-        recvidtitles = []
-        recvidthumbnails = []
-        # for col, thumbnail, title in zip(cols, allvids, alltitles):
-        #     with col:
-        for thumbnail, title in zip(allvids, alltitles):
-        #     # st_player(f"https://www.youtube.com/watch?v={thumbnail}")
-        #     # st.write(title)
-        #     url = f"https://www.youtube.com/watch?v={thumbnail}"
-            recvidthumbnails.append(thumbnail)
-            recvidtitles.append(title)
-
-    return allvids, recvidthumbnails, recvidtitles, cols
-            
-
-
-
-
-
-if userinput:
-    # top10val, df_val = recommend_videos_part_1(df)
-    # allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
-    # searchedresult = search(userinput, st.session_state['title_inverted_index'])
-    # urls = []
-    # for result, col in zip(searchedresult, cols):
+    # for col, vid, title in zip(cols, recvids, rectitles):
     #     with col:
-    #         url=f"https://www.youtube.com/watch?v={result}"
-    #         st_player(url)
-
-    # for result, col in zip(searchedresult, cols):
-    #     for vidid in allvids:
-    #         if result == vidid:
-    #             with col:
-    #                 st_player(f"https://www.youtube.com/watch?v={result}")
-
-    
-    # for vidid in allvids:
-    #     for result in searchedresult:
-    #         if result in vidid:
-    #             for col in cols:
-    #                 st.markdown(f"[{result}](https://www.youtube.com/watch?v={result})")
-                    # st_player(f"https://www.youtube.com/watch?v={result}")
-                    # st.write(result)
-                
-
-
-    # userinput = userinput.casefold()
-    df_result_search = pd.DataFrame()
-    
-    inputdict = {}
-    idlist = []
-    titlelist = []
-
-    if userinput.casefold() in df['title'].str.casefold().str.contains(userinput):
-        st.success('found match(es)', icon="✅")
-    
-
-        for index, row in df.iterrows():
-            if userinput.casefold() in str(row['title']).casefold():
-                idlist.append(row['video_id'])
-                titlelist.append(row['title'])
-                inputdict = {
-                    "video_id": idlist, 
-                    "title": titlelist
-                }
-                df_result_search = pd.DataFrame(inputdict)
-            
-
-        # else:
-        #     st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
-        #     e = KeyError('Please try again')
-        #     st.exception(e)
-
-        top10val, df_val = recommend_videos_part_1(df_result_search)
-        allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
-        
-        for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
-            with col:
-                st_player(a)
-                st.write(b)
-    else:
-        st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
-        pass
-
-elif userinput == '':
-    top10val, df_val = recommend_videos_part_1(df)
-    allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
-    # allvids, recvidthumbnails, recvidtitles, cols = recommend_videos(df)
-    for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
+    #         st_player(vid)
+    #         st.write(title)
+    for col, vid, title, score in zip(cols, moddf['video_id'], moddf['title'], moddf['overallpositivepercentage']):
         with col:
-            st_player(a)
-   
-            #   st.markdown(f"[Recommend...](https://www.youtube.com/watch?v={id})")
+            st_player(vid)
+            st.write(title)
+            st.success(round(score), '%')
 
-            st.write(b)
+    if userinput:
+        # if userinput.casefold() in moddf['title'].str.casefold().str.contains(userinput):
+        # if [any(userinput.lower() in s.lower()) for s in list(moddf['title'])]:
+        if moddf['title'].str.contains(userinput, case=False):
+            st.success('Found match(es)', icon="✅")
+            matches = moddf.loc[moddf['title'].str.contains(userinput, case=False)]
+            n_cols = 3
+            n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
+            rows = [st.columns(n_cols) for _ in range(n_rows)]
+            columns = [column for row in rows for column in row]
+            for matchvid, matchtitle, matchscore, col in zip(matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
+                with col:
+                    st_player(matchvid)
+                    st.write(matchtitle)
+                    st.success(round(matchscore), '%')
+        else:
+            st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
 
-else:
-    top10val, df_val = recommend_videos_part_1(df)
-    allvids, recvidthumbnails, recvidtitles, cols = recommend_videos_part_2(top10val, df_val)
-    # allvids, recvidthumbnails, recvidtitles, cols = recommend_videos(df)
-    for a, b, col in zip(recvidthumbnails, recvidtitles, cols):
-        with col:
-            st_player(a) 
-            
-            #   st.markdown(f"[Recommend...](https://www.youtube.com/watch?v={id})")
 
-            st.write(b)
-
-
-
-# st.experimental_rerun()
-# st.session_state.clear
-
-# for state in st.session_state:
-#     del st.session_state[state]
