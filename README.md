@@ -61,6 +61,6 @@
 **Feedback from meeting with supervisor (30/08/2022)**
 - [ ] web app UI wireframe draw.io
 - [x] normalize sentiments to be able to fairly compare against various videos on a constant scale (bar chart's y-axis labelled as percentage)
-- [ ] automate and reuse sentiment analysis code to present top 10 most positively acclaimed videos 
+- [x] automate and reuse sentiment analysis code to present top 10 most positively acclaimed videos 
 - [ ] compare Commentaire's way of sentiment analysis (qualitative, descriptive, word frequency/word cloud focused) with mine (quantitative, numeric, direct)
-- [ ] write web app code (referred from streamlit docs and own ipynb notebook analysis code) as functions because a number of web pages require that code (extraction code files do not have to be because temporary usage/run once to only serve a purpose)
+- [x] write web app code (referred from streamlit docs and own ipynb notebook analysis code) as functions because a number of web pages require that code (extraction code files do not have to be because temporary usage/run once to only serve a purpose)
