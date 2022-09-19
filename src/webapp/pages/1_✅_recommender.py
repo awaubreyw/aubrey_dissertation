@@ -225,8 +225,10 @@ else:
     for col, vid, title, score in zip(cols, moddf['video_id'], moddf['title'], moddf['overallpositivepercentage']):
         with col:
             url = f"https://www.youtube.com/watch?v={vid}"
-            st_player(url)
-            st.write(title)
+            # st_player(url)
+            # st.write(title)
+            st.image(url)
+            st.markdown(f"[{title}]({url})")
             score = round(score)
             score = str(score)+'%'
             st.success(score)
@@ -245,8 +247,9 @@ else:
             for matchvid, matchtitle, matchscore, col in zip(matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
                 with col:
                     url = f"https://www.youtube.com/watch?v={matchvid}"
-                    st_player(url)
-                    st.write(matchtitle)
+                    # st_player(url)
+                    st.image(url)
+                    st.markdown(f"[{matchtitle}]({url})")
                     matchscore = round(matchscore)
                     matchscore = str(matchscore)+'%'
                     st.success(matchscore)
