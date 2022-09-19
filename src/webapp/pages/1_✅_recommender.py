@@ -233,27 +233,27 @@ else:
             score = str(score)+'%'
             st.success(score)
 
-    if userinput:
-        # if userinput.casefold() in moddf['title'].str.casefold().str.contains(userinput):
-        # if [any(userinput.lower() in s.lower()) for s in list(moddf['title'])]:
-        # if moddf['title'].str.contains(userinput, case=False):
-        if userinput.casefold() in moddf['title'].str.casefold():
-            st.success('Found match(es)', icon="✅")
-            matches = moddf.loc[moddf['title'].str.contains(userinput, case=False)]
-            n_cols = 3
-            n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
-            rows = [st.columns(n_cols) for _ in range(n_rows)]
-            columns = [column for row in rows for column in row]
-            for matchvid, matchtitle, matchscore, col in zip(matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
-                with col:
-                    url = f"https://www.youtube.com/watch?v={matchvid}"
-                    # st_player(url)
-                    
-                    st.markdown(f"[{matchtitle}]({url})")
-                    matchscore = round(matchscore)
-                    matchscore = str(matchscore)+'%'
-                    st.success(matchscore)
-        else:
-            st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
+if userinput:
+    # if userinput.casefold() in moddf['title'].str.casefold().str.contains(userinput):
+    # if [any(userinput.lower() in s.lower()) for s in list(moddf['title'])]:
+    # if moddf['title'].str.contains(userinput, case=False):
+    if userinput.casefold() in moddf['title'].str.casefold():
+        st.success('Found match(es)', icon="✅")
+        matches = moddf.loc[moddf['title'].str.contains(userinput, case=False)]
+        n_cols = 3
+        n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
+        rows = [st.columns(n_cols) for _ in range(n_rows)]
+        columns = [column for row in rows for column in row]
+        for matchvid, matchtitle, matchscore, col in zip(matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
+            with col:
+                url = f"https://www.youtube.com/watch?v={matchvid}"
+                # st_player(url)
+                
+                st.markdown(f"[{matchtitle}]({url})")
+                matchscore = round(matchscore)
+                matchscore = str(matchscore)+'%'
+                st.success(matchscore)
+    else:
+        st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
 
 
