@@ -226,7 +226,9 @@ else:
         with col:
             st_player(vid)
             st.write(title)
-            st.success(round(score), '%')
+            score = round(score)
+            score = str(score)+'%'
+            st.success(score)
 
     if userinput:
         # if userinput.casefold() in moddf['title'].str.casefold().str.contains(userinput):
@@ -242,7 +244,9 @@ else:
                 with col:
                     st_player(matchvid)
                     st.write(matchtitle)
-                    st.success(round(matchscore), '%')
+                    matchscore = round(matchscore)
+                    matchscore = str(matchscore)+'%'
+                    st.success(matchscore)
         else:
             st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
 
