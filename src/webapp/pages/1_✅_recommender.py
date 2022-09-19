@@ -227,7 +227,7 @@ else:
             url = f"https://www.youtube.com/watch?v={vid}"
             # st_player(url)
             # st.write(title)
-            st.image(url)
+    
             st.markdown(f"[{title}]({url})")
             score = round(score)
             score = str(score)+'%'
@@ -248,7 +248,7 @@ else:
                 with col:
                     url = f"https://www.youtube.com/watch?v={matchvid}"
                     # st_player(url)
-                    st.image(url)
+                    
                     st.markdown(f"[{matchtitle}]({url})")
                     matchscore = round(matchscore)
                     matchscore = str(matchscore)+'%'
