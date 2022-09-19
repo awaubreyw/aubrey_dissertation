@@ -234,7 +234,8 @@ else:
     if userinput:
         # if userinput.casefold() in moddf['title'].str.casefold().str.contains(userinput):
         # if [any(userinput.lower() in s.lower()) for s in list(moddf['title'])]:
-        if moddf['title'].str.contains(userinput, case=False):
+        # if moddf['title'].str.contains(userinput, case=False):
+        if userinput.casefold() in moddf['title'].str.casefold():
             st.success('Found match(es)', icon="✅")
             matches = moddf.loc[moddf['title'].str.contains(userinput, case=False)]
             n_cols = 3
