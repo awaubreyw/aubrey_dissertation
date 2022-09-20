@@ -12,16 +12,10 @@ import requests
 from tqdm import tqdm #progress bar
 from googleapiclient.discovery import build
 
-
-#import os
-#API_KEY = os.environ.get('YOUTUBE_DATA_API_KEY')
-#CREDITS https://www.youtube.com/watch?v=IolxqkL7cD8
-
 youtube = build('youtube', 'v3', developerKey=API_KEY)
 
 class YTstats:
 
-#constructor
     def __init__(self, api_key, channel_id):
         self.api_key = api_key
         self.channel_id = channel_id
@@ -36,11 +30,8 @@ class YTstats:
         #GET https://youtube.googleapis.com/youtube/v3/channels?part=statistics&forUsername=crashcourse&key=[YOUR_API_KEY] 
         #GET https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=abc123&key=[YOUR_API_KEY] HTTP/1.1
 
-
         url = f'https://www.googleapis.com/youtube/v3/channels?part=statistics&id={self.channel_id}&key={self.api_key}'
 
-        #print(f'{self.channel_id} = {url}')
-        #print(url)
         json_url = requests.get(url)
         data = json.loads(json_url.text)
         try:
@@ -56,9 +47,6 @@ class YTstats:
 
     def get_channel_video_data(self):
         channel_videos = self._get_channel_videos(limit=50)
-
-        #print(channel_videos)
-        #print(len(channel_videos))
 
         parts = ['snippet', 'statistics', 'contentDetails']
 
@@ -92,8 +80,6 @@ class YTstats:
         if limit is not None and isinstance(limit, int):
             url += "&maxResults=" + str(limit)
 
-            #print(url)
-        
         vid, npt = self._get_channel_videos_per_page(url)
 
         index = 0
@@ -137,7 +123,7 @@ class YTstats:
                     channel_videos[video_id] = dict()
 
             except KeyError as e:
-                #print('error')
+
                 print('Error! Could not extract data from item:\n', item)
 
         return channel_videos, nextPageToken
@@ -182,8 +168,6 @@ class YTstats:
         for channel_id in data:
             for video_id, video_data in data[channel_id]['video_data'].items():
                 video_ids.append(video_id)
-                #maybe get comments with the video id keys under here instead of another py file?
-                #then dont need to manually type json filename in that other py file to grab comments
                 
         filename = 'results/video_ids_' + channel_title + '.json'
         with open(filename, 'w') as f:
@@ -200,23 +184,10 @@ if __name__ == "__main__":
     #for channelname, channelid in list(data.items())[3:]:
     for channelname, channelid in list(data.items())[13:]:
 
-        #print(channelid)
-        #manually
-        #YT = YTstats(API_KEY, "UCUHW94eEFW7hkUMVaZz4eDg") #second is khan academy id
         YT = YTstats(API_KEY, channelid)
         YT.get_channel_statistics()
         YT.get_channel_video_data()
         YT.dump()
-
-
-    #with open('constants/channel_info.json', 'r') as f:
-        #channels_list = json.load(f)
-    
-    #for each_channel_dict in channels_list:
-        
-        #channel_id_value = each_channel_dict['channel_id']
-        #print(channel_id_value)
-        #YT = YTstats(API_KEY, channel_id_value)
 
 
 

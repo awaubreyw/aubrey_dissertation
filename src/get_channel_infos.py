@@ -1,5 +1,5 @@
-#import creds
-#put confidential api key in environment variable or secret configuration file
+#either put confidential api key in environment variable or secret configuration file
+#import creds python file containing api key for v3 YouTube api
 #api_key = creds.api_key
 
 import json
@@ -23,7 +23,6 @@ for channel_title, channel_id in channel_dict.items():
     #loop through key, value from dict
 
     #to get channel info, request with parameters
-    #request = youtube.channels().list(part='brandingSettings, snippet, contentDetails, statistics', forUsername=channelusername)
     request = youtube.channels().list(
         part="brandingSettings,statistics,snippet,contentDetails",
         id=channel_id
@@ -31,7 +30,6 @@ for channel_title, channel_id in channel_dict.items():
 
     response = request.execute()
 
-    #print(response['items'][0])
     channel_info={}
     for item in response['items']:
 
@@ -49,15 +47,14 @@ for channel_title, channel_id in channel_dict.items():
         description   = snippet["description"]
         joined_date  = snippet["publishedAt"]
         #country = snippet["country"]
-            #sometimes channel doesnt have default language so language = snippet["defaultLanguage"] would error
+        #sometimes channel doesnt have default language so language = snippet["defaultLanguage"] would error
 
         subscriberCount = statistics["subscriberCount"]
         numOfVideos = statistics["videoCount"]
-
         keywords = channel["keywords"]
-        keywords = keywords.replace('"', '') #removes double quotes from each keyword iteration in array/list
+        keywords = keywords.replace('"', '') 
+        #removes double quotes from each keyword iteration in array/list
 
-        #print(channel_title, joined_date, country, subscriberCount, numOfVideos, keywords)
         channel_info = {'channel_id': channel_id,
         'channel_title': channel_title, 
         'joined': joined_date,
