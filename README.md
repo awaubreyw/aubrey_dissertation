@@ -37,15 +37,15 @@
 - List of requirements for my web app/software:
 1. users must be able to pick one channel name and action/function/goal/section (what to do with chosen channel)
 2. channel names must be shown as options in drop down menu
-3. actions must be shown as options in drop down menu
-4. users could opt to input a youtube video id as an additional feature/tool that accomplishes recommendation function or analysis function
+3. actions/features must be shown as pages or sections
+4. users could opt to input a youtube video title as an additional feature/tool that accomplishes recommendation functioning or users could opt to choose one video id from a drop down menu to view individual video sentiment analysis 
 5. visualizations/figures/charts/graphs should be displayed/featured in analysis section/page if picked
 6. dataframes and numericals/scoring/innerworkings could be displayed/included
 7. recommended videos starting from the video of the most positive sentiment should appear and be listed out in recommendation section/page if picked
 8. thumbnails of embedded youtube video URLs could be added (instead of only listing youtube video titles)
-9. users won't be able to interfere/upload/update web app with new youtube videos for system security, data and level of sophistication reasons/concerns/limitations
-10. users must be able to navigate their way around the software smoothly and have a good user experience (click on Home button to return to main dashboard or click on About to read more about problem specification and purpose/aim)
-11. users could be able to select genres/categories (based on channel keywords or video tags) to produce and organize a recommendation of videos of the same genre (SUBJECT TO CHANGE IN PROJECT PLAN)
+9. users won't be able to interfere/upload/update web app with new youtube videos' or comment files for system security, data and level of sophistication reasons/concerns/limitations
+10. users must be able to navigate their way around the software smoothly and have a good user experience (click on Home/App button to return to main dashboard or click on About to read more about problem specification and purpose/aim)
+11. users won't be able to select genres/categories (due to uncategorizeable channel keywords or video tags) to produce and organize a recommendation of videos of the same genre (SUBJECT TO CHANGE IN PROJECT PLAN)
 
 **Project Scale and Scope**
 - top 10 videos based on views
@@ -53,7 +53,7 @@
 - top 10 videos based on highest avg positive sentiment 
 - sentiment scores, visualizations, findings and insights
 - 17 english-only educational channels benchmarked against a standard of/a minimum of 1 million subs 
-- visualizations and recommendations of the best videos of the same tags/genres/categories on Streamlit web app 
+- visualizations in analysis page and recommendations of the best videos of the same chosen channel on Streamlit web app 
 
 **Limitations/out of scope**
 - web app does not automatically update with records of future educational channels that reach/surpass 1M subs nor future video uploads including their comments. "hosting" the web-app that self updates is out of scope for this project. "future work" would be to improve it so it auto updates and fetches new videos once a day
