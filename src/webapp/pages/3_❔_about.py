@@ -37,15 +37,17 @@ st.caption("Aubrey Widjaya - 2021/2022 QUB MSc Software Development - YouTube Se
 st.subheader('Citations')
 with st.expander("More"):
     st.text("""
+    Google Developers. 2022. YouTube Data API (v3). [online] Available at: <https://developers.google.com/youtube/v3/> 
+    
+    Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. Computing in science & engineering, 9(03), 90-95.
+    
     Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for Sentiment Analysis of Social Media Text. Eighth International Conference on Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
 
     McKinney, W. (2010, June). Data structures for statistical computing in python. In Proceedings of the 9th Python in Science Conference (Vol. 445, No. 1, pp. 51-56).
 
-    Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. Computing in science & engineering, 9(03), 90-95.
-
     VanderPlas, J., Granger, B., Heer, J., Moritz, D., Wongsuphasawat, K., Satyanarayan, A., Lees, E., Timofeev, I., Welsh, B. & Sievert, S. (2018). Altair: interactive statistical visualizations for Python. Journal of open source software, 3(32), 1057.
 
-    Google Developers. 2022. YouTube Data API (v3). [online] Available at: <https://developers.google.com/youtube/v3/> 
+    
     """)
 # if st.session_state:
 #     st.experimental_rerun()
