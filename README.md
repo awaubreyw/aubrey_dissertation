@@ -1,7 +1,7 @@
 # my dissertation 
 😣❗
 
-**[Web app](https://awaubreyw-aubrey-dissertation-srcwebappapp-0l7e2c.streamlitapp.com/) was built using [Streamlit](https://docs.streamlit.io/)**
+**[[Web app](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://awaubreyw-aubrey-dissertation-srcwebappapp-0l7e2c.streamlitapp.com/) was built using [Streamlit](https://docs.streamlit.io/)**
 
 ## python interpreter: 3.9.13 ('.venv': venv)
 
