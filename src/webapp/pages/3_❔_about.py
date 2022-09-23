@@ -45,9 +45,9 @@ with st.expander("More"):
 
     McKinney, W. (2010, June). Data structures for statistical computing in python. In Proceedings of the 9th Python in Science Conference (Vol. 445, No. 1, pp. 51-56).
 
-    VanderPlas, J., Granger, B., Heer, J., Moritz, D., Wongsuphasawat, K., Satyanarayan, A., Lees, E., Timofeev, I., Welsh, B. & Sievert, S. (2018). Altair: interactive statistical visualizations for Python. Journal of open source software, 3(32), 1057.
+    The pandas development team. pandas-dev/pandas: Pandas [Computer software]. https://github.com/pandas-dev/pandas
 
-    
+    VanderPlas, J., Granger, B., Heer, J., Moritz, D., Wongsuphasawat, K., Satyanarayan, A., Lees, E., Timofeev, I., Welsh, B. & Sievert, S. (2018). Altair: interactive statistical visualizations for Python. Journal of open source software, 3(32), 1057.
     """)
 # if st.session_state:
 #     st.experimental_rerun()
