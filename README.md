@@ -10,7 +10,7 @@
 3. `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`
 4. `.venv\Scripts\activate`
 5. `.venv\Scripts\pip.exe install pandas (or another)`
-6. powershell command to find number of files = `(ls src/results/crashcourse | Measure-Object -line).Lines`
+6. powershell command to find number of files PS C:\xampp\htdocs\aubrey_dissertation> `(ls src/results/crashcourse | Measure-Object -line).Lines` or C:\xampp\htdocs\aubrey_dissertation\src> `(ls results/crashcourse | Measure-Object -line).Lines`
 7. shortcut to comment out multiple lines = ctrl + /
 8. `streamlit run c:/xampp/htdocs/aubrey_dissertation/src/webapp/app.py` (http://localhost:8501/)
 
