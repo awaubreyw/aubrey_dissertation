@@ -21,7 +21,7 @@ channels = ['Crashcourse', 'Khan Academy', 'MinutePhysics', 'Deep Look', 'VSauce
 
 
 st.session_state.update(st.session_state)
-choice = st.sidebar.selectbox(label='Pick one YouTube channelarg', options=channels, key='channelkey')
+choice = st.sidebar.selectbox(label='Pick one YouTube channel', options=channels, key='channelkey')
 
 with st.sidebar:
     st.success(f"You have chosen {choice}!")
@@ -165,12 +165,6 @@ def recommend(df_arg):
 
     return df_arg
 
-
-
-
-
-
-
 df = process(channel)
 
 if len(df[df['overallpositivepercentage'] > 50]) == 0:
@@ -206,7 +200,7 @@ else:
         
         
     else:
-        st.success(f"Here are the recommendations based on highly positive sentiments of {choice} videos")
+        st.success(f"Here are the recommendations sorted by positive sentiment scoring of {choice} videos")
 
         n_cols = 3
         n_rows = int(1 + len(moddf[moddf.overallpositivepercentage > 50]) // n_cols)
