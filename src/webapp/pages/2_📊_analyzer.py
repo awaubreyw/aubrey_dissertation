@@ -38,6 +38,7 @@ video_stats = stats['video_data']
 
 #function for first set of cola and colb
 # @st.cache(allow_output_mutation=True)
+@st.experimental_memo
 def visualize_before_sentiment(order: str, col:str):
     st.subheader(f"""{choice} Top 10 Videos\n\nordered by {order}""")
 
@@ -116,7 +117,8 @@ def visualize_before_sentiment(order: str, col:str):
 
 
 
-@st.cache(allow_output_mutation=True)
+# @st.cache(allow_output_mutation=True)
+@st.experimental_memo
 def read_video_data_loop(top10):
 
     overallpositivepercentage = []
@@ -182,7 +184,8 @@ def read_video_data_loop(top10):
 
 
 # @st.cache(allow_output_mutation=True)
-@st.cache(suppress_st_warning=True)
+# @st.cache(suppress_st_warning=True)
+@st.experimental_memo
 def individual_vid_pie(onevidchoice):
 
     filepath = f'src/webapp/pages/../../results/{channel}/{onevidchoice}.json'
