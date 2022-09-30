@@ -211,7 +211,7 @@ else:
             with col:
                 url = f"https://youtu.be/{vid}"
                 # st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
-                st_player(url=url)
+                st_player(f"https://youtu.be/{vid}")
                 st.markdown(f"[{title}]({url})")
                 score = round(score)
                 score = str(score)+'%'
