@@ -32,7 +32,7 @@ with st.expander("Analyzer"):
 
 st.subheader('Contact')
 st.markdown(f"[👨‍💻️Github repo for code details👾](https://github.com/awaubreyw/aubrey_dissertation)")
-st.write("[![Follow](https://img.shields.io/badge/aubreywidjaya)](<https://www.linkedin.com/in/aubreyw/>)")
+st.write("[![Follow](https://img.shields.io/badge/aubreywidjaya-linkedin-blue)](<https://www.linkedin.com/in/aubreyw/>)")
 st.caption("Aubrey Widjaya - 2021/2022 QUB MSc Software Development - YouTube Sentiment Analysis Dissertation Individual Project")
 
 st.subheader('Citations')
