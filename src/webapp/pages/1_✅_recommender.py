@@ -210,7 +210,8 @@ else:
         for col, vid, title, score in zip(cols, moddf['video_id'], moddf['title'], moddf['overallpositivepercentage']):
             with col:
                 url = f"https://youtu.be/{vid}"
-                st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
+                # st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
+                st_player(url=url)
                 st.markdown(f"[{title}]({url})")
                 score = round(score)
                 score = str(score)+'%'
