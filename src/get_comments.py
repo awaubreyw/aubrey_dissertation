@@ -11,11 +11,11 @@ youtube = build("youtube", "v3", developerKey=api_key)
 
 import json
 
-channelname = 'vsauce'
+channelname = 'tkor'
 
 # with open("results/{channelname}.json", "r") as f: 
 with open(f"results/video_ids_{channelname}.json", "r") as f: 
-    #⚠️ tkor     kurzgesagt_–_in_a_nutshell  smartereveryday     crashcourse     veritasium[61:]    
+    #⚠️ crashcourse[492:]1000 more        
     data = json.load(f)
 
 # for channel_id in data:
@@ -26,7 +26,7 @@ with open(f"results/video_ids_{channelname}.json", "r") as f:
 
 #         video_title = video_data['title']
         
-for video_id in data[153:]:
+for video_id in data[502:]:
     
     try:
 

@@ -72,19 +72,22 @@ def visualize_before_sentiment(order: str, col:str):
         stats.append([video_id, title, views, likes, comments, duration])
 
     df = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
+
     df = df.sort_values(by=[col], ascending=False)
+
     df.drop(df.loc[df['comments']==0].index, inplace=True)
+
     for identifier in df['video_id']:
         filename = f"src/webapp/pages/../../results/{channel}/{identifier}.json"
         if os.path.exists(filename):
             pass
         else:
             df.drop(df.index[df['video_id'] == identifier], inplace = True)
+
     df = df.reset_index(drop=True)
 
     topten = df.head(10)
   
-    topten = topten.sort_values(by=[col], ascending=False)
     st.dataframe(topten.style.highlight_max(axis='columns', subset=[col]))
     st.caption("videos that have comments disabled were filtered out for sentiment analysis purposes and video whose comment json files were not successfully extracted, due to API quota limitations, were filtered out")
  
@@ -245,6 +248,7 @@ def visualize_after_sentiment(top10arg, by: str):
 
     onevidopt = st.selectbox(f'Pick one {choice} video id to see its sentiment analysis results', top10arg)
     st.caption("if options do not include all of top 10 video ids, some video comment json files were not extracted due to API quota")
+    
     dataframe, totalpositivesentiment, totalnegativesentiment, totalneutralsentiment = individual_vid_pie(onevidopt)
     
     

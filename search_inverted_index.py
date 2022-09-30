@@ -25,22 +25,26 @@ def search(search_string, inverted_index):
 
 # load the inverted indexes
 # We also convert the lists back to sets (for faster lookup and uniqueness)
-with open("title_inverted_index.json", "r") as f:
+with open("src/webapp/title_inverted_index.json", "r") as f:
     loaded_index = json.load(f)
     TITLE_INVERTED_INDEX = {k : set(v) for k, v in loaded_index.items()}
 
-with open("description_inverted_index.json", "r") as f:
+with open("src/webapp/description_inverted_index.json", "r") as f:
     loaded_index = json.load(f)
     DESCRIPTION_INVERTED_INDEX = {k : set(v) for k, v in loaded_index.items()}
 
             
 # You can search across the titles only
-print(f"Search across titles only\n{search('visual proofs', TITLE_INVERTED_INDEX)}\n")
+# print(f"Search across titles only\n{search('visual proofs', TITLE_INVERTED_INDEX)}\n")
 
 # Or you can search across the descriptions
-print(f"Search across descriptions only\n{search('visual proofs', DESCRIPTION_INVERTED_INDEX)}\n")
+# print(f"Search across descriptions only\n{search('visual proofs', DESCRIPTION_INVERTED_INDEX)}\n")
 
 # Or you could search across both
 titles = search("visual proofs", TITLE_INVERTED_INDEX)
 descriptions = search("visual proofs", DESCRIPTION_INVERTED_INDEX)
-print(f"Search across titles and descriptions:\n{set.union(titles, descriptions)}\n")
+# print(f"Search across titles and descriptions:\n{set.union(titles, descriptions)}\n")
+
+test = search('geography', TITLE_INVERTED_INDEX)
+
+print(test)

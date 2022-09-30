@@ -53,13 +53,6 @@ def process(channelarg):
     for vid in sorted_vids:
         video_id = vid[0]
         title = vid[1]['title']
-        
-        key = "commentCount"
-        if key in vid[1].keys():
-            comments = int(vid[1]["commentCount"]) 
-        else:
-            comments = 0
-
         key = "viewCount"
         if key in vid[1].keys():
             views = int(vid[1]["viewCount"]) 
@@ -70,9 +63,16 @@ def process(channelarg):
         if key in vid[1].keys():
             likes = int(vid[1]["likeCount"]) 
         else:
-            likes = 0
+            likes = 0        
+        
+        key = "commentCount"
+        if key in vid[1].keys():
+            comments = int(vid[1]["commentCount"]) 
+        else:
+            comments = 0
 
         duration = vid[1]['duration']
+
         stats.append([video_id, title, views, likes, comments, duration])
 
     dfplaceholder = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration'])
