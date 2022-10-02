@@ -1,5 +1,6 @@
 #CREDITS https://www.youtube.com/watch?v=clFrWjiwxL0 fake grid layout
 
+from numpy import isin
 import streamlit as st
 import pandas as pd
 import json
@@ -81,9 +82,9 @@ def process(channelarg):
         duration = vid[1]['duration']
         categoryid = vid[1]['categoryId']
         
-        for id, categoryval in categoriesdf.iterrows():
-            if id == categoryid:
-                categoryname = categoryval
+        for index, row in categoriesdf.iterrows():
+            if categoryid == row['id']:
+                categoryname = row['category']
         
 
         stats.append([video_id, title, views, likes, comments, duration, categoryid, categoryname])
