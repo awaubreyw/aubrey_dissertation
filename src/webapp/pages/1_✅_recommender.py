@@ -81,7 +81,7 @@ def process(channelarg):
         duration = vid[1]['duration']
         categoryid = vid[1]['categoryId']
         
-        for id, categoryval in categoriesdf.items():
+        for id, categoryval in categoriesdf.iterrows():
             if id == categoryid:
                 categoryname = categoryval
         
