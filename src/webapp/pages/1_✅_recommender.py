@@ -87,7 +87,7 @@ def process(channelarg):
                 categoryname = row['category']
         
 
-        stats.append([video_id, title, views, likes, comments, duration, categoryid, categoryname])
+                stats.append([video_id, title, views, likes, comments, duration, categoryid, categoryname])
 
     dfplaceholder = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration', 'categoryid', 'category'])
     dfplaceholder.drop(dfplaceholder.loc[dfplaceholder['comments']==0].index, inplace=True)
