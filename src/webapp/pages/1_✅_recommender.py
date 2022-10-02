@@ -1,11 +1,8 @@
 #CREDITS https://www.youtube.com/watch?v=clFrWjiwxL0 fake grid layout
 
-from nis import cat
-from numpy import isin
 import streamlit as st
 import pandas as pd
 import json
-from traitlets import default
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from streamlit_player import st_player
 import os.path
@@ -185,13 +182,13 @@ if len(df[df['overallpositivepercentage'] > 50]) == 0:
 else:
 
     moddf = recommend(df)
-    categorylist = []
-    for index, row in categoriesdf.iterrows():
-        for i, r in moddf.iterrows():
-            if r['categoryid'] == row['id']:
-                categorylist.append(row['category'])
+    # categorylist = []
+    # for index, row in categoriesdf.iterrows():
+    #     for i, r in moddf.iterrows():
+    #         if r['categoryid'] == row['id']:
+    #             categorylist.append(row['category'])
 
-    moddf['category'] = categorylist
+    # moddf['category'] = categorylist
 
     if userinput:
         if moddf['title'].str.contains(userinput, case=False).any() == False:
@@ -203,42 +200,44 @@ else:
             n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
             rows = [st.columns(n_cols) for _ in range(n_rows)]
             columns = [column for row in rows for column in row]
-            for matchvid, matchtitle, matchscore, col in zip(matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
+            for matchcat, matchvid, matchtitle, matchscore, col in zip(matches['categoryid'], matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
                 with col:
                     # url = f"https://www.youtube.com/watch?v={matchvid}"
                     url = f"https://youtu.be/{matchvid}"
                     st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
                     # st_player(url)
                     # st.write(matchtitle)
+                    if matchcat == 27:
+                        st.caption('Category: Education')
                     st.markdown(f"[{matchtitle}]({url})")
                     matchscore = round(matchscore)
                     matchscore = str(matchscore)+'%'
                     st.success(matchscore)
         
             
-    elif categoricalchoice:
+    # elif categoricalchoice:
 
-        if moddf['category'].str.contains(categoricalchoice, case=False).any() == False:
-            st.warning(f'{choice} has no videos with that category. Please try again', icon="⚠️")
-        else:
-            st.success('Found match(es)', icon="✅")
-            matches = moddf.loc[moddf['category'].str.contains(categoricalchoice, case=False)]
-            n_cols = 3
-            n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
-            rows = [st.columns(n_cols) for _ in range(n_rows)]
-            columns = [column for row in rows for column in row]
-            for matchvid, matchtitle, matchscore, col in zip(matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
-                with col:
-                    # url = f"https://www.youtube.com/watch?v={matchvid}"
-                    url = f"https://youtu.be/{matchvid}"
-                    st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
-                    # st_player(url)
-                    # st.write(matchtitle)
-                    st.markdown(f"[{matchtitle}]({url})")
-                    st.caption(f"Category: {categoricalchoice}")
-                    matchscore = round(matchscore)
-                    matchscore = str(matchscore)+'%'
-                    st.success(matchscore)
+    #     if moddf['category'].str.contains(categoricalchoice, case=False).any() == False:
+    #         st.warning(f'{choice} has no videos with that category. Please try again', icon="⚠️")
+    #     else:
+    #         st.success('Found match(es)', icon="✅")
+    #         matches = moddf.loc[moddf['category'].str.contains(categoricalchoice, case=False)]
+    #         n_cols = 3
+    #         n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
+    #         rows = [st.columns(n_cols) for _ in range(n_rows)]
+    #         columns = [column for row in rows for column in row]
+    #         for matchvid, matchtitle, matchscore, col in zip(matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
+    #             with col:
+    #                 # url = f"https://www.youtube.com/watch?v={matchvid}"
+    #                 url = f"https://youtu.be/{matchvid}"
+    #                 st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
+    #                 # st_player(url)
+    #                 # st.write(matchtitle)
+    #                 st.markdown(f"[{matchtitle}]({url})")
+    #                 st.caption(f"Category: {categoricalchoice}")
+    #                 matchscore = round(matchscore)
+    #                 matchscore = str(matchscore)+'%'
+    #                 st.success(matchscore)
         
 
         
@@ -251,12 +250,14 @@ else:
         rows = [st.columns(n_cols) for _ in range(n_rows)]
         cols = [column for row in rows for column in row]
 
-        for cat, col, vid, title, score in zip(moddf['category'], cols, moddf['video_id'], moddf['title'], moddf['overallpositivepercentage']):
+        for cat, col, vid, title, score in zip(moddf['categoryid'], cols, moddf['video_id'], moddf['title'], moddf['overallpositivepercentage']):
             with col:
                 url = f"https://youtu.be/{vid}"
                 st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
                 # st_player(f"https://youtu.be/{vid}")
                 st.markdown(f"[{title}]({url})")
+                if cat == 27:
+                    st.caption('Category: Education')
                 # st.caption(f"Category: {cat}")
                 score = round(score)
                 score = str(score)+'%'
