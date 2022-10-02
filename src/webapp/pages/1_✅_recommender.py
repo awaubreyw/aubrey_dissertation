@@ -79,14 +79,15 @@ def process(channelarg):
             comments = 0
 
         duration = vid[1]['duration']
-        categoryid = int(vid[1]['categoryId'])
-        for id, category in categoriesdf:
+        categoryid = vid[1]['categoryId']
+        for id, categoryval in categoriesdf:
             if categoryid == id:
-                categoryname = category
+                categoryname = categoryval
+        
 
-        stats.append([video_id, title, views, likes, comments, duration, categoryname])
+        stats.append([video_id, title, views, likes, comments, duration, categoryid, categoryname])
 
-    dfplaceholder = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration', 'category'])
+    dfplaceholder = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration', 'categoryid', 'category'])
     dfplaceholder.drop(dfplaceholder.loc[dfplaceholder['comments']==0].index, inplace=True)
     for identifier in dfplaceholder['video_id']:
         filename = f"src/webapp/pages/../../results/{channelarg}/{identifier}.json"
