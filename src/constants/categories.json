@@ -1,0 +1,130 @@
+[
+  {
+    "id": "1",
+    "category": "Film & Animation"
+  },
+  {
+    "id": "2",
+    "category": "Autos & Vehicles"
+  },
+  {
+    "id": "10",
+    "category": "Music"
+  },
+  {
+    "id": "15",
+    "category": "Pets & Animals"
+  },
+  {
+    "id": "17",
+    "category": "Sports"
+  },
+  {
+    "id": "18",
+    "category": "Short Movies"
+  },
+  {
+    "id": "19",
+    "category": "Travel & Events"
+  },
+  {
+    "id": "20",
+    "category": "Gaming"
+  },
+  {
+    "id": "21",
+    "category": "Videoblogging"
+  },
+  {
+    "id": "22",
+    "category": "People & Blogs"
+  },
+  {
+    "id": "23",
+    "category": "Comedy"
+  },
+  {
+    "id": "24",
+    "category": "Entertainment"
+  },
+  {
+    "id": "25",
+    "category": "News & Politics"
+  },
+  {
+    "id": "26",
+    "category": "Howto & Style"
+  },
+  {
+    "id": "27",
+    "category": "Education"
+  },
+  {
+    "id": "28",
+    "category": "Science & Technology"
+  },
+  {
+    "id": "29",
+    "category": "Nonprofits & Activism"
+  },
+  {
+    "id": "30",
+    "category": "Movies"
+  },
+  {
+    "id": "31",
+    "category": "Anime/Animation"
+  },
+  {
+    "id": "32",
+    "category": "Action/Adventure"
+  },
+  {
+    "id": "33",
+    "category": "Classics"
+  },
+  {
+    "id": "34",
+    "category": "Comedy"
+  },
+  {
+    "id": "35",
+    "category": "Documentary"
+  },
+  {
+    "id": "36",
+    "category": "Drama"
+  },
+  {
+    "id": "37",
+    "category": "Family"
+  },
+  {
+    "id": "38",
+    "category": "Foreign"
+  },
+  {
+    "id": "39",
+    "category": "Horror"
+  },
+  {
+    "id": "40",
+    "category": "Sci-Fi/Fantasy"
+  },
+  {
+    "id": "41",
+    "category": "Thriller"
+  },
+  {
+    "id": "42",
+    "category": "Shorts"
+  },
+  {
+    "id": "43",
+    "category": "Shows"
+  },
+  {
+    "id": "44",
+    "category": "Trailers"
+  }
+]
