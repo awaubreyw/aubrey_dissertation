@@ -37,7 +37,7 @@ categories = ["Film & Animation", "Autos & Vehicles", "Music", "Pets & Animals",
 
 categoriesdf = pd.read_json("src/webapp/pages/../../constants/categories.json")
 
-categoricalchoice = st.selectbox(label="Pick any video category", options=categories, default=categories[14])
+categoricalchoice = st.selectbox(label="Pick any video category", options=categories, default="Education")
 
 # @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 @st.experimental_memo
