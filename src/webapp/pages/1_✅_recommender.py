@@ -1,9 +1,11 @@
 #CREDITS https://www.youtube.com/watch?v=clFrWjiwxL0 fake grid layout
 
+from nis import cat
 from numpy import isin
 import streamlit as st
 import pandas as pd
 import json
+from traitlets import default
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from streamlit_player import st_player
 import os.path
@@ -31,11 +33,11 @@ channel = choice.replace(' ', '_').lower()
 
 #implement logic from aubrey_dissertation/src/webapp/recommender.ipynb
 
-# categories = ["Film & Animation", "Autos & Vehicles", "Music", "Pets & Animals", "Sports", "Short Movies", "Travel & Events", "Gaming", "Videoblogging", "People & Blogs", "Comedy", "Entertainment", "News & Politics", "Howto & Style", "Education", "Science & Technology", "Nonprofits & Activism", "Movies", "Anime/Animation", "Action/Adventure", "Classics", "Comedy", "Documentary", "Drama", "Family", "Foreign", "Horror", "Sci-Fi/Fantasy", "Thriller", "Shorts", "Shows", "Trailers"]
+categories = ["Film & Animation", "Autos & Vehicles", "Music", "Pets & Animals", "Sports", "Short Movies", "Travel & Events", "Gaming", "Videoblogging", "People & Blogs", "Comedy", "Entertainment", "News & Politics", "Howto & Style", "Education", "Science & Technology", "Nonprofits & Activism", "Movies", "Anime/Animation", "Action/Adventure", "Classics", "Comedy", "Documentary", "Drama", "Family", "Foreign", "Horror", "Sci-Fi/Fantasy", "Thriller", "Shorts", "Shows", "Trailers"]
 
 categoriesdf = pd.read_json("src/webapp/pages/../../constants/categories.json")
 
-# categoricalchoice = st.selectbox(label="Pick any video category", options=categories)
+categoricalchoice = st.selectbox(label="Pick any video category", options=categories, default=categories[14])
 
 # @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 @st.experimental_memo
@@ -82,88 +84,84 @@ def process(channelarg):
         duration = vid[1]['duration']
         categoryid = vid[1]['categoryId']
         
-        for index, row in categoriesdf.iterrows():
-            if categoryid == row['id']:
-                categoryname = row['category']
+
+        stats.append([video_id, title, views, likes, comments, duration, categoryid])
+
+    dfplaceholder = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration', 'categoryid'])
+    dfplaceholder.drop(dfplaceholder.loc[dfplaceholder['comments']==0].index, inplace=True)
+    for identifier in dfplaceholder['video_id']:
+        filename = f"src/webapp/pages/../../results/{channelarg}/{identifier}.json"
+        if os.path.exists(filename):
+            pass
+        else:
+            dfplaceholder.drop(dfplaceholder.index[dfplaceholder['video_id'] == identifier], inplace = True)
+    dfplaceholder = dfplaceholder.reset_index(drop=True)
+
+    overallpositivepercentage = []
+    overallneutralpercentage = []
+    overallnegativepercentage = []
+
+    for videoID in dfplaceholder['video_id']:
+        filepath = f'src/webapp/pages/../../results/{channelarg}/{videoID}.json'
+
+        dataframe = pd.read_json(filepath)
+        
+        positive = []
+        negative = []
+        neutral = []
+        compound = []
+        sentiment = []
+
+        for line in range(dataframe.shape[0]): 
+
+            comments = dataframe.iloc[line, 1] 
+            comments_analyzed = analyzer.polarity_scores(comments)
+
+        
+            if comments_analyzed["compound"] >= 0.05:
+                eachsentiment = 'positive'
+            elif comments_analyzed["compound"] <= -0.05:
+                eachsentiment = 'negative'
+            else:
+                eachsentiment = 'neutral'
+
+            negative.append(comments_analyzed["neg"])
+
+            positive.append(comments_analyzed["pos"])
+
+            neutral.append(comments_analyzed["neu"])
+
+            compound.append(comments_analyzed["compound"])
+
+            sentiment.append(eachsentiment)
+
+
+        dataframe["negative"] = negative 
+        dataframe["neutral"] = neutral
+        dataframe["positive"] = positive
+        dataframe["compound"] = compound
+        dataframe["sentiment"] = sentiment
         
 
-                stats.append([video_id, title, views, likes, comments, duration, categoryid, categoryname])
+        totalrows = len(dataframe['sentiment'])
 
-        dfplaceholder = pd.DataFrame(stats, columns=['video_id', 'title', 'views', 'likes', 'comments','duration', 'categoryid', 'category'])
-        dfplaceholder.drop(dfplaceholder.loc[dfplaceholder['comments']==0].index, inplace=True)
-        for identifier in dfplaceholder['video_id']:
-            filename = f"src/webapp/pages/../../results/{channelarg}/{identifier}.json"
-            if os.path.exists(filename):
-                pass
-            else:
-                dfplaceholder.drop(dfplaceholder.index[dfplaceholder['video_id'] == identifier], inplace = True)
-        dfplaceholder = dfplaceholder.reset_index(drop=True)
-
-        overallpositivepercentage = []
-        overallneutralpercentage = []
-        overallnegativepercentage = []
-
-        for videoID in dfplaceholder['video_id']:
-            filepath = f'src/webapp/pages/../../results/{channelarg}/{videoID}.json'
-
-            dataframe = pd.read_json(filepath)
-            
-            positive = []
-            negative = []
-            neutral = []
-            compound = []
-            sentiment = []
-
-            for line in range(dataframe.shape[0]): 
-
-                comments = dataframe.iloc[line, 1] 
-                comments_analyzed = analyzer.polarity_scores(comments)
-
-            
-                if comments_analyzed["compound"] >= 0.05:
-                    eachsentiment = 'positive'
-                elif comments_analyzed["compound"] <= -0.05:
-                    eachsentiment = 'negative'
-                else:
-                    eachsentiment = 'neutral'
-
-                negative.append(comments_analyzed["neg"])
-
-                positive.append(comments_analyzed["pos"])
-
-                neutral.append(comments_analyzed["neu"])
-
-                compound.append(comments_analyzed["compound"])
-
-                sentiment.append(eachsentiment)
+        if dataframe['sentiment'].str.contains('positive').any():
+            totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
+            overallpositivepercentage.append(totalpositivesentiment)
+        if dataframe['sentiment'].str.contains('negative').any():
+            totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
+            overallnegativepercentage.append(totalnegativesentiment)
+        if dataframe['sentiment'].str.contains('neutral').any():        
+            totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
+            overallneutralpercentage.append(totalneutralsentiment)
 
 
-            dataframe["negative"] = negative 
-            dataframe["neutral"] = neutral
-            dataframe["positive"] = positive
-            dataframe["compound"] = compound
-            dataframe["sentiment"] = sentiment
-            
+    dfplaceholder["overallpositivepercentage"] = pd.Series(overallpositivepercentage)
+    dfplaceholder["overallneutralpercentage"] = pd.Series(overallneutralpercentage)
+    dfplaceholder["overallnegativepercentage"] = pd.Series(overallnegativepercentage)
+    dfplaceholder = dfplaceholder.fillna(0)
 
-            totalrows = len(dataframe['sentiment'])
-
-            if dataframe['sentiment'].str.contains('positive').any():
-                totalpositivesentiment = ((dataframe['sentiment'].value_counts()['positive'])/totalrows)*100
-                overallpositivepercentage.append(totalpositivesentiment)
-            if dataframe['sentiment'].str.contains('negative').any():
-                totalnegativesentiment = ((dataframe['sentiment'].value_counts()['negative'])/totalrows)*100
-                overallnegativepercentage.append(totalnegativesentiment)
-            if dataframe['sentiment'].str.contains('neutral').any():        
-                totalneutralsentiment = ((dataframe['sentiment'].value_counts()['neutral'])/totalrows)*100
-                overallneutralpercentage.append(totalneutralsentiment)
-
-
-        dfplaceholder["overallpositivepercentage"] = pd.Series(overallpositivepercentage)
-        dfplaceholder["overallneutralpercentage"] = pd.Series(overallneutralpercentage)
-        dfplaceholder["overallnegativepercentage"] = pd.Series(overallnegativepercentage)
-        dfplaceholder = dfplaceholder.fillna(0)
-
-        dfplaceholder = dfplaceholder.sort_values(by=['overallpositivepercentage'], ascending=False)
+    dfplaceholder = dfplaceholder.sort_values(by=['overallpositivepercentage'], ascending=False)
 
     return dfplaceholder
 
@@ -177,6 +175,14 @@ def recommend(df_arg):
         if value['overallpositivepercentage'] <= 50:
             
             df_arg.drop(df_arg.index[df_arg['overallpositivepercentage'] == value['overallpositivepercentage']], inplace = True)
+
+    categorylist = []
+    for index, row in categoriesdf.iterrows():
+        for i, r in df_arg.iterrows():
+            if r['categoryid'] == row['id']:
+                categorylist.append(row['category'])
+
+    df_arg['category'] = categorylist
 
     return df_arg
 
@@ -212,6 +218,7 @@ else:
         
             
     elif categoricalchoice:
+
         if moddf['category'].str.contains(categoricalchoice, case=False).any() == False:
             st.warning(f'{choice} has no videos with that category. Please try again', icon="⚠️")
         else:
@@ -251,7 +258,7 @@ else:
                 st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
                 # st_player(f"https://youtu.be/{vid}")
                 st.markdown(f"[{title}]({url})")
-                st.caption(f"Category: {cat}")
+                # st.caption(f"Category: {cat}")
                 score = round(score)
                 score = str(score)+'%'
                 st.success(score)
