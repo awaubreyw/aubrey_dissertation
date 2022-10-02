@@ -30,11 +30,11 @@ channel = choice.replace(' ', '_').lower()
 
 #implement logic from aubrey_dissertation/src/webapp/recommender.ipynb
 
-categories = ["Film & Animation", "Autos & Vehicles", "Music", "Pets & Animals", "Sports", "Short Movies", "Travel & Events", "Gaming", "Videoblogging", "People & Blogs", "Comedy", "Entertainment", "News & Politics", "Howto & Style", "Education", "Science & Technology", "Nonprofits & Activism", "Movies", "Anime/Animation", "Action/Adventure", "Classics", "Comedy", "Documentary", "Drama", "Family", "Foreign", "Horror", "Sci-Fi/Fantasy", "Thriller", "Shorts", "Shows", "Trailers"]
+# categories = ["Film & Animation", "Autos & Vehicles", "Music", "Pets & Animals", "Sports", "Short Movies", "Travel & Events", "Gaming", "Videoblogging", "People & Blogs", "Comedy", "Entertainment", "News & Politics", "Howto & Style", "Education", "Science & Technology", "Nonprofits & Activism", "Movies", "Anime/Animation", "Action/Adventure", "Classics", "Comedy", "Documentary", "Drama", "Family", "Foreign", "Horror", "Sci-Fi/Fantasy", "Thriller", "Shorts", "Shows", "Trailers"]
 
-categoriesdf = pd.read_json("src/webapp/pages/../../constants/categories.json")
+# categoriesdf = pd.read_json("src/webapp/pages/../../constants/categories.json")
 
-categoricalchoice = st.selectbox(label="Pick any video category", options=categories, index=14)
+# categoricalchoice = st.selectbox(label="Pick any video category", options=categories, index=14)
 
 # @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 @st.experimental_memo
@@ -207,7 +207,7 @@ else:
                     st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
                     # st_player(url)
                     # st.write(matchtitle)
-                    if matchcat == 27:
+                    if int(matchcat) == 27:
                         st.caption('Category: Education')
                     st.markdown(f"[{matchtitle}]({url})")
                     matchscore = round(matchscore)
@@ -256,7 +256,7 @@ else:
                 st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
                 # st_player(f"https://youtu.be/{vid}")
                 st.markdown(f"[{title}]({url})")
-                if cat == 27:
+                if int(cat) == 27:
                     st.caption('Category: Education')
                 # st.caption(f"Category: {cat}")
                 score = round(score)
