@@ -176,14 +176,6 @@ def recommend(df_arg):
             
             df_arg.drop(df_arg.index[df_arg['overallpositivepercentage'] == value['overallpositivepercentage']], inplace = True)
 
-    categorylist = []
-    for index, row in categoriesdf.iterrows():
-        for i, r in df_arg.iterrows():
-            if r['categoryid'] == row['id']:
-                categorylist.append(row['category'])
-
-    df_arg['category'] = categorylist
-
     return df_arg
 
 df = process(channel)
@@ -193,6 +185,13 @@ if len(df[df['overallpositivepercentage'] > 50]) == 0:
 else:
 
     moddf = recommend(df)
+    categorylist = []
+    for index, row in categoriesdf.iterrows():
+        for i, r in moddf.iterrows():
+            if r['categoryid'] == row['id']:
+                categorylist.append(row['category'])
+
+    moddf['category'] = categorylist
 
     if userinput:
         if moddf['title'].str.contains(userinput, case=False).any() == False:
