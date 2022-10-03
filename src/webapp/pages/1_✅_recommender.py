@@ -201,6 +201,7 @@ else:
         
         userinputlist = userinput.split()
         mask = moddf.iloc[:, 0].str.contains(r'\b(?:{})\b'.format('|'.join(userinputlist)))
+        filter = mask == 'False'
         
         # if moddf['title'].str.contains(userinputlist[0], case=False).any() == False:
         
@@ -209,9 +210,10 @@ else:
         #         # matches = moddf['title']
         #         matches = moddf.loc[moddf['title'].str.contains(word, case=False)]
 
-        if moddf[~mask].str.contains('True').any():
+        if moddf['title'].str.contains(r'\b(?:{})\b'.format('|'.join(userinputlist))).any() == 'True':
             st.success('Found match(es)', icon="✅")
-            matches = moddf[~mask]
+            matches = moddf.drop(index=moddf[filter].index)
+            # matches = moddf[~mask]
             matches = matches.drop_duplicates()
             n_cols = 3
             n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
