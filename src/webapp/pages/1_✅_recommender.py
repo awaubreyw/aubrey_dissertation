@@ -211,7 +211,7 @@ else:
         # if moddf['OR'].str.contains('FALSE', case=False).any() == True:
         #     st.warning(f'{choice} has no videos with that category. Please try again', icon="⚠️")
         # else: 
-        st.success('Found match(es)', icon="✅")
+        # st.success('Found match(es)', icon="✅")
         matches = moddf.loc[moddf['title'].str.contains('|'.join(userinputlist), case=False)]
         n_cols = 3
         n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
