@@ -207,7 +207,9 @@ else:
 
         moddf = moddf.where(mask, moddf.replace(d))
         
-        if moddf['OR'].str.contains('TRUE').any():
+        if moddf['OR'].str.contains('TRUE', case=False).any() == False:
+            st.warning(f'{choice} has no videos with that category. Please try again', icon="⚠️")
+        else: 
             st.success('Found match(es)', icon="✅")
             matches = moddf.loc[moddf['title'].str.contains('|'.join(userinputlist), case=False)]
             n_cols = 3
@@ -226,8 +228,8 @@ else:
                     matchscore = round(matchscore)
                     matchscore = str(matchscore)+'%'
                     st.success(matchscore)
-        else:
-            st.warning(f'{choice} has no videos with that category. Please try again', icon="⚠️")
+            
+            
         
             
             
