@@ -202,7 +202,26 @@ else:
         userinputlist = userinput.split()
         mask = moddf.iloc[:, 0].str.contains(r'\b(?:{})\b'.format('|'.join(userinputlist)))
         filter = mask == 'False'
-        
+        matches = moddf.drop(index=moddf[filter].index)
+        # matches = moddf[~mask]
+        matches = matches.drop_duplicates()
+        n_cols = 3
+        n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
+        rows = [st.columns(n_cols) for _ in range(n_rows)]
+        columns = [column for row in rows for column in row]
+        for matchcat, matchvid, matchtitle, matchscore, col in zip(matches['category'], matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
+            with col:
+                # url = f"https://www.youtube.com/watch?v={matchvid}"
+                url = f"https://youtu.be/{matchvid}"
+                st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
+                # st_player(url)
+                # st.write(matchtitle)
+                st.caption(f'Category: {matchcat}')
+                st.markdown(f"[{matchtitle}]({url})")
+                matchscore = round(matchscore)
+                matchscore = str(matchscore)+'%'
+                st.success(matchscore)
+    
         # if moddf['title'].str.contains(userinputlist[0], case=False).any() == False:
         
         # for word in userinputlist:
