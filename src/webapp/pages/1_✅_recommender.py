@@ -206,8 +206,9 @@ else:
         d = {True: 'TRUE', False: 'FALSE'}
 
         moddf = moddf.where(mask, moddf.replace(d))
+        st.dataframe(moddf)
         
-        if moddf['OR'].str.contains('TRUE', case=False).any() == False:
+        if moddf['OR'].str.contains('FALSE', case=False).any() == True:
             st.warning(f'{choice} has no videos with that category. Please try again', icon="⚠️")
         else: 
             st.success('Found match(es)', icon="✅")
