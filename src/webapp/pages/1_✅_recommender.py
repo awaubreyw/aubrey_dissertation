@@ -201,7 +201,13 @@ else:
         
         userinputlist = userinput.split()
         moddf['OR'] = moddf['title'].str.contains('|'.join(userinputlist))
-        if moddf['OR'].isin("True").any():
+        
+        mask = moddf.applymap(type) != bool
+        d = {True: 'TRUE', False: 'FALSE'}
+
+        moddf = moddf.where(mask, moddf.replace(d))
+        
+        if moddf['OR'].str.contains('TRUE', case=False).any() == True:
             st.success('Found match(es)', icon="✅")
             matches = moddf.loc[moddf['title'].str.contains('|'.join(userinputlist), case=False)]
             n_cols = 3
