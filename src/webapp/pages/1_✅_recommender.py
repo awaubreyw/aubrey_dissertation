@@ -207,7 +207,7 @@ else:
 
         moddf = moddf.where(mask, moddf.replace(d))
         
-        if moddf['OR'].str.contains('TRUE', case=False).any() == True:
+        if moddf['OR'].str.contains('TRUE').any():
             st.success('Found match(es)', icon="✅")
             matches = moddf.loc[moddf['title'].str.contains('|'.join(userinputlist), case=False)]
             n_cols = 3
