@@ -30,11 +30,11 @@ channel = choice.replace(' ', '_').lower()
 
 #implement logic from aubrey_dissertation/src/webapp/recommender.ipynb
 
-categories = ["Film & Animation", "Autos & Vehicles", "Music", "Pets & Animals", "Sports", "Short Movies", "Travel & Events", "Gaming", "Videoblogging", "People & Blogs", "Comedy", "Entertainment", "News & Politics", "Howto & Style", "Education", "Science & Technology", "Nonprofits & Activism", "Movies", "Anime/Animation", "Action/Adventure", "Classics", "Comedy", "Documentary", "Drama", "Family", "Foreign", "Horror", "Sci-Fi/Fantasy", "Thriller", "Shorts", "Shows", "Trailers"]
+# categories = ["Film & Animation", "Autos & Vehicles", "Music", "Pets & Animals", "Sports", "Short Movies", "Travel & Events", "Gaming", "Videoblogging", "People & Blogs", "Comedy", "Entertainment", "News & Politics", "Howto & Style", "Education", "Science & Technology", "Nonprofits & Activism", "Movies", "Anime/Animation", "Action/Adventure", "Classics", "Comedy", "Documentary", "Drama", "Family", "Foreign", "Horror", "Sci-Fi/Fantasy", "Thriller", "Shorts", "Shows", "Trailers"]
 
 categoriesdf = pd.read_json("src/webapp/pages/../../constants/categories.json")
 
-categoricalchoice = st.selectbox(label="Pick any video category", options=categories, index=14)
+# categoricalchoice = st.selectbox(label="Pick any video category", options=categories, index=14)
 
 # @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 @st.experimental_memo
@@ -209,7 +209,7 @@ else:
         #         # matches = moddf['title']
         #         matches = moddf.loc[moddf['title'].str.contains(word, case=False)]
 
-        if True in ~mask:
+        if moddf[~mask].str.contains('True').any():
             st.success('Found match(es)', icon="✅")
             matches = moddf[~mask]
             matches = matches.drop_duplicates()
