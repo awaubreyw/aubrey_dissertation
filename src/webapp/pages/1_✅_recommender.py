@@ -201,9 +201,9 @@ else:
         
         userinputlist = userinput.split()
         mask = moddf.iloc[:, 0].str.contains(r'\b(?:{})\b'.format('|'.join(userinputlist)))
-        filter = mask == 'False'
-        matches = moddf.drop(index=moddf[filter].index)
-        # matches = moddf[~mask]
+        # filter = mask == 'False'
+        # matches = moddf.drop(index=moddf[filter].index)
+        matches = moddf[~mask]
         matches = matches.drop_duplicates()
         n_cols = 3
         n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
