@@ -200,41 +200,34 @@ else:
     if userinput:
         
         userinputlist = userinput.split()
-    
-        # if moddf['title'].str.contains(userinputlist[0], case=False).any() == False:
-        
-        # for word in userinputlist:
-        #     if moddf['title'].str.contains(word, case=False).any():
-        #         # matches = moddf['title']
-        #         matches = moddf.loc[moddf['title'].str.contains(word, case=False)]
-
-        if moddf['title'].str.contains(r'\b(?:{})\b'.format('|'.join(userinputlist))).any():
+        moddf['OR'] = moddf['title'].str.contains('|'.join(userinputlist))
+        if moddf['OR'].str.contains("True").any() == True:
             st.success('Found match(es)', icon="✅")
-            
-            for word in userinputlist:
-                matches = moddf.loc[moddf['title'].str.contains(word, case=False)]
+            matches = moddf.loc[moddf['title'].str.contains('|'.join(userinputlist), case=False)]
             n_cols = 3
             n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
             rows = [st.columns(n_cols) for _ in range(n_rows)]
             columns = [column for row in rows for column in row]
-            for matchcat, matchvid, matchtitle, matchscore, col in zip(matches['category'], matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
+            for cat, matchvid, matchtitle, matchscore, col in zip(matches['category'], matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
                 with col:
                     # url = f"https://www.youtube.com/watch?v={matchvid}"
                     url = f"https://youtu.be/{matchvid}"
                     st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
                     # st_player(url)
                     # st.write(matchtitle)
-                    st.caption(f'Category: {matchcat}')
                     st.markdown(f"[{matchtitle}]({url})")
+                    st.caption(f"Category: {cat}")
                     matchscore = round(matchscore)
                     matchscore = str(matchscore)+'%'
                     st.success(matchscore)
-
         else:
-            st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
+            st.warning(f'{choice} has no videos with that category. Please try again', icon="⚠️")
+        
+            
+            
 
         # if moddf['title'].str.contains(userinput, case=False).any() == False:
-        #     st.warning(f'{choice} has no videos with that title. Please try again', icon="⚠️")
+        #     st.warning(f'{choice} has no videos with that category. Please try again', icon="⚠️")
         # else:
         #     st.success('Found match(es)', icon="✅")
         #     matches = moddf.loc[moddf['title'].str.contains(userinput, case=False)]
@@ -242,43 +235,18 @@ else:
         #     n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
         #     rows = [st.columns(n_cols) for _ in range(n_rows)]
         #     columns = [column for row in rows for column in row]
-        #     for matchcat, matchvid, matchtitle, matchscore, col in zip(matches['category'], matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
+        #     for cat, matchvid, matchtitle, matchscore, col in zip(matches['category'], matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
         #         with col:
         #             # url = f"https://www.youtube.com/watch?v={matchvid}"
         #             url = f"https://youtu.be/{matchvid}"
         #             st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
         #             # st_player(url)
         #             # st.write(matchtitle)
-        #             st.caption(f'Category: {matchcat}')
         #             st.markdown(f"[{matchtitle}]({url})")
+        #             st.caption(f"Category: {cat}")
         #             matchscore = round(matchscore)
         #             matchscore = str(matchscore)+'%'
         #             st.success(matchscore)
-        
-        
-    # if categoricalchoice:
-
-    #     if moddf['category'].str.contains(categoricalchoice, case=False).any() == False:
-    #         st.warning(f'{choice} has no videos with that category. Please try again', icon="⚠️")
-    #     else:
-    #         st.success('Found match(es)', icon="✅")
-    #         matches = moddf.loc[moddf['category'].str.contains(categoricalchoice, case=False)]
-    #         n_cols = 3
-    #         n_rows = int(1 + len(matches[matches.overallpositivepercentage > 50]) // n_cols)
-    #         rows = [st.columns(n_cols) for _ in range(n_rows)]
-    #         columns = [column for row in rows for column in row]
-    #         for matchvid, matchtitle, matchscore, col in zip(matches['video_id'], matches['title'], matches['overallpositivepercentage'], columns):
-    #             with col:
-    #                 # url = f"https://www.youtube.com/watch?v={matchvid}"
-    #                 url = f"https://youtu.be/{matchvid}"
-    #                 st.image("https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc")
-    #                 # st_player(url)
-    #                 # st.write(matchtitle)
-    #                 st.markdown(f"[{matchtitle}]({url})")
-    #                 st.caption(f"Category: {categoricalchoice}")
-    #                 matchscore = round(matchscore)
-    #                 matchscore = str(matchscore)+'%'
-    #                 st.success(matchscore)
         
 
         
