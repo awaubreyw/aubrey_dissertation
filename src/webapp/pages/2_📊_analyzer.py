@@ -26,7 +26,7 @@ channel = choice.replace(' ', '_').lower()
 
 
 #function for first set of cola and colb
-@st.cache(suppress_st_warning=True, allow_output_mutation=True)
+@st.cache(suppress_st_warning=True)
 def visualize_before_sentiment(order: str, col:str):
     st.subheader(f"""{choice} Top 10 Videos\n\nordered by {order}""")
     data = None
