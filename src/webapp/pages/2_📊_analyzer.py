@@ -37,7 +37,7 @@ video_stats = stats['video_data']
 
 
 #function for first set of cola and colb
-@st.cache(suppress_st_warning=True, allow_output_mutation=True)
+@st.cache(allow_output_mutation=True)
 def visualize_before_sentiment(order: str, col:str):
     st.subheader(f"""{choice} Top 10 Videos\n\nordered by {order}""")
     
