@@ -22,18 +22,7 @@ with st.sidebar:
 
 channel = choice.replace(' ', '_').lower()
 
-data = None
 
-file = f'src/webapp/pages/../../results/{channel}.json' 
-
-with open(file, 'r') as f:
-    data = json.load(f)
-
-channel_id, stats = data.popitem()
-
-channel_stats = stats['channel_statistics']
-
-video_stats = stats['video_data']
 
 
 #function for first set of cola and colb
@@ -41,7 +30,18 @@ video_stats = stats['video_data']
 @st.experimental_memo(suppress_st_warning=True)
 def visualize_before_sentiment(order: str, col:str):
     st.subheader(f"""{choice} Top 10 Videos\n\nordered by {order}""")
+    data = None
 
+    file = f'src/webapp/pages/../../results/{channel}.json' 
+
+    with open(file, 'r') as f:
+        data = json.load(f)
+
+    channel_id, stats = data.popitem()
+
+    channel_stats = stats['channel_statistics']
+
+    video_stats = stats['video_data']
     sorted_vids = video_stats.items()
 
     stats = []
