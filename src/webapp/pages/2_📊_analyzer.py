@@ -37,7 +37,8 @@ video_stats = stats['video_data']
 
 
 #function for first set of cola and colb
-@st.cache(suppress_st_warning=True)
+# @st.cache(suppress_st_warning=True)
+@st.experimental_memo
 def visualize_before_sentiment(order: str, col:str):
     # st.subheader(f"""{choice} Top 10 Videos\n\nordered by {order}""")
     
@@ -116,7 +117,8 @@ def visualize_before_sentiment(order: str, col:str):
 
 
 
-@st.cache(allow_output_mutation=True)
+# @st.cache(allow_output_mutation=True)
+@st.experimental_memo
 def read_video_data_loop(top10):
 
     overallpositivepercentage = []
@@ -182,7 +184,8 @@ def read_video_data_loop(top10):
 
 
 # @st.cache(allow_output_mutation=True)
-@st.cache(suppress_st_warning=True, allow_output_mutation=True)
+# @st.cache(suppress_st_warning=True, allow_output_mutation=True)
+@st.experimental_memo
 def individual_vid_pie(onevidchoice):
 
     filepath = f'src/webapp/pages/../../results/{channel}/{onevidchoice}.json'
@@ -241,7 +244,7 @@ def individual_vid_pie(onevidchoice):
 
 
 
-
+@st.experimental_memo
 def visualize_after_sentiment(top10arg, by: str):
     
     st.subheader(f'Normalized Sentiment Scoring\n\nof each {choice} video')
@@ -357,6 +360,13 @@ with cola:
     st.subheader("Data Correlations")
     st.write(top10a.corr())
     
+
+with cola:
+    st.write('---')
+    visualize_after_sentiment(top10a, 'views')
+
+
+
 with colb:
     st.write('---')
     o, top10b, l, v, c = visualize_before_sentiment('likeCount', 'likes')
@@ -378,11 +388,7 @@ with colb:
 
     st.subheader("Data Correlations")
     st.write(top10b.corr())
-   
 
-with cola:
-    st.write('---')
-    visualize_after_sentiment(top10a, 'views')
 
 with colb:
     st.write('---')
