@@ -37,9 +37,9 @@ video_stats = stats['video_data']
 
 
 #function for first set of cola and colb
-@st.cache(allow_output_mutation=True)
+@st.cache(suppress_st_warning=True)
 def visualize_before_sentiment(order: str, col:str):
-    st.subheader(f"""{choice} Top 10 Videos\n\nordered by {order}""")
+    # st.subheader(f"""{choice} Top 10 Videos\n\nordered by {order}""")
     
     sorted_vids = video_stats.items()
 
@@ -87,31 +87,31 @@ def visualize_before_sentiment(order: str, col:str):
     df = df.reset_index(drop=True)
 
     topten = df.head(10)
-  
-    st.dataframe(topten.style.highlight_max(axis='columns', subset=[col]))
-    st.caption("videos that have comments disabled were filtered out for sentiment analysis purposes and video whose comment json files were not successfully extracted, due to API quota limitations, were filtered out")
+    
+    # st.dataframe(topten.style.highlight_max(axis='columns', subset=[col]))
+    # st.caption("videos that have comments disabled were filtered out for sentiment analysis purposes and video whose comment json files were not successfully extracted, due to API quota limitations, were filtered out")
  
     likes_avg = topten['likes'].mean()
     comments_avg = topten['comments'].mean()
     views_avg = topten['views'].mean()
 
-    st.subheader('Averages')
+    # st.subheader('Averages')
     
-    rad = st.radio(f'{choice} stats averages', ['views', 'likes', 'comments'], key={order})
-    if rad == 'views':
-        st.markdown(f""" 
-        Average number of views under a {choice} top 10 video : **{int(views_avg)} views**""")
-    elif rad == 'likes':
-        st.markdown(f""" 
-        Average number of likes under a {choice} top 10 video : **{int(likes_avg)} likes**""")
-    else:
-        st.markdown(f""" 
-        Average number of comments under a {choice} top 10 video : **{int(comments_avg)} comments**""")
+    # rad = st.radio(f'{choice} stats averages', ['views', 'likes', 'comments'], key={order})
+    # if rad == 'views':
+    #     st.markdown(f""" 
+    #     Average number of views under a {choice} top 10 video : **{int(views_avg)} views**""")
+    # elif rad == 'likes':
+    #     st.markdown(f""" 
+    #     Average number of likes under a {choice} top 10 video : **{int(likes_avg)} likes**""")
+    # else:
+    #     st.markdown(f""" 
+    #     Average number of comments under a {choice} top 10 video : **{int(comments_avg)} comments**""")
 
-    st.subheader("Data Correlations")
-    st.write(topten.corr())
+    # st.subheader("Data Correlations")
+    # st.write(topten.corr())
 
-    return topten
+    return order, topten, likes_avg, views_avg, comments_avg
 
 
 
@@ -337,11 +337,47 @@ cola, colb = st.columns(2)
 
 with cola:
     st.write('---')
-    top10a = visualize_before_sentiment('viewCount', 'views')
+    o, top10a, l, v, c = visualize_before_sentiment('viewCount', 'views')
+
+    st.subheader(f"""{choice} Top 10 Videos\n\nordered by {o}""")
+    st.dataframe(top10a.style.highlight_max(axis='columns', subset=['views']))
+    st.caption("videos that have comments disabled were filtered out for sentiment analysis purposes and video whose comment json files were not successfully extracted, due to API quota limitations, were filtered out")
+    st.subheader('Averages')
+    rad = st.radio(f'{choice} stats averages', ['views', 'likes', 'comments'], key={o})
+    if rad == 'views':
+        st.markdown(f""" 
+        Average number of views under a {choice} top 10 video : **{int(v)} views**""")
+    elif rad == 'likes':
+        st.markdown(f""" 
+        Average number of likes under a {choice} top 10 video : **{int(l)} likes**""")
+    else:
+        st.markdown(f""" 
+        Average number of comments under a {choice} top 10 video : **{int(c)} comments**""")
+
+    st.subheader("Data Correlations")
+    st.write(top10a.corr())
     
 with colb:
     st.write('---')
-    top10b = visualize_before_sentiment('likeCount', 'likes')
+    o, top10b, l, v, c = visualize_before_sentiment('likeCount', 'likes')
+
+    st.subheader(f"""{choice} Top 10 Videos\n\nordered by {o}""")
+    st.dataframe(top10b.style.highlight_max(axis='columns', subset=['likes']))
+    st.caption("videos that have comments disabled were filtered out for sentiment analysis purposes and video whose comment json files were not successfully extracted, due to API quota limitations, were filtered out")
+    st.subheader('Averages')
+    rad = st.radio(f'{choice} stats averages', ['views', 'likes', 'comments'], key={o})
+    if rad == 'views':
+        st.markdown(f""" 
+        Average number of views under a {choice} top 10 video : **{int(v)} views**""")
+    elif rad == 'likes':
+        st.markdown(f""" 
+        Average number of likes under a {choice} top 10 video : **{int(l)} likes**""")
+    else:
+        st.markdown(f""" 
+        Average number of comments under a {choice} top 10 video : **{int(c)} comments**""")
+
+    st.subheader("Data Correlations")
+    st.write(top10b.corr())
    
 
 with cola:
